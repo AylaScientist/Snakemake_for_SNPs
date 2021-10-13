@@ -67,8 +67,13 @@ the workflow.
 
 extra = snakemake.params.get("extra")
 java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
+
 
 df_bi=snakemake.input.get("csv")
+df_bi = pd.read_csv(df_bi, low_memory=False)
+df_bi = pd.DataFrame(df_bi)
+
 
 sample_names = pd.read_csv(snakemake.input.get("sn1"))
 PSG_codes = pd.read_csv(snakemake.input.get("psc"))
@@ -157,7 +162,7 @@ def evaluation(df, sample, PSGs):
                 # which one is 0, from 2 mapping methods (averaged by 2)
             r_AD.append(x)
             a_GT.append(df.iloc[i, aPSG2_GT])
-            y = df.iloc[i, aPSG2_AD]
+            y = df.iloc[i, aPSG2_AD] / 2
             a_AD.append(y)
 
         # Case 5 First homozygot, second with alternative allele in first position  (as reference)
@@ -172,7 +177,7 @@ def evaluation(df, sample, PSGs):
                 x = (df.iloc[i, rPSG1_AD] + df.iloc[i, aPSG1_AD] + df.iloc[i, aPSG2_AD]) / 2  # counts from 3 cells from which one is 0, from 2 mapping methods (averaged by 2)
             r_AD.append(x)
             a_GT.append(df.iloc[i, rPSG2_GT])
-            y = df.iloc[i, rPSG2_AD]
+            y = df.iloc[i, rPSG2_AD] / 2
             a_AD.append(y)
 
         # Case 6 Second homozygot, first heterozygot with alternative allele in second position (as alternative)
@@ -187,7 +192,7 @@ def evaluation(df, sample, PSGs):
                 x = (df.iloc[i, rPSG1_AD] + df.iloc[i, rPSG2_AD] + df.iloc[i, aPSG2_AD]) / 2  # counts from 3 cells from which one is 0, from 2 mapping methods (averaged by 2)
             r_AD.append(x)
             a_GT.append(df.iloc[i, aPSG1_GT])
-            y = df.iloc[i, aPSG1_AD]
+            y = df.iloc[i, aPSG1_AD] / 2
             a_AD.append(y)
 
         # Case 7 Second homozygot, first heterozygot with alternative allele in first position (as reference)
@@ -195,7 +200,7 @@ def evaluation(df, sample, PSGs):
                 df.iloc[i, aPSG1_GT] == df.iloc[i, aPSG2_GT]):
             #print("Alt GT: ", df.iloc[i, rPSG2_GT], " Counts: ", df.iloc[i, aPSG1_AD], " ", df.iloc[i, rPSG2_AD], " ",df.iloc[i, aPSG2_AD], " averaged by 2")
             r_GT.append(df.iloc[i, rPSG1_GT])
-            x = df.iloc[i, rPSG1_AD]
+            x = df.iloc[i, rPSG1_AD] / 2
             r_AD.append(x)
             a_GT.append(df.iloc[i, rPSG2_GT])
             if (df.iloc[i, aPSG1_AD] != 0 and df.iloc[i, rPSG2_AD] != 0 and df.iloc[i, aPSG2_AD] !=0):

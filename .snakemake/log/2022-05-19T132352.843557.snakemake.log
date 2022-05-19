@@ -1,0 +1,3 @@
+SyntaxError in line 10 of /home/fish_station/GitHub/workflow/rules/table2df.smk:
+Expected name or colon after rule or checkpoint keyword. (table2df.smk, line 10)
+  File "/home/fish_station/GitHub/workflow/Snakefile", line 96, in <module>

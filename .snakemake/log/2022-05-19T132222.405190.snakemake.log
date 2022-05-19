@@ -1,0 +1,3 @@
+WildcardError in line 30 of /home/fish_station/GitHub/workflow/Snakefile:
+No values given for wildcard 'pseudo'.
+  File "/home/fish_station/GitHub/workflow/Snakefile", line 30, in <module>

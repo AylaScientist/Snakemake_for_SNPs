@@ -1,0 +1,3 @@
+SyntaxError in line 112 of /home/fish_station/GitHub/workflow/rules/workflow_mae.smk:
+invalid syntax. Perhaps you forgot a comma?
+  File "/home/fish_station/GitHub/workflow/Snakefile", line 100, in <module>

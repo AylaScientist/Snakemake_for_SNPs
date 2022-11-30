@@ -52,7 +52,7 @@ WARNING: How to run the pipeline
 `snakemake -n `
 
 ### Run the pipeline with the desired resources. This is an example for 4 threads at 4GB
-snakemake --cores 4 --mem_mb 40000
+`snakemake --cores 4 --mem_mb 40000 `
 
 ## Tutorial
 WARNING: pdf to pull

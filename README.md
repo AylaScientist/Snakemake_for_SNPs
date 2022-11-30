@@ -16,15 +16,13 @@ WARNING: adapt the citation to our link:
 The usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=<owner>%2F<repo>).
 
 
-WARNING: Prepare the repository, make the step by step with conda and let aside the Doker
-
 ## Quick start
 ### Installation
 #### Manual mode
 
 Clone the repository:
 
-#git clone https://github.com/zhxiaokang/RASflow.git`
+#git clone https://github.com/AylaScientist/Snakemake_for_SNPs.git`
 
 Create the environment:
 
@@ -57,8 +55,9 @@ WARNING: How to run the pipeline
 snakemake --cores 4 --mem_mb 40000
 
 ## Tutorial
-A more detailed tutorial of how to use this workflow can be found here: [Tutorial](https://github.com/zhxiaokang/RASflow/blob/master/Tutorial.pdf)
+WARNING: pdf to pull
+A more detailed tutorial of how to use this workflow can be found here: [Tutorial](https://github.com/AylaScientist/Snakemake_for_SNPs/Tutorial.pdf)
 
 ## Evaluation
 The pipeline for SNPs has been evaluated on 4 datasets including one model organism (human) and 2 non-model organism (Nile and Mozambique tilapias). To keep this repository as light as possible, the evaluation of the pipeline on real datasets is deposited here:
-WARNING: Put here the
+WARNING: Put here the link

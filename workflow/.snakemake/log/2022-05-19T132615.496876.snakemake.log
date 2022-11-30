@@ -1,0 +1,4 @@
+CreateRuleException in line 2 of /home/fish_station/GitHub/workflow/rules/workflow_mae.smk:
+The name merge_dataframes is already used by another rule
+  File "/home/fish_station/GitHub/workflow/Snakefile", line 100, in <module>
+  File "/home/fish_station/GitHub/workflow/rules/workflow_mae.smk", line 2, in <module>

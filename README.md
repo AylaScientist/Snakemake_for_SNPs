@@ -1,5 +1,5 @@
 # Snakemake for SNPs: A pipeline for calling SNPs and quantify them in an unbiased manner
-RASflow is a modular, flexible and user-friendly RNA-Seq analysis workflow.
+Snakemake for SNPs is a flexible and user-friendly SNPs analysis workflow.
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
 [![GitHub actions status](https://github.com/<owner>/<repo>/workflows/Tests/badge.svg?branch=main)](https://github.com/<owner>/<repo>/actions?query=branch%3Amain+workflow%3ATests)

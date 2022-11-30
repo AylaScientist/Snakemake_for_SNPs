@@ -11,7 +11,7 @@ If you use our pipeline you need to cite us:
 WARNING: adapt the citation to our link:
 
 ## Workflow
-#<img src="https://github.com/AylaScientist/Snakemake_for_SNPs/blob/master/Figure%201%20Pipeline%20white%20background.png" width="450">
+<img src="https://github.com/AylaScientist/Snakemake_for_SNPs/blob/master/Figure%201%20Pipeline%20white%20background.png" width="700">
 
 The usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=<owner>%2F<repo>).
 

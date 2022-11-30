@@ -1,3 +1,0 @@
-ModuleNotFoundError in line 9 of /home/fish_station/GitHub/workflow/Snakefile:
-No module named 'pandas'
-  File "/home/fish_station/GitHub/workflow/Snakefile", line 9, in <module>

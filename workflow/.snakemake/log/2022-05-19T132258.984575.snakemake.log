@@ -1,4 +1,0 @@
-WildcardError in line 3 of /home/fish_station/GitHub/workflow/rules/combine_gvcfs_pseudo.smk:
-No values given for wildcard 'pseudo'.
-  File "/home/fish_station/GitHub/workflow/Snakefile", line 78, in <module>
-  File "/home/fish_station/GitHub/workflow/rules/combine_gvcfs_pseudo.smk", line 3, in <module>

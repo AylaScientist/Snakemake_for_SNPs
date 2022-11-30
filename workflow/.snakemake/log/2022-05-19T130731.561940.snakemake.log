@@ -1,4 +1,0 @@
-WorkflowError in line 75 of /home/fish_station/GitHub/workflow/Snakefile:
-Failed to open source file /home/fish_station/GitHub/workflow/rules/mark_duplictes_pseudo.smk
-FileNotFoundError: [Errno 2] No such file or directory: '/home/fish_station/GitHub/workflow/rules/mark_duplictes_pseudo.smk'
-  File "/home/fish_station/GitHub/workflow/Snakefile", line 75, in <module>

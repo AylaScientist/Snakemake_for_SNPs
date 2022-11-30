@@ -1,3 +1,0 @@
-SyntaxError in line 119 of /home/fish_station/GitHub/workflow/rules/workflow_mae.smk:
-Unexpected keyword arams in rule definition (workflow_mae.smk, line 119)
-  File "/home/fish_station/GitHub/workflow/Snakefile", line 100, in <module>

@@ -1,3 +1,0 @@
-KeyError in line 34 of /home/fish_station/GitHub/workflow/Snakefile:
-'pseudos'
-  File "/home/fish_station/GitHub/workflow/Snakefile", line 34, in <module>

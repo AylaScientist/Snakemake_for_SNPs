@@ -8,8 +8,8 @@ rule pseudogenome:
     params:
         extra = "{pseudo}"
     resources:
-        mem_mb=100000
-    threads: 10
+        mem_mb=config['mem_mb_combine']
+    threads: config['threads_combine']
     conda:
         "envs/bcftools.yaml"
     log:
@@ -31,8 +31,8 @@ rule pseudo_index:
         annotation = "genome/Tilapia_GCF_001858045.2_annotation.gtf",
         read_length = "148" #Read length -1
     resources:
-        mem_mb=100000
-    threads: 10
+        mem_mb=config['mem_mb_combine']
+    threads: config['threads_combine']
     conda:
         "envs/star.yaml"
     log:
@@ -47,8 +47,8 @@ rule pseudo_dict:
     output:
         "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.dict"
     resources:
-        mem_mb=100000
-    threads: 10
+        mem_mb=config['mem_mb_combine']
+    threads: config['threads_combine']
     conda:
         "envs/picard.yaml"
     log:

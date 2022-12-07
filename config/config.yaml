@@ -11,38 +11,48 @@ Experimental_design:  ../config/Experimental_design.csv
 Experimental_groups:  ../config/Experimental_groups.csv
 Pseudogenome_codes:  ../config/Pseudogenome_codes.csv # after you choose the samples from where you will make the pseudogenomes
 GeneID_to_Genebank:  ../config/GeneID_to_Genebank.csv
-GO_dict:  ../config/Tilapia gene transcript protein GO KEGG uniprot.csv
+GO_dict:  ../config/GO_dictionary.csv
 tb1_colnames:  ../config/tb1_colnames.csv
 tb2_colnames:  ../config/tb2_colnames.csv
-Tilapia_dict:  ../config/Tilapia gene transcript protein GO KEGG uniprot.csv
+species_dict:  ../config/Tilapia gene transcript protein GO KEGG uniprot.csv
 fastq_merged: fastq_merged
 Samples_MAE: ../config/Samples_MAE.csv
+
 
 ## Resources of the system:
 gpu: 1
 #jobs_per_gpu: 6
 
 
-#Pseudogenomes genome:
-java_opts: -XX:MinRAMPercentage=80.0 -Xms200G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=2 -XX:+UseTLAB
-threads_pseudo: 1
-mem_mb_pseudo: 200000
+#Parallel_jobs: Is the total resources divided by the number of samples, 4 in this case
+java_opts_parallel: -XX:MinRAMPercentage=80.0 -Xms180G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=2 -XX:+UseTLAB
+threads_parallel: 1 # that refers to the number of cores. The parallel threads are defined above
+mem_mb_parallel: 200000
 
 
-#Combine pseudogenomes (combine_gvcfs_pseudo.smk)
-java_opts_combine: -XX:MinRAMPercentage=80.0 -Xms350G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=2 -XX:+UseTLAB
-threads_combine: 2
+#Combine: Is total resources divided by two pseudogenomes
+java_opts_combine: -XX:MinRAMPercentage=80.0 -Xms350G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=4 -XX:+UseTLAB
+threads_combine: 2 # that refers to the number of cores. The parallel threads are defined above
 mem_mb_combine: 400000
 
-#Reference genome:
-java_opts_ref: -XX:MinRAMPercentage=80.0 -Xms800G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=8 -XX:+UseTLAB
-threads: 4
-mem_mb: 800000
+#Reference genome: Total resources for rules that do not have parallel works. 
+java_opts: -XX:MinRAMPercentage=80.0 -Xms800G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=8 -XX:+UseTLAB
+threads: 4 # that refers to the number of cores. The parallel threads are defined above
+mem_mb: 900000
 
 # Path to workflow with relation to snakefile. Can vary depending on your HPC configuration
-path: /home/ARO.local/aurorac/Projects/Project3/workflow/
+path: ~/AylaScientist/Snakemake_for_SNPs/GitHub/workflow/
+
+pseudogenomes: # Write the pseudogenomes as they are found in the file ../config/Pseudogenome_codes.csv
+  PSG1: NFG6
+  PSG2: NSL28
+
+input_files: # Add the fastq files of your experiment
+  r1: "fastq_merged/{sample}_R1.fastq"
+  r2: "fastq_merged/{sample}_R3.fastq" # Optional
 
 results:
+  degs: expand("gene_counts/{sample}.count_ref.txt", sample = samples)
   o1:  results/SNPs_function.csv
   o2:  results/SNP_dictionary.csv
   o3:  results/Treatment_SNPs_sig_all_for_Venn.csv
@@ -50,11 +60,29 @@ results:
   o5:  results/Intronic_SNPs_caryotype.csv
 
 results_mae:
-  o1:  results/SNPs_function_mae.csv
-  o2:  results/SNP_dictionary_mae.csv
-  o3:  results/Treatment_SNPs_sig_all_for_Venn_mae.csv
-  o4:  results/Summary_of_polymorphisms_mae.csv
-  o5:  results/Intronic_SNPs_caryotype_mae.csv
+  om1: "results/SNPs_function_mae.csv",
+  om2: "results/SNP_dictionary_mae.csv",
+  om3: "results/Treatment_SNPs_sig_all_for_Venn_mae.csv",
+  om4: "results/Summary_of_polymorphisms_mae.csv",
+  om5: "results/Intronic_SNPs_caryotype_mae.csv"
+
+files_pseudogenomes:
+  PSG_dict: expand("pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.dict", pseudo = pseudos)
+  PSG_index: expand("pseudogenomes/{pseudo}/SAindex", pseudo = pseudos)
+  PSG_fai: expand("pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa.fai", pseudo = pseudos)
+
+other_intermediate_files: # For bqsr recalibration, in case you have known SNPs
+  bam: expand("recal/{sample}_ref.bam", sample = samples), 
+  bqsr: expand("recal_tables/{sample}_after_ref.table", sample = samples),
+  valid_bqsr: expand("logs/picard/ValidateSamFile/Validate_bqsr_{sample}.log", sample = samples),
+  valid_bqsr_PSG: expand("logs/picard/ValidateSamFile_{pseudo}/Validate_bqsr_{sample}_{pseudo}.log", sample = samples, pseudo = pseudos),
+  recal_table: expand("recal_tables/{sample}_after_ref.table", sample = samples),
+
+error: "results/Error_in_SNP_calling_valid_genome.csv",
+
+
+
+
 
 ref:
   # ensembl species name
@@ -68,7 +96,8 @@ ref:
   annotation:  ../genome/Tilapia_GCF_001858045.2_annotation.gff3
   gtf:  ../genome/Tilapia_GCF_001858045.2_annotation.gtf
   SAindex:  ../genome/SAindex
-  read_length: 148 # Read length - 1
+  dict: ../genome/Tilapia_header_GCF_001858045.2.dict
+  read_length: 89 # Read length - 1
 
 
 
@@ -95,7 +124,8 @@ processing:
 
 params:
   star:
-    read_length: 148 #read lenght -1
+    read_length: 89 #read lenght -1
+    mode: SE #SE or PE for single or paired ends
   gatk:
     HaplotypeCaller: ""
     BaseRecalibrator: ""
@@ -104,6 +134,7 @@ params:
   picard:
     MarkDuplicates: "REMOVE_DUPLICATES=true"
   trimmomatic:
+    path: "/home/fish_station/anaconda3/envs/snakemake/share/trimmomatic-0.39-2/trimmomatic.jar"
     pe:
       trimmer:
         # See trimmomatic manual for adding additional options, e.g. for adapter trimming.
@@ -120,10 +151,7 @@ params:
         - "TRAILING:3 "
         #- "SLIDINGWINDOW:4:15 "
         - "MINLEN:36 "
-  vep:
-    plugins:
-      # Add any plugin from https://www.ensembl.org/info/docs/tools/vep/script/vep_plugins.html
-      # Plugin args can be passed as well, e.g. "LoFtool,path/to/custom/scores.txt".
-      - LoFtool
-    # extra command line arguments (e.g. --sift, see docs)
-    extra: ""
+  annotation:
+    o1: "annotated/annotated_all_snps_{pseudo}.ON_multianno.vcf"
+    extra: "-SMA TRUE -F CHROM -F POS -F Gene.refGene -F Func.refGene -F ExonicFunc.refGene -F AF -GF AD -GF GT"
+    

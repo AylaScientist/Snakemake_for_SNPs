@@ -5,8 +5,8 @@ rule convert_to_annovar:
     output:
         o1="annotated/annovar_Nile_{pseudo}"
     resources:
-        mem_mb=200000
-    threads: 20
+        mem_mb=config['mem_mb']
+    threads: config['threads']
     conda:
         "envs/perl.yaml"
     shell:
@@ -34,8 +34,8 @@ rule annotate:
     output:
         o2="annotated/annotated_Nile_snps_{pseudo}.variant_function"
     resources:
-        mem_mb=200000
-    threads: 20
+        mem_mb=config['mem_mb']
+    threads: config['threads']
     conda:
         "envs/perl.yaml"
     shell:
@@ -65,8 +65,8 @@ rule an_table:
     output:
         o1=temp("annotated/annotated_all_snps_{pseudo}.ON_multianno.vcf")
     resources:
-        mem_mb=200000
-    threads: 20
+        mem_mb=config['mem_mb']
+    threads: config['threads']
     conda:
         "envs/perl.yaml"
     shell:

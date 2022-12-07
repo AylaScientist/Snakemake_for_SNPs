@@ -4,14 +4,14 @@ rule ref_index:
     output:
         "genome/SAindex"
     params:
-        threads= "10",
+        threads= config['threads'],
         dir = "genome/",
         annotation = "genome/Tilapia_GCF_001858045.2_annotation.gtf",
-        read_length = "148", #Read length -1
-        java_opts="-XX:MinRAMPercentage=80.0 -Xms100G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=10 -XX:+UseTLAB",
-    threads: 10
+        read_length = config['params']['star']['read_length'], #Read length -1
+        java_opts=config['java_opts'],
+    threads: config['threads']
     resources:
-        mem_mb=100000
+        mem_mb=config['mem_mb']
     conda:
         "envs/star.yaml"
     log:

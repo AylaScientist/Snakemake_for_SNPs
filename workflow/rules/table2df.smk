@@ -14,8 +14,8 @@ rule table_step2_PSG:
     output:
         csv="workflow/AD_GT_counts_bi_{pseudo}.csv"
     resources:
-        mem_mb=200000
-    threads: 20
+        mem_mb=config['mem_mb_combine']
+    threads: config['threads_combine']
     conda:
         "envs/python.yaml"
     log:

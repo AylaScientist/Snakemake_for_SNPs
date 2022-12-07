@@ -10,9 +10,9 @@ rule genotype_gvcfs_PSG:
         "logs/gatk/genotypegvcfs/genotypegvcfs_{pseudo}.log"
     params:
         extra="",  # optional
-        java_opts="-XX:MinRAMPercentage=80.0 -Xms200G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=20 -XX:+UseTLAB",
-    threads: 20
+        java_opts=config['java_opts_parallel'],
+    threads: config['threads_parallel']
     resources:
-        mem_mb=200000
+        mem_mb=config['mem_mb_parallel']
     script:
         "scripts/genotypegvcfs.py"

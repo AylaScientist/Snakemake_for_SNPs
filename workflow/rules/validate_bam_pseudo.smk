@@ -9,13 +9,10 @@ rule validate_bqsr_PSG:
     params:
         extra = "",
         mode = "SUMMARY",
-        ref="genome/Tilapia_header_GCF_001858045.2.fa"
-    params:
-        extra="",  # optional
-        java_opts="-XX:MinRAMPercentage=80.0 -Xms100G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=10 -XX:+UseTLAB",
-    threads: 10
+        ref=config['ref']['genome'],java_opts=config['java_opts_parallel'],
+    threads: config['threads_parallel']
     resources:
-        mem_mb=100000
+        mem_mb=config['mem_mb_parallel']
     log:
         "logs/picard/ValidateSamFile_{pseudo}/Validate_bqsr_{sample}_{pseudo}.log"
     shell:

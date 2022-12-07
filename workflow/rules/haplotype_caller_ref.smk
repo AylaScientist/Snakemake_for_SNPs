@@ -11,9 +11,9 @@ rule haplotype_caller:
         "logs/gatk/haplotypecaller/{sample}.log"
     params:
         extra="",  # optional
-        java_opts="-XX:MinRAMPercentage=80.0 -Xms100G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=10 -XX:+UseTLAB",
-    threads: 10
+        java_opts=config['java_opts_parallel'],
+    threads: config['threads_parallel']
     resources:
-        mem_mb=100000
+        mem_mb=config['mem_mb_parallel']
     script:
         "scripts/haplotypecaller.py"

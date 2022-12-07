@@ -1,17 +1,14 @@
-rule star_pe:
+rule star_se:
     input:
-        # use a list for multiple fastq files for one sample
-        # usually technical replicates across lanes/flowcells example: "reads/{sample}._R2.1.fastq", "reads/{sample}._R2.2.fastq"
         fastq1="trimmed/{sample}.1.fastq",
-        # paired end reads needs to be ordered so each item in the two lists match
-        fastq2="trimmed/{sample}.2.fastq", #optional
+        # path to STAR reference genome index
         index=config['ref']['dict'],
-        params=config['ref']['SAindex']
+        params=config['ref']['SAindex']idx="index",
     output:
         # see STAR manual for additional output files
         file=temp("{sample}_ref_Aligned.sortedByCoord.out.bam") #""star/{sample}/Aligned.sortedByCoord.out.sam""
     log:
-        "logs/star/{sample}_ref.log"
+        "logs/star/{sample}_ref.log",
     params:
         # path to STAR reference genome index
         # optional parameters

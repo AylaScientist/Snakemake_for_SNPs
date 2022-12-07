@@ -10,9 +10,9 @@ rule gatk_select_PSG:
         "logs/gatk/select/snvs_Nile_{pseudo}.log"
     params:
         extra="--restrict-alleles-to BIALLELIC",  # optional filter arguments, see GATK docs
-        java_opts="-XX:MinRAMPercentage=80.0 -Xms200G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=20 -XX:+UseTLAB",
-    threads: 20
+        java_opts=config['java_opts_combine'],
+    threads: config['threads_combine']
     resources:
-        mem_mb=200000
+        mem_mb=config['mem_mb_combine']
     script:
         "scripts/selectvariants.py"

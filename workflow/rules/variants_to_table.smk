@@ -9,11 +9,11 @@ rule gatk_variantstotable_PSG:
     log:
         "logs/gatk/var2table/snvs_Nile_{pseudo}.log"
     params:
-        o1="annotated/annotated_all_snps_{pseudo}.ON_multianno.vcf",
-        extra="-SMA TRUE -F CHROM -F POS -F Gene.refGene -F Func.refGene -F ExonicFunc.refGene -F AF -GF AD -GF GT",  # optional filter arguments, see GATK docs
-        java_opts="-XX:MinRAMPercentage=80.0 -Xms200G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=20 -XX:+UseTLAB",
-    threads: 20
+        o1= config['params']['annotation']['o1'],
+        extra= config['params']['annotation']['extra'],  # optional filter arguments, see GATK docs
+        java_opts=config['java_opts_combine'],
+    threads: config['threads_combine']
     resources:
-        mem_mb=200000
+        mem_mb=config['mem_mb_combine']
     script:
         "scripts/variantstotable.py"

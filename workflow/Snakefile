@@ -19,35 +19,42 @@ print(samples)
 
 rule all:
     input:
-          o1= "results/SNPs_function.csv",
-          o2= "results/SNP_dictionary.csv",
-          o3= "results/Treatment_SNPs_sig_all_for_Venn.csv",
-          o4= "results/Summary_of_polymorphisms.csv",
-          o5= "results/Intronic_SNPs_caryotype.csv",
-          bam=expand("recal/{sample}_ref.bam", sample = samples),
-          bqsr=expand("recal_tables/{sample}_after_ref.table", sample = samples),
-          valid_bqsr=expand("logs/picard/ValidateSamFile/Validate_bqsr_{sample}.log", sample = samples),
-          valid_bqsr_PSG=expand("logs/picard/ValidateSamFile_{pseudo}/Validate_bqsr_{sample}_{pseudo}.log", sample = samples, pseudo = pseudos),
-          recal_table=expand("recal_tables/{sample}_after_ref.table", sample = samples),
-          degs=expand("gene_counts/{sample}.count_ref.txt", sample = samples),
-          PSG_dict = expand("pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.dict", pseudo = pseudos),
-          PSG_index= expand("pseudogenomes/{pseudo}/SAindex", pseudo = pseudos),
-          PSG_fai= expand("pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa.fai", pseudo = pseudos),
-          #error_mae ="results/SNPs_ready_mae_valid_genome.csv",
-          error="results/SNPs_ready_no_mae.csv",
+          config['Results']['o1'],
+          config['Results']['o2'],
+          config['Results']['o3'],
+          config['Results']['o4'],
+          config['Results']['o5'],
+          config['Results']['degs'] # Counts matrix for the DEGs
+          config['files_pseudogenomes']['PSG_dict'], # Dictionary of the pseudogenomes
+          config['files_pseudogenomes']['PSG_index'], # Index of the pseudogenomes
+          config['files_pseudogenomes']['PSG_fai'], # fai index of the pseudogenomes
+          #config['error'] # Estimate the error of your SNP call
+          #config['Other_intermediate_files']['bam'],
+          #config['Other_intermediate_files']['bqsr'],
+          #config['Other_intermediate_files']['valid_bqsr'],
+          #config['Other_intermediate_files']['valid_bqsr_PSG'],
+          #config['Other_intermediate_files']['recal_table']
 
 
-##### Modules #####
+##### MODULES #####
 ###################
 
 # Preparation #
 ###############
-include: "rules/trimmomatic.smk"#In the trimming R3 input is called 2 for the output
-include: "rules/star_gi_ref.smk"
+ends = config['params']['star']['mode']
+if ends == 'SE':
+    include: "rules/trimmomatic_se.smk"#In the trimming R3 input is called 2 for the output
+    include: "rules/star_gi_ref.smk"
+    # First SNP callling on the reference genome #
+    ##############################################
+    include: "rules/star_se_ref.smk"        # map with STAR
+else:
+    include: "rules/trimmomatic_pe.smk"#In the trimming R3 input is called 2 for the output
+    include: "rules/star_gi_ref.smk"
+    # First SNP callling on the reference genome #
+    ##############################################
+    include: "rules/star_pe_ref.smk"        # map with STAR
 
-# First SNP callling on the reference genome #
-##############################################
-include: "rules/star_pe_ref.smk"        # map with STAR
 include: "rules/replace_rg_ref.smk"     # Replace or add read Groups:
 include: "rules/mark_duplicates_ref.smk"# Mark and eliminate Duplicates:
 include: "rules/splitNcigar_ref.smk"    # Split Ncigars
@@ -71,7 +78,11 @@ include: "rules/subset_ref.smk"         # Subset the genome
 include: "rules/pseudogenomes.smk"      # Create the Pseudogenomes
 
 ## Now you can start the pipeline again from the fastq file for the pseudogenomes:
-include: "rules/star_pseudogenomes.smk"       # Map against pseudogenomes
+if ends == 'SE':
+    include: "rules/star_se_pseudogenomes.smk"        # map with STAR
+else:
+    include: "rules/star_pe_pseudogenomes.smk"        # map with STARinclude: "rules/star_pseudogenomes.smk"       # Map against pseudogenomes
+
 include: "rules/replace_rg_pseudo.smk"        # Replace or add read groups
 include: "rules/mark_duplicates_pseudo.smk"    # Mark and eliminate duplicates
 include: "rules/splitNcigar_pseudo.smk"       # Split Ncigars
@@ -83,7 +94,7 @@ include: "rules/select_pseudo.smk"            # Select biallelic variants
 
 ## Annotate vcf files ##
 ########################
-# Convert th vcf file to annovar format thus extracting the SNPs
+# Convert the vcf file to annovar format thus extracting the SNPs
 # Make tokens for the annotation script
 # Collect the annotations in the db
 # Make tokens for the tables with the annotation
@@ -99,9 +110,6 @@ include: "rules/table2df.smk"           # Preapre the tables for the workflow fo
 
 # Workflow
 include: "rules/workflow.smk"           # Processing the data
-# WARNING! Need to chose one of the next:
-#include: "rules/workflow_mae.smk"       # WARNING! Considering monoallelic expression in different tissues from teh same individual
-include: "rules/workflow_one_tissue.smk"# WARNING! Only one tissue
 
 # Stats only in non-mae
 include: "rules/stats.smk"              # Apply Chi^2, Fisher and Binomial on NO MAE

@@ -10,9 +10,9 @@ rule combine_gvcfs:
         "logs/gatk/combinegvcfs/combinegvcfs.log"
     params:
         extra = "",
-        java_opts="-XX:MinRAMPercentage=80.0 -Xms200G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=20 -XX:+UseTLAB",
-    threads: 20
+        java_opts=config['java_opts'],
+    threads: config['threads']
     resources:
-        mem_mb=200000
+        mem_mb=config['mem_mb']
     script:
         "scripts/combinegvcfs.py"

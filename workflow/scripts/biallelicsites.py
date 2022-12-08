@@ -10,6 +10,11 @@ import numpy as np
 from os import path
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
+shell.executable("bash")
+
+extra = snakemake.params.get("extra")
+java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
 
 """
@@ -39,25 +44,6 @@ Collect the indexes where the reference allele in PSG1 is different from both
 alleles in the other mappings or the alternative allele in PSG1 is different
 from both alleles in the PSG2 mapping.
 """
-
-
-extra = snakemake.params.get("extra")
-java_opts = snakemake.params.get("java_opts")
-log = snakemake.log_fmt_shell(stdout=False, stderr=True)
-
-
-
-mdf = pd.read_csv(snakemake.input.get("csv"), low_memory=False)
-mdf = pd.DataFrame(mdf)
-sample_names = pd.read_csv(snakemake.input.get("sn1"))
-PSG_codes = pd.read_csv(snakemake.input.get("psc"))
-
-# Create arrays of the sample names and the pseudogenome codes
-samples = sample_names['Sample_name'].values
-PSGs = PSG_codes['PSGs'].values
-
-# Create an empty array for collect the indexes with multiallelic sites:
-multi_index = []
 
 
 
@@ -92,6 +78,21 @@ def multiallelic(df, samples, PSGs, multi_index):
     return df_bi
 
 def main():
+    
+    # Add files
+    mdf = pd.read_csv(snakemake.input.get("csv"), low_memory=False)
+    mdf = pd.DataFrame(mdf)
+    sample_names = pd.read_csv(snakemake.input.get("sn1"))
+    PSG_codes = pd.read_csv(snakemake.input.get("psc"))
+
+    # Create arrays of the sample names and the pseudogenome codes
+    samples = sample_names['Sample_name'].values
+    PSGs = PSG_codes['PSGs'].values
+
+    # Create an empty array for collect the indexes with multiallelic sites:
+    multi_index = []
+
+    # Mine the datafiles
     df_bi = multiallelic(mdf, samples, PSGs, multi_index)
     df_bi.to_csv(snakemake.output[0])
 

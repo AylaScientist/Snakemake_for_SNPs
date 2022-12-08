@@ -20,7 +20,7 @@ log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 shell(
     "bcftools consensus "
     "{input} "
-    "--sample {extra} "#merged_1GF_filtered_ref
+    "--sample {extra} "
     "--fasta-ref {ref} "
     "> {pseudo} "
     "{log}"

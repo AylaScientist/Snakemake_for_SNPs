@@ -32,11 +32,18 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import StrMethodFormatter
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
+shell.executable("bash")
 
 extra = snakemake.params.get("extra")
 java_opts = snakemake.params.get("java_opts")
 log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
+
+"""
+    ALLELE FREQUENCIES
+    ------------------
+    Compute allele frequencies for each allele and later for each experimental group.
+    """
 
 def frequencies(df, samples):
     """
@@ -117,11 +124,7 @@ def main():
     # Create a numpy array with the name of each group
     group_names = list(groups_df["Date1"])
 
-    """
-    ALLELE FREQUENCIES
-    ------------------
-    Compute allele frequencies for each allele and later for each experimental group.
-    """
+    # Mine the data
     df_af = frequencies(df, samples)
     df_qc = allele_freqs(group_names, df_af)
 

@@ -10,6 +10,8 @@ import numpy as np
 from os import path
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
+shell.executable("bash")
+
 
 """
 COMPARE GENOTYPES AND MAKE THE AVERAGE OF COUNTS
@@ -64,24 +66,6 @@ assignation of reference and alternative alleles uniformly in all the samples wi
 the workflow.
 """
 
-
-extra = snakemake.params.get("extra")
-java_opts = snakemake.params.get("java_opts")
-log = snakemake.log_fmt_shell(stdout=False, stderr=True)
-
-
-df_bi=snakemake.input.get("csv")
-df_bi = pd.read_csv(df_bi, low_memory=False)
-df_bi = pd.DataFrame(df_bi)
-
-
-sample_names = pd.read_csv(snakemake.input.get("sn1"))
-PSG_codes = pd.read_csv(snakemake.input.get("psc"))
-# Create arrays of the sample names and the pseudogenome codes
-samples = sample_names['Sample_name'].values
-PSGs = PSG_codes['PSGs'].values
-
-df_av=snakemake.output[0]
 
 
 # Definitions:
@@ -276,6 +260,26 @@ def sample_average(df, samples, PSGs):
     return df, cols
 
 def main():
+    # Add files
+    extra = snakemake.params.get("extra")
+    java_opts = snakemake.params.get("java_opts")
+    log = snakemake.log_fmt_shell(stdout=False, stderr=True)
+
+
+    df_bi = snakemake.input.get("csv")
+    df_bi = pd.read_csv(df_bi, low_memory=False)
+    df_bi = pd.DataFrame(df_bi)
+
+
+    sample_names = pd.read_csv(snakemake.input.get("sn1"))
+    PSG_codes = pd.read_csv(snakemake.input.get("psc"))
+    # Create arrays of the sample names and the pseudogenome codes
+    samples = sample_names['Sample_name'].values
+    PSGs = PSG_codes['PSGs'].values
+
+    df_av = snakemake.output[0]
+
+    # Mine the data
     df_average, cols = sample_average(df_bi, samples, PSGs)
     # Drop the columns that are not needed
     df_average.drop(df_average.columns[cols], axis=1, inplace=True)

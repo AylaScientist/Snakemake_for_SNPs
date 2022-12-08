@@ -11,6 +11,11 @@ from os import path
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
 
+shell.executable("bash")
+
+extra = snakemake.params.get("extra")
+java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
 """
 DEL SNPs AD<10
@@ -18,20 +23,6 @@ DEL SNPs AD<10
 This new function cleans the SNPs that do not have enough counts and are considered possible poor quality reads.
 The SNPs with AD < 3 in one of the alleles are also cleaned.
 """
-
-
-extra = snakemake.params.get("extra")
-java_opts = snakemake.params.get("java_opts")
-log = snakemake.log_fmt_shell(stdout=False, stderr=True)
-
-av_df=snakemake.input.get("csv")
-ad10_df=snakemake.output[0]
-
-df_average = pd.read_csv(av_df, low_memory=False)
-df_average = pd.DataFrame(df_average)
-sample_names = pd.read_csv(snakemake.input.get("sn1"))
-# Create arrays of the sample names
-samples = sample_names['Sample_name'].values
 
 
 def AD10(df, samples):
@@ -62,6 +53,17 @@ def AD10(df, samples):
 
 
 def main():
+    # Add the files
+    av_df=snakemake.input.get("csv")
+    ad10_df=snakemake.output[0]
+
+    df_average = pd.read_csv(av_df, low_memory=False)
+    df_average = pd.DataFrame(df_average)
+    sample_names = pd.read_csv(snakemake.input.get("sn1"))
+    # Create arrays of the sample names
+    samples = sample_names['Sample_name'].values
+
+    # Mine the data
     df_AD10 = AD10(df_average, samples)
     # Write the temporary file
     df_AD10.to_csv(ad10_df)

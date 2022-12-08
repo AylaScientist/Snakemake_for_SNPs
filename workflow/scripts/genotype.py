@@ -10,6 +10,12 @@ import numpy as np
 from os import path
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
+shell.executable("bash")
+
+extra = snakemake.params.get("extra")
+java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
+
 
 """
 ASSIGN REFERENCE AND ALTERNATIVE ALLELES UNIFORMLY IN ALL SAMPLES
@@ -17,22 +23,6 @@ ASSIGN REFERENCE AND ALTERNATIVE ALLELES UNIFORMLY IN ALL SAMPLES
 Reference and alternative alleles have been assigned by sample. This function will correct it and will assign the
 reference and alternative alleles according to the pattern established in sample 1.
 """
-
-
-extra = snakemake.params.get("extra")
-java_opts = snakemake.params.get("java_opts")
-log = snakemake.log_fmt_shell(stdout=False, stderr=True)
-
-ad10_df=snakemake.input.get("csv")
-geno_df=snakemake.output.get("result1")
-result2=snakemake.output.get("result2")
-result3=snakemake.output.get("result3")
-
-df_ad10 = pd.read_csv(ad10_df, low_memory=False)
-df_ad10 = pd.DataFrame(df_ad10)
-sample_names = pd.read_csv(snakemake.input.get("sn1"))
-# Create arrays of the sample names
-samples = sample_names['Sample_name'].values
 
 
 
@@ -201,6 +191,20 @@ def genotype(df, samples):
     return df_uni
 
 def main():
+    # Add the files
+    ad10_df=snakemake.input.get("csv")
+    geno_df=snakemake.output.get("result1")
+    result2=snakemake.output.get("result2")
+    result3=snakemake.output.get("result3")
+
+    df_ad10 = pd.read_csv(ad10_df, low_memory=False)
+    df_ad10 = pd.DataFrame(df_ad10)
+    sample_names = pd.read_csv(snakemake.input.get("sn1"))
+    # Create arrays of the sample names
+    samples = sample_names['Sample_name'].values
+
+
+    # Mine the datafiles
     df_uni = genotype(df_ad10, samples)
     #drop the useless columns:
 

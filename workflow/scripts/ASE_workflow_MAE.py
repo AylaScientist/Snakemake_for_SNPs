@@ -12,6 +12,9 @@ from typing import List, Any, Generator
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
 
+shell.executable("bash")
+
+
 """
 ELIMINATE MONOALLELIC EXPRESSION FROM THE ALLELEIC IMBALANCE
 ------------------------------------------------------------
@@ -20,29 +23,6 @@ will be sent to a different path for studing the monoallelic expression
 Then, the alleles expressed in both tissues can be studied separately
 """
 
-# Read the files from snakemake:
-extra = snakemake.params.get("extra")
-java_opts = snakemake.params.get("java_opts")
-
-log = snakemake.log_fmt_shell(stdout=False, stderr=True)
-
-
-
-
-PATH = os.getcwd()
-os.chdir("temp")
-uniform=snakemake.input.get("result1")
-df_uni = pd.read_csv(uniform, low_memory=False)
-df_uni = pd.DataFrame(df_uni)
-os.chdir(PATH)
-names=snakemake.input.get("names")
-sample_names = pd.read_csv(names)
-samples_mae = snakemake.input.get("mae")
-
-results_mae=snakemake.input.get("resut_mae")
-
-# Create arrays of the sample names and the pseudogenome codes
-samples = sample_names["Sample_name"].values
 
 
 
@@ -94,6 +74,29 @@ def MAE (df,samples):
 
 def main():
 
+    # Read the files from snakemake:
+    extra = snakemake.params.get("extra")
+    java_opts = snakemake.params.get("java_opts")
+
+    log = snakemake.log_fmt_shell(stdout=False, stderr=True)
+
+
+    PATH = os.getcwd()
+    os.chdir("temp")
+    uniform = snakemake.input.get("result1")
+    df_uni = pd.read_csv(uniform, low_memory=False)
+    df_uni = pd.DataFrame(df_uni)
+    os.chdir(PATH)
+    names = snakemake.input.get("names")
+    sample_names = pd.read_csv(names)
+    samples_mae = snakemake.input.get("mae")
+
+    results_mae = snakemake.input.get("resut_mae")
+
+    # Create arrays of the sample names and the pseudogenome codes
+    samples = sample_names["Sample_name"].values
+
+    # Mine the data
     df_af = frequencies(df_uni, samples)
     df_no_mae = MAE(df_af, samples)
     df_no_mae.to_csv()

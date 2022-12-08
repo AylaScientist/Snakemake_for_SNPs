@@ -10,6 +10,11 @@ import numpy as np
 from os import path
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
+shell.executable("bash")
+
+extra = snakemake.params.get("extra")
+java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
 
 """
@@ -35,12 +40,7 @@ as follows:
 The next step is to merge the two dataframes on the common chromosome and position:
 """
 
-extra = snakemake.params.get("extra")
-java_opts = snakemake.params.get("java_opts")
-
-log = snakemake.log_fmt_shell(stdout=False, stderr=True)
-
-
+# Read the files
 csv1=snakemake.input.get("csv1")
 csv2=snakemake.input.get("csv2")
 merged_df=snakemake.output[0]
@@ -50,6 +50,7 @@ PSG2 = pd.read_csv(csv2, low_memory=False)
 PSG1 = pd.DataFrame(PSG1)
 PSG2 = pd.DataFrame(PSG2)
 
+# Merge
 df = pd.merge(PSG1, PSG2, on=('CHROM', 'POS'))
 df.to_csv(merged_df, sep=',')
 print('Files merged')

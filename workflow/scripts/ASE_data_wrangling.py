@@ -22,8 +22,7 @@ import numpy as np
 import os
 from os import path
 
-
-
+shell.executable("bash")
 
 
 # Make an iterator for the collection of multiallelic sites:
@@ -356,7 +355,7 @@ def compare(df, sample, R_models, A_models,SNP_panel):
                 df.iloc[i, sample_a_gt]:
             # 3 It applies to first sample homozygot and second sample heterozygot with the alternative allele in second
             r_AD.append(df.iloc[i, sample_r_ad])
-            a_AD.append(df.iloc[i, sample_a_ad])a.bool(), a.item(), a.any() or a.all().
+            a_AD.append(df.iloc[i, sample_a_ad])
             r_GT.append(df.iloc[i, sample_r_gt])
             a_GT.append(df.iloc[i, sample_a_gt])
         elif R_models[i] != df.iloc[i, sample_r_gt] and A_models[i] != df.iloc[i, sample_r_gt] and A_models[i] == \
@@ -514,17 +513,6 @@ def main():
     """
 
     # Read the dataframe and convert it into pandas dataframe. PSG stands for pseudogenome:
-
-    #PATH = os.getcwd ()
-
-    """
-    PSG1_name: str = input("Please enter the file name of the SNPs_for_wrangling for the first pseudogenome:\n")
-    PSG2_name: str = input("Please enter the file name of the SNPs_for_wrangling for the second pseudogenome:\n")
-
-    PSG1 = pd.read_csv(PSG1_name, low_memory=False)
-    PSG2 = pd.read_csv(PSG2_name, low_memory=False)
-
-    """
     PSG1 = pd.read_csv(snakemake.input.get("csv1"), low_memory=False)
     PSG2 = pd.read_csv(snakemake.input.get("csv2"), low_memory=False)
 
@@ -532,11 +520,6 @@ def main():
     PSG2 = pd.DataFrame(PSG2)
 
     # Read the sample names and the codes for each pseudogenome:
-    """
-    sample_names = pd.read_csv(input("Please enter the file name that has the sample names:\n"))
-    PSG_codes = pd.read_csv(input("Please enter the file name that has the pseudogenomes codes:\n"))"
-    """
-
     sample_names = pd.read_csv(snakemake.input.get("sn1"))
     PSG_codes = pd.read_csv(snakemake.input.get("psc"))
 

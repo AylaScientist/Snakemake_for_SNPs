@@ -43,9 +43,9 @@ This script produces the next tables as output:
     6 Physiological function: This table will include a column for each treatment (CHI²) and a row for each GO function.
     The cell content will be the % of SNPs in each GO function for treatment.
 
-    7 Basic results: This table includes the number of SNPs and genes in ASE for a particular test
+    7 Results overview: This table includes the number of SNPs and genes in ASE for a particular test
 
-    8 Basic results: Out of these SNPs in ASE for a particular test, the SNPs that are in AI for a level of a factor.
+    8 Results: Out of these SNPs in ASE for a particular test, the SNPs that are in AI for a level of a factor.
     Comes from the binomial tests.
     (table with these SNPs location – exon, 5’, 3’…)
 
@@ -60,14 +60,14 @@ import pandas as pd
 import numpy as np
 import os
 from os import path
-#from venn import venn
 from matplotlib import pyplot as plt
 from math import pi
 from scipy.stats import uniform
 from scipy.stats import randint
 import seaborn as sns
 
-#from bioinfokit import analys, visuz
+shell.executable("bash")
+
 
 
 def GO_graph (df_stats,experiments):
@@ -85,8 +85,11 @@ def GO_graph (df_stats,experiments):
         results = { 'SNPs in ASE':  [len(df_exp)],
                     'Genes containing ASE': [len(genes_sig)]}
         df_results = pd.DataFrame (results, columns = ['SNPs in ASE','Genes containing ASE'])
+        PATH = os.getcwd()
+        os.chdir("results")
         df_results.to_csv(test_name + "_basic_results.csv")
         df_exp.to_csv(test_name + "_ASE_description.csv")
+        os.chdir(PATH)
 
         # GO terms analysis
         mega_dict = pd.read_csv ( snakemake.input.get("i1"), low_memory=False )
@@ -99,7 +102,6 @@ def GO_graph (df_stats,experiments):
         GO_counts = df_GO['GO term accession'].value_counts ()
         GO_counts = pd.DataFrame(GO_counts)
         GO_counts.columns = ['Frequency']
-        #GO_most_index = GO_counts[GO_counts["Frequency"]<=15].index
         GO_most = GO_counts.head(15)
 
         # Pie chart
@@ -109,22 +111,18 @@ def GO_graph (df_stats,experiments):
         fig1, ax1 = plt.subplots ()
         ax1.pie ( sizes[0], labels=labels, autopct='%1.1f%%', shadow=True, startangle=90 )
         ax1.axis ( 'equal' )  # Equal aspect ratio ensures that pie is drawn as a circle.
-        # plt.show ()
         PATH = os.getcwd ()
         os.chdir("results")
         filename = test_name + "_GO_pie_chart.svg"
         plt.savefig ( filename )
+        plt.clf()
         os.chdir(PATH)
 
-        plt.clf()
-
-        #GO_most.plot.pie ( y="Frequency", figsize=(5, 5) )
-        #plt.savefig ( test_name + '_GO_pie_chart.svg' )
-
+        
 
 def tables_1_2(df_stats, experiments):
     # The columns will be the type of polymorphism, the GO terms and the relative values of these annotations. One row
-    # correspond to a different test. Therefore it will include both ASE and AI.
+    # correspond to a different test.
     # Initialize the tables and the columns that will be in table 1 and table 2:
     all_treatment_snp = pd.DataFrame ()
     df_polymorphism = pd.DataFrame ()
@@ -150,34 +148,11 @@ def tables_1_2(df_stats, experiments):
 
     # Table 1:
     all_treatment_snp.to_csv ( snakemake.output.get("o3") )
-
-    """
-    # Venn diagram:
-    plt.figure ( figsize=(4, 4) )
-    sets = []
-    cols = all_treatment_snp.columns
-    for col in cols:
-        set_col = set ( all_treatment_snp[col] )
-        sets.append ( set_col )
-    # Create a dictionary for the Venn diagram:
-    dataset_dict = {}
-    for i in range ( 0, len ( cols ) ):
-        dataset_dict[cols[i]] = sets[i]
-
-    venn ( dataset_dict, fmt="{percentage:.1f}%", cmap="viridis", fontsize=8, legend_loc="upper left" )
-    #plt.show ()
-
-    PATH = os.getcwd ()
-    os.chdir("results")
-    plt.savefig ( "Venn_diagram_all_treatments.svg" )
-    os.chdir(PATH)
-
-    plt.clf ()
-    """
+    
     # Table 2:
     df_polymorphism = df_polymorphism.fillna ( 0 )
     df_polymorphism.to_csv ( snakemake.output.get("o4") )
-
+   
     # Radar chart for all treatents :
     # subset SNP Function and Exonic SNP Function
     categories_exo = list ( df_polymorphism )[10:20]  # It avoids the category "." that is non-informative
@@ -185,8 +160,7 @@ def tables_1_2(df_stats, experiments):
         ["UTR3", "exonic", "ncRNA_exonic", "intronic", "intergenic", "downstream", "UTR5", "ncRNA_intronic",
          "upstream"]]
     df_pol_exo = df_polymorphism[categories_exo]
-    # colors = list ( pastel2 )
-    # cmaps = OrderedDict ()
+    
 
     # Polymorphism function by treatment:
     categories = list ( df_pol_fun )[0:]  # For function of SNP 1:9. Exonic function is from 10:20
@@ -216,9 +190,7 @@ def tables_1_2(df_stats, experiments):
     os.chdir(PATH)
 
     plt.clf ()
-    # ax.plot ( angles, values, linewidth=1, linestyle='solid' )
-    # ax.fill ( angles, values, 'skyblue', alpha=0.4 )
-    # plt.show ()
+    
 
     # Polymorphism exonic function:
     categories = list ( df_pol_exo )[0:]  # For function of SNP 1:9. Exonic function is from 10:20
@@ -240,7 +212,6 @@ def tables_1_2(df_stats, experiments):
     plt.ylim ( 0, 400 )
     ax.set_rlabel_position ( 30 )
     plt.legend ( loc='upper right', bbox_to_anchor=(0.1, 0.1) )
-    #plt.show ()
     PATH = os.getcwd ()
     os.chdir("results")
     plt.savefig("Polymorphism_exonic_function_by_treatment.svg")
@@ -271,6 +242,7 @@ def tables_1_2(df_stats, experiments):
 
 
 def heatmap(df, group_names):
+    # This heatmap illustrates the allele frequencies for the genomic positions for identifying regions in AI
     af_groups = []
     for group_name in group_names:
         af_group = "AF_" + group_name
@@ -288,17 +260,18 @@ def heatmap(df, group_names):
 
 
 def table5(df_stats):
-    index_scf = df_stats[df_stats['CHROM'].str.match ( r'^NC_' )].index
+    # This part of the analysis have to be adapted to the different strings on each genome identifying chromosomes and scaffolds
+    index_scf = df_stats[df_stats['CHROM'].str.match ( r'^NC_' )].index # Substitute the chain NC_ by the pattern on the genome of the organism you work with
     df_scf = df_stats.drop ( index_scf )
     intronic_scf = df_scf["Func.refGene_x"].value_counts ()
     exonic_scf = df_scf["ExonicFunc.refGene_x"].value_counts ()
 
-    index_chrom = df_stats[df_stats['CHROM'].str.match ( r'^NW_' )].index
+    index_chrom = df_stats[df_stats['CHROM'].str.match ( r'^NW_' )].index # Substitute the chain NW_ by the pattern on the genome of the organism you work with
     df_chrom = df_stats.drop ( index_chrom )
     intronic_chrom = df_chrom["Func.refGene_x"].value_counts ()
     exonic_chrom = df_chrom["ExonicFunc.refGene_x"].value_counts ()
 
-    # Creates pandas DataFrame.
+    # Create pandas DataFrame.
     data = {
         'Intronic': [sum ( intronic_chrom ) - intronic_chrom["exonic"], sum ( intronic_scf ) - intronic_scf["exonic"]],
         'Exonic': [sum ( exonic_chrom ) - exonic_chrom["."], sum ( exonic_scf ) - exonic_scf["."]]}
@@ -351,62 +324,7 @@ def Manhattan_plot(df_stats, experiments):
 
         plt.clf ()
 
-    """
 
-
-    for experiment in experiments:
-        df = pd.DataFrame ( {"SNP": df_chrom["SNP_ID"],
-                             "pvalue": df_chrom[str ( experiment ) + "_CHI_p-val"],
-                             "chr": df_chrom["CHROM"]} )
-        # This line needs to be run with the debugger because the raw code raises an error
-        # visuz.marker.mhat ( df=df, chr='chr', pv='pvalue',show = True )
-
-        # change the color
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=("#d7d1c9", "#696464") )
-        # add different colors equal to number of chromosomes
-        color = (
-        "#a7414a", "#696464", "#00743f", "#563838", "#6a8a82", "#a37c27", "#5edfff", "#282726", "#c0334d", "#c9753d")
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color )
-        # by default line will be plotted at P=5E-08
-        # you can change this value as per need
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, gwas_sign_line=True )
-        # add name to SNPs based on the significance defined by 'gwasp'
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, gwas_sign_line=True, gwasp=5E-06,
-                             markernames=True, markeridcol='SNP' )
-        # add name to SNPs based on the significance defined by 'gwasp'
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, gwas_sign_line=True, gwasp=5E-06,
-                             markernames=True, markeridcol='SNP', gstyle=2 )
-        # add name to specified  SNPs only
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, gwas_sign_line=True, gwasp=5E-06,
-                             markernames=("rs19990", "rs40"), markeridcol='SNP' )
-        # add name to specified  SNPs only (box text)
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, gwas_sign_line=True, gwasp=5E-06,
-                             markernames=("rs19990", "rs40"), markeridcol='SNP', gstyle=2 )
-        # change fontsize of SNP annotation
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, gwas_sign_line=True, gwasp=5E-06,
-                             markernames=True,
-                             markeridcol='SNP', gfont=5 )
-        # gfont is incompatible with gstyle
-
-        # add gene names to SNPs
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color,
-                             gwas_sign_line=True, gwasp=5E-06, markernames=({"rs19990": "gene1", "rs40": "gene2"}),
-                             markeridcol='SNP' )
-        # change figure size
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, dim=(8, 6) )
-        # change point size
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, dotsize=2 )
-        # change point transparency
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, valpha=0.2 )
-        # change X-axis tick label rotation
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, ar=60 )
-        # change figure resolution
-        visuz.marker.mhat ( df=df, chr='chr', pv='pvalue', color=color, r=600 )
-
-
-        How to cite?
-        Renesh Bedre.(2020, July 29). reneshbedre/bioinfokit: Bioinformatics data analysis and visualization toolkit (Version v0.9). Zenodo. http://doi.org/10.5281/zenodo.3965241
-        """
 
 def main():
     """
@@ -448,7 +366,7 @@ def main():
     SNP_dictionary.to_csv ( snakemake.output.get("o2") )
 
     """
-        6 Physiological function: This table will include a column for each treatment (CHI²) and a row for each GO function.
+        Physiological function: This table will include a column for each treatment (CHI²) and a row for each GO function.
         The cell content will be the % of SNPs in each GO function for treatment.
         Table 7
         """
@@ -488,19 +406,6 @@ def main():
     A Mannhattan plot for each test for ASE SNPs will be performed.
     """
     Manhattan_plot ( df_stats, experiments )
-
-
-    """
-    Total variables:
-    df_stats = {DataFrame: (5187, 226)} Unnamed: 0 Unnamed: 0.1 Unnamed: 0.1.1 Unnamed: 0.1.1.1 CHROM POS Gene.refGene_x Func.refGene_x ExonicFunc.refGene_x 1GF_R_.GT 1GF_A_.GT 1GF_R_.AD 1GF_A_.AD 1GS_R_.GT 1GS_A_.GT 1GS_R_.AD 1GS_A_.AD 1KF_R_.GT 1KF_A_.GT 1KF_R_.AD 1KF_A_.AD 2GF_R_.GT 2GF_A_.GT
-    exp = {DataFrame: (4, 3)} Test_ID Group_1 Group_2 [0: Test_1 GF GS], [1: Test_2 GF KF], [2: Test_3 GS KS], [3: Test_4 KF KS]
-    experiments = {list: 4} ['Test_1', 'Test_2', 'Test_3', 'Test_4']
-    group_names = {list: 4} ['GF', 'KF', 'GS', 'KS']
-    groups = {ndarray: (4, 7)} [['GF' '1GF' '2GF' '3GF' '4GF' '5GF' '6GF'], ['KF' '1KF' '2KF' '3KF' '4KF' '5KF' '6KF'], ['GS' '1GS' '2GS' '3GS' '4GS' '5GS' '6GS'], ['KS' nan '2KS' '3KS' '4KS' '5KS' '6KS']]
-    groups_df = {DataFrame: (4, 7)} Group ID_1 ID_2 ID_3 ID_4 ID_5 ID_6 [0: GF 1GF 2GF 3GF 4GF 5GF 6GF], [1: KF 1KF 2KF 3KF 4KF 5KF 6KF], [2: GS 1GS 2GS 3GS 4GS 5GS 6GS], [3: KS nan 2KS 3KS 4KS 5KS 6KS]
-    sample_names = {DataFrame: (23, 1)} Sample_name [0: 1GF], [1: 1GS], [2: 1KF], [3: 2GF], [4: 2GS], [5: 2KF], [6: 2KS], [7: 3GF], [8: 3GS], [9: 3KF], [10: 3KS], [11: 4GF], [12: 4GS], [13: 4KF], [14: 4KS], [15: 5GF], [16: 5GS], [17: 5KF], [18: 5KS], [19: 6GF], [20: 6GS], [21: 6KF], [22: 6KS]
-    samples = {ndarray: (23,)} ['1GF' '1GS' '1KF' '2GF' '2GS' '2KF' '2KS' '3GF' '3GS' '3KF' '3KS' '4GF', '4GS' '4KF' '4KS' '5GF' '5GS' '5KF' '5KS' '6GF' '6GS' '6KF' '6KS']
-    """
 
 
 

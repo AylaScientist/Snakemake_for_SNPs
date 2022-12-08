@@ -18,10 +18,12 @@ It needs a file with the name of the experimental group as the acronyms used in 
     The sample number 1 corresponds to the gills exposed to freshwater
     The two experimental factors are "gills" (G) and "freshwater" (F)
     Then the sample is called "1GF" and the group name will be called "GF"
-Another file is also the experimental design, including the groups that will be tested against each other.
+Another file is also the experimental design, including the groups that will be tested against each other:
     The first column must include the test_ID (Test_1, Test_2,...)
     The second column must include the acronyms for the control group in the test
     The next columns must include the acronyms for the other groups to test against the control
+
+This script can be modified to adapt for other type of statistical analysis such as LME or RL.
 """
 
 # Import the libraries
@@ -34,7 +36,9 @@ import matplotlib.pyplot as plt
 import os
 import statsmodels.stats as smt
 from statsmodels.stats import multitest
-
+from snakemake.shell import shell
+from snakemake_wrapper_utils.java import get_java_opts
+shell.executable("bash")
 
 
 def chi_test(df, af_samples, experiment, exp):
@@ -47,7 +51,7 @@ def chi_test(df, af_samples, experiment, exp):
     group2_samples = [i for i in af_samples if group2 in i]
     if len(group1_samples) > len(group2_samples):
         print("WARNING: CHI2 Test for ", experiment,
-              " not possible with the group distribution.\nThe number of samples will adjust for performing of the test")
+              " not possible with the group distribution.\nThe number of samples will adjust for performing the test")
 
         # Pop the extra samples:
         to_pop = len(group1_samples) - len(group2_samples)
@@ -311,18 +315,15 @@ def binomial(df,samples):
 
 
 def main ():
-    # Read the working path
-    cwd = os.getcwd()
-
+    
     # Import the files
     exp = pd.read_csv(snakemake.input.get("i1"))
-    groups_df = pd.read_csv(snakemake.input.get("i2"))
     sample_names = pd.read_csv(snakemake.input.get("i3"))
     df_qc = pd.read_csv(snakemake.input.get("i4"))
 
+    groups_df = pd.read_csv(snakemake.input.get("i2"))
     # Create a numpy array of arrays with the samples of each group and the total samples of the experiment
     groups = groups_df.values
-
     # Create a numpy array with the name of each group
     group_names = list(groups_df["Group"])
 
@@ -431,7 +432,7 @@ def main ():
 
     #os.chdir(cwd)
     df_binomial.to_csv(snakemake.output.get("o3"))
-    print("Analyzed data available in 'SNPs_analysed_GF3_KF6_1_tissue.csv'")
+    print("Analyzed data available in " + snakemake.output.get("o3"))
 
 if __name__ == '__main__' :
     main()

@@ -12,30 +12,29 @@ from os.path import exists
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
 
+shell.executable("bash")
+
 """
 FILTER SNPs that are wrongly called by using the SNPs from the genome call.
 """
-
-
 
 extra = snakemake.params.get("extra")
 java_opts = snakemake.params.get("java_opts")
 log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
-"""
-Input the files and convert them into data frames
-"""
-SNPs2val=snakemake.input.get("result1")
-valid=snakemake.output.get("result4")
-error=snakemake.output.get("error")
-
-
-SNPs2val = pd.read_csv(SNPs2val, low_memory=False)
-SNPs2val = pd.DataFrame(SNPs2val)
 
 
 
 def main():
+    # Input the files and convert them into data frames
+    SNPs2val = snakemake.input.get("result1")
+    valid = snakemake.output.get("result4")
+    error = snakemake.output.get("error")
+
+    SNPs2val = pd.read_csv(SNPs2val, low_memory=False)
+    SNPs2val = pd.DataFrame(SNPs2val)
+
+    # 
     if str(os.path.exists("config/AD_GT_counts_bi_DNA.csv"))==True:
         geno_df = pd.read_csv("config/AD_GT_counts_bi_DNA.csv", low_memory=False)
         geno_df = pd.DataFrame(geno_df)

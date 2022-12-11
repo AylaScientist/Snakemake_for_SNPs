@@ -1,5 +1,5 @@
 Test_ID,Group_1,Group_2
-Test_1,F_gills,F_liver
-Test_2,S_gills,S_liver
-Test_3,F_gills,S_gills
-Test_4,F_liver,S_liver
+Test_1,GF,GS
+Test_2,KF,KS
+Test_3,GF,KF
+Test_4,GS,KS

@@ -17,23 +17,43 @@ The usage of this workflow is described in the [Snakemake Workflow Catalog](http
 
 
 ## Quick start
-### Installation
-#### Manual mode
 
 Clone the repository:
 
-#git clone https://github.com/AylaScientist/Snakemake_for_SNPs.git`
+#git clone https://github.com/AylaScientist/Snakemake_for_SNPs.git
 
 Create the environment:
 
-`conda env create -n pipeline -f env.yaml`
+`conda create -n pipeline python=3.8`
 
 Activate the environment:
 
 `conda activate pipeline`
 
+### Installation
+Install the packages including the bio tools:
+`conda install -c bioconda snakemake=4.3.1`
+`conda install -c bioconda trimmomatic=0.39`
+`conda install -c bioconda fastqc=0.11.9`
+`conda install -c bioconda star=2.7.10a`
+`conda install -c bioconda htseq=0.1.16`
+`conda install -c bioconda picard=2.26`
+`conda install -c bioconda gatk=4.2.5.0`
+`conda install -c bioconda samtools=1.7`
+`conda install -c bioconda bcftools=1.11`
+`conda install -c bioconda vcftools=0.1.16`
+`conda install -c anaconda perl`
+`conda install -c anaconda pandas`
+`conda install -c anaconda numpy`
+`conda install -c conda-forge matplotlib`
+`conda install -c conda-forge py-bgzip`
+
+
+
 
 ### Set up configuration
+Customize the workflow based on your need in `configs/config_main.yaml`.
+
 Modify the metafiles describing your data and the experiment:
 `config/Experiemntal_design.csv`
 `config/Experiemntal_groups.csv`
@@ -44,8 +64,8 @@ Modify the metafiles describing your data and the experiment:
 `config/tb1_colnames.csv`
 `config/tb2_colnames.csv`
 
-Customize the workflow based on your need in `configs/config_main.yaml`.
 
+#### Manual mode
 WARNING: How to run the pipeline
 
 ### Run a dry run for the pipeline
@@ -59,5 +79,5 @@ WARNING: pdf to pull
 A more detailed tutorial of how to use this workflow can be found here: [Tutorial](https://github.com/AylaScientist/Snakemake_for_SNPs/Tutorial.pdf)
 
 ## Evaluation
-The pipeline for SNPs has been evaluated on 4 datasets including one model organism (human) and 2 non-model organism (Nile and Mozambique tilapias). To keep this repository as light as possible, the evaluation of the pipeline on real datasets is deposited here:
+The pipeline for SNPs has been evaluated on 4 datasets including 2 non-model organism (Nile and Mozambique tilapias). 
 WARNING: Put here the link

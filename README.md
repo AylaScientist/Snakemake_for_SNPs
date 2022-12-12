@@ -62,9 +62,17 @@ Install the packages including the bio tools:
 `conda install -c conda-forge py-bgzip`
 
 
-### Run a dry run for the pipeline with the example data to build a dag of jobs
-If this point doesn't work, please contact me: ayla.bcn@gmail.com
+### First test
+Set the resources of the system in the file config
+`gedit ~/Snakemake_for_SNPs/config/config_main.yaml`
+
+Now that the resources are adapted to your computer, run a dry run for the pipeline with the example data to build a dag of jobs
+`cd ~/Snakemake_for_SNPs/workflow/ `
+
 `snakemake -n `
+
+If this point doesn't work, please contact me: ayla.bcn@gmail.com
+
 
 ### Run the pipeline with the desired resources. This is an example for 4 threads at 4GB
 `snakemake --cores 4 --mem_mb 40000 `

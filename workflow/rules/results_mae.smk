@@ -1,7 +1,7 @@
 rule results_mae:
     input:
         i1=config['species_dict'],
-        i2=config['DO_dict'],
+        i2=config['GO_dict'],
         i3="results/results/QC_mae_valid_genome.csv",
         i4=config['Sample_names'],
         i5=config['Experimental_groups'],

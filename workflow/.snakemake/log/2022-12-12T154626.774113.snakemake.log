@@ -1,0 +1,3 @@
+SyntaxError in line 6 of /home/aurora/Dropbox/salinity_RNAseq/Github/workflow/rules/star_se_ref.smk:
+invalid syntax
+  File "/home/aurora/Dropbox/salinity_RNAseq/Github/workflow/Snakefile", line 52, in <module>

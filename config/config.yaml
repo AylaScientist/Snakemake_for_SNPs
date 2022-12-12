@@ -19,38 +19,37 @@ fastq_merged: fastq_merged
 Samples_MAE: ../config/Samples_MAE.csv
 
 ## Resources of the system:
-gpu: 1
+gpu: 0
 #jobs_per_gpu: 6
 
 #Parallel_jobs: Is the total resources divided by the number of samples, 4 in this case
-java_opts_parallel: -XX:MinRAMPercentage=80.0 -Xms180G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=2 -XX:+UseTLAB
+java_opts_parallel: "-XX:MinRAMPercentage=80.0 -Xms1.8G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=1 -XX:+UseTLAB"
 threads_parallel: 1 # that refers to the number of cores. The parallel threads are defined above
-mem_mb_parallel: 200000
+mem_mb_parallel: 200
 
 
 #Combine: Is total resources divided by two pseudogenomes
-java_opts_combine: -XX:MinRAMPercentage=80.0 -Xms350G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=4 -XX:+UseTLAB
+java_opts_combine: "-XX:MinRAMPercentage=80.0 -Xms3.5G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=2 -XX:+UseTLAB"
 threads_combine: 2 # that refers to the number of cores. The parallel threads are defined above
-mem_mb_combine: 400000
+mem_mb_combine: 400
 
 #Reference genome: Total resources for rules that do not have parallel works. 
-java_opts: -XX:MinRAMPercentage=80.0 -Xms800G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=8 -XX:+UseTLAB
+java_opts: "-XX:MinRAMPercentage=80.0 -Xms8G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=4 -XX:+UseTLAB"
 threads: 4 # that refers to the number of cores. The parallel threads are defined above
-mem_mb: 900000
+mem_mb: 900
 
 # Path to workflow with relation to snakefile. Can vary depending on your HPC configuration
-path: ~/AylaScientist/Snakemake_for_SNPs/GitHub/workflow/
+path: "~/AylaScientist/Snakemake_for_SNPs/GitHub/workflow/"
 
 pseudogenomes: # Write the pseudogenomes as they are found in the file ../config/Pseudogenome_codes.csv
-  PSG1: 6GF
-  PSG2: 4KS
+  PSG1: "6GF"
+  PSG2: "4KS"
 
 input_files: # Add the fastq files of your experiment
   r1: "fastq_merged/{sample}.fastq"
   r2: "fastq_merged/{sample}.fastq" # Optional
 
 results:
-  degs: expand("gene_counts/{sample}.count_ref.txt", sample = samples)
   o1: "results/SNPs_function.csv"
   o2: "results/SNP_dictionary.csv"
   o3: "results/Treatment_SNPs_sig_all_for_Venn.csv"
@@ -65,16 +64,16 @@ results_mae:
   om5: "results/Intronic_SNPs_caryotype_mae.csv"
 
 files_pseudogenomes:
-  PSG_dict: expand("pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.dict", pseudo = pseudos)
-  PSG_index: expand("pseudogenomes/{pseudo}/SAindex", pseudo = pseudos)
-  PSG_fai: expand("pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa.fai", pseudo = pseudos)
+  PSG_dict: "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.dict"
+  PSG_index: "pseudogenomes/{pseudo}/SAindex"
+  PSG_fai: "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa.fai"
 
 other_intermediate_files: # For bqsr recalibration, in case you have known SNPs
   bam: expand("recal/{sample}_ref.bam", sample = samples), 
   bqsr: expand("recal_tables/{sample}_after_ref.table", sample = samples)
   valid_bqsr: expand("logs/picard/ValidateSamFile/Validate_bqsr_{sample}.log", sample = samples)
   valid_bqsr_PSG: expand("logs/picard/ValidateSamFile_{pseudo}/Validate_bqsr_{sample}_{pseudo}.log", sample = samples, pseudo = pseudos)
-  recal_table: expand("recal_tables/{sample}_after_ref.table", sample = samples)
+  recal_table: expand("recal_tables/{sample}_after_ref.table"
 
 error: "results/Error_in_SNP_calling_valid_genome.csv"
 
@@ -86,11 +85,11 @@ ref:
   # genome build
   build: NMBU
   # file name
-  genome: ../genome/Tilapia_header_GCF_001858045.2.fa
-  annotation: ../genome/Tilapia_GCF_001858045.2_annotation.gff3
-  gtf: ../genome/Tilapia_GCF_001858045.2_annotation.gtf
-  SAindex: ../genome/SAindex
-  dict: ../genome/Tilapia_header_GCF_001858045.2.dict
+  genome: "../genome/Tilapia_header_GCF_001858045.2.fa"
+  annotation: "../genome/Tilapia_GCF_001858045.2_annotation.gff3"
+  gtf: "../genome/Tilapia_GCF_001858045.2_annotation.gtf"
+  SAindex: "../genome/SAindex"
+  dict: "../genome/Tilapia_header_GCF_001858045.2.dict"
   read_length: 89 # Read length - 1
 
 filtering:
@@ -108,7 +107,7 @@ filtering:
 params:
   star:
     read_length: 89 #read lenght -1
-    mode: SE #SE or PE for single or paired ends
+    mode: SE #SE for single ends or PE for paired ends
   gatk:
     HaplotypeCaller: ""
     BaseRecalibrator: ""
@@ -134,5 +133,14 @@ params:
         #- "SLIDINGWINDOW:4:15 "
         - "MINLEN:36 "
   annotation:
-    o1: "annotated/annotated_all_snps_{pseudo}.ON_multianno.vcf"
-    extra: "-SMA TRUE -F CHROM -F POS -F Gene.refGene -F Func.refGene -F ExonicFunc.refGene -F AF -GF AD -GF GT"
+    buildver: "ON" # Write here the location of the database refGene.txt with the speces prefix (ON Oreochromis nilotius)
+    path: "ON/"
+    pathbuild: "ON/ON"
+    o1: "annotated/annotated_all_snps_{pseudo}.ON_multianno.vcf" # Change the prefix by the one in the database of the annotation, defined just in the line above
+    extra: "-SMA TRUE -F CHROM -F POS -F Gene.refGene -F Func.refGene -F ExonicFunc.refGene -F AF -GF AD -GF GT" #Parameters to take
+    #Change the name of the example species (Nile) into your studied species
+    convert: "annotated/annovar_Nile_{pseudo}"
+    output_token: "annotated/annotated_Nile_snps_{pseudo}"
+    output_annotate: "annotated/annotated_Nile_snps_{pseudo}.variant_function"
+  
+  var2table: "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"

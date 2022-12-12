@@ -3,7 +3,7 @@ rule star_se:
         fastq1="trimmed/{sample}.1.fastq",
         # path to STAR reference genome index
         index=config['ref']['dict'],
-        params=config['ref']['SAindex']idx="index",
+        params=config['ref']['SAindex'],
     output:
         # see STAR manual for additional output files
         file=temp("{sample}_ref_Aligned.sortedByCoord.out.bam") #""star/{sample}/Aligned.sortedByCoord.out.sam""

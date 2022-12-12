@@ -1,0 +1,4 @@
+KeyError in line 4 of /home/aurora/Dropbox/salinity_RNAseq/Github/workflow/rules/results.smk:
+'DO_dict'
+  File "/home/aurora/Dropbox/salinity_RNAseq/Github/workflow/Snakefile", line 123, in <module>
+  File "/home/aurora/Dropbox/salinity_RNAseq/Github/workflow/rules/results.smk", line 4, in <module>

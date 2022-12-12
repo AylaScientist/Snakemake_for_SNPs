@@ -104,7 +104,7 @@ rule genotype:
 rule mae:
     input:
         result1="results/Uniform_to_validate_SNPs_valid_genome.csv",
-        names=config['Sample_names']
+        names=config['Sample_names'],
         mae=config['Samples_MAE']
     output:
         result_mae="results/SNPs_ready_mae.csv", # SNPs that follow monoallelic expression for one tissue

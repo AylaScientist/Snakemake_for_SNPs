@@ -1,7 +1,7 @@
 # Snakemake for SNPs: A pipeline for calling SNPs and quantify them in an unbiased manner
 Snakemake for SNPs is a flexible and user-friendly SNPs analysis workflow.
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥4.3.1-brightgreen.svg)](https://snakemake.github.io)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥7.18.2.1-brightgreen.svg)](https://snakemake.github.io)
 [![GitHub actions status](https://github.com/<owner>/<repo>/workflows/Tests/badge.svg?branch=main)](https://github.com/<owner>/<repo>/actions?query=branch%3Amain+workflow%3ATests)
 
 Snakemake for SNPs can be applied to both model and non-model organisms. It supports mapping RNA-Seq raw reads to the reference genome (can be downloaded from public database or can be homemade by users) and it can do both Allele Specific Expression for SNPs and obtain Differential Expressed Genes (DEGs), which in turn can be cross between them. It requires basic python programming skill for use. If you're beginner at programming, just jump on the config file and adapt it to your experiments!
@@ -24,7 +24,7 @@ Clone the repository:
 
 Create the environment:
 
-`conda create -n pipeline python=3.8`
+`conda create -n pipeline python=3.7`
 
 Activate the environment:
 
@@ -33,7 +33,7 @@ Activate the environment:
 ### Installation
 Install the packages including the bio tools:
 
-`conda install -c bioconda snakemake=4.3.1`
+`pip install git+https://github.com/snakemake/snakemake`
 
 `conda install -c bioconda trimmomatic=0.39`
 
@@ -41,23 +41,21 @@ Install the packages including the bio tools:
 
 `conda install -c bioconda star=2.7.10a`
 
-`conda install -c bioconda htseq=0.1.16`
+`conda install -c bioconda htseq=0.11.3`
 
 `conda install -c bioconda picard=2.26`
 
-`conda install -c bioconda gatk=4.2.5.0`
+`conda install -c bioconda gatk4=4.2.5.0`
 
-`conda install -c bioconda samtools=1.7`
+`conda install -c bioconda samtools=1.6`
 
-`conda install -c bioconda bcftools=1.11`
+`conda install -c bioconda bcftools=1.9`
 
 `conda install -c bioconda vcftools=0.1.16`
 
-`conda install -c anaconda perl`
+`conda install -c anaconda perl=5.26.2`
 
 `conda install -c anaconda pandas`
-
-`conda install -c anaconda numpy`
 
 `conda install -c conda-forge matplotlib`
 

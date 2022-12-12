@@ -3,4 +3,4 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - htseq ==0.1.16
+  - htseq ==0.11.3

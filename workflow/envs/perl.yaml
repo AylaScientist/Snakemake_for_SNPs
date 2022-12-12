@@ -3,6 +3,6 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - perl ==5.32.1
-  - conda == 4.11.0
+  - perl ==5.26.2
+  - conda == 22.11.1
   

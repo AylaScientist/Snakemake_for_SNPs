@@ -63,10 +63,12 @@ Install the packages including the bio tools:
 
 
 ### First test
-Set the resources of the system in the file config
+Set the resources of the system in the file config.
+
 `gedit ~/Snakemake_for_SNPs/config/config_main.yaml`
 
 Now that the resources are adapted to your computer, run a dry run for the pipeline with the example data to build a dag of jobs
+
 `cd ~/Snakemake_for_SNPs/workflow/ `
 
 `snakemake -n `

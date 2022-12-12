@@ -46,6 +46,12 @@ rule all:
 ends = config['params']['star']['mode'] #Information about paired ends
 print(ends)
 
+include: "rules/trimmomatic_se.smk"#In the trimming R3 input is called 2 for the output
+include: "rules/star_gi_ref.smk"
+# First SNP callling on the reference genome #
+##############################################
+include: "rules/star_se_ref.smk"        # map with STAR
+"""
 if ends == "SE":
     include: "rules/trimmomatic_se.smk"#In the trimming R3 input is called 2 for the output
     include: "rules/star_gi_ref.smk"
@@ -58,7 +64,7 @@ else:
     # First SNP callling on the reference genome #
     ##############################################
     include: "rules/star_pe_ref.smk"        # map with STAR
-
+"""
 include: "rules/replace_rg_ref.smk"     # Replace or add read Groups
 include: "rules/mark_duplicates_ref.smk"# Mark and eliminate Duplicates
 include: "rules/splitNcigar_ref.smk"    # Split Ncigars
@@ -85,12 +91,15 @@ include: "rules/pseudogenomes.smk"      # Create the Pseudogenomes
 ## Second calling of SNPs on the pseudogenomes ##
 #################################################
 ## Now you can start the pipeline again from the fastq file for the pseudogenomes:
+include: "rules/star_se_pseudogenomes.smk"        # map with STAR
 
+"""
 if ends == "SE":
     include: "rules/star_se_pseudogenomes.smk"        # map with STAR
 else:
     include: "rules/star_pe_pseudogenomes.smk"        # map with STARinclude: "rules/star_pseudogenomes.smk"       # Map against pseudogenomes
 
+"""
 
 include: "rules/replace_rg_pseudo.smk"        # Replace or add read groups
 include: "rules/mark_duplicates_pseudo.smk"   # Mark and eliminate duplicates

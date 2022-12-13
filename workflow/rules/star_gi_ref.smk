@@ -1,8 +1,8 @@
 rule ref_index:
     input:
-        "genome/Tilapia_header_GCF_001858045.2.fa"
+        config['ref']['genome']
     output:
-        "genome/SAindex"
+        config['ref']['SAindex'],
     params:
         threads= config['threads'],
         dir = "genome/",

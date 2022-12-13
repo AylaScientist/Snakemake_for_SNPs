@@ -17,10 +17,6 @@ samples = sample_names['Sample_name'].values
 pseudos = pseudo_codes['PSGs'].values
 print("Sample names: ")
 print(samples)
-test = expand(config["input_files"]["r1"],sample = samples)
-print(test)
-test2 = expand("trimmed/{sample}.1.fastq",sample = samples)
-print(test2)
 
 
 rule all:
@@ -30,12 +26,10 @@ rule all:
         #o3 = config['results']['o3'],
         #o4 = config['results']['o4'],
         #o5 = config['results']['o5'],
-        bam=expand("{sample}_ref_Aligned.sortedByCoord.out.bam",sample = samples),
-        #gvcf="calls/all_ref_g.vcf",
-        #degs = expand("gene_counts/{sample}.count_ref.txt", sample = samples), # Counts matrix for the DEGs
-        #psgd = expand(config['files_pseudogenomes']['PSG_dict'], pseudo = pseudos), # Dictionary of the pseudogenomes
-        #psgi = expand(config['files_pseudogenomes']['PSG_index'], pseudo = pseudos), # Index of the pseudogenomes
-        #psgf = expand(config['files_pseudogenomes']['PSG_fai'], sample = samples, pseudo = pseudos), # fai index of the pseudogenomes
+        degs = expand("gene_counts/{sample}.count_ref.txt", sample = samples), # Counts matrix for the DEGs
+        psgd = expand(config['files_pseudogenomes']['PSG_dict'], pseudo = pseudos), # Dictionary of the pseudogenomes
+        psgi = expand(config['files_pseudogenomes']['PSG_index'], pseudo = pseudos), # Index of the pseudogenomes
+        psgf = expand(config['files_pseudogenomes']['PSG_fai'], sample = samples, pseudo = pseudos), # fai index of the pseudogenomes
         #error = config['error'], # Estimate the error of your SNP call if you have genomic data with known SNPs
         #bam = expand(config['Other_intermediate_files']['bam'], sample = samples), 
         #bqsr = expand(config['Other_intermediate_files']['bqsr'], sample = samples),

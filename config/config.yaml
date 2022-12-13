@@ -116,7 +116,7 @@ params:
   picard:
     MarkDuplicates: "REMOVE_DUPLICATES=true"
   trimmomatic:
-    path: "~/trimmomatic-0.39-2/trimmomatic.jar" #The path to your .jar trimmomatic
+    path: "~/anaconda3/envs/pipeline/share/trimmomatic-0.39-2/trimmomatic.jar" #The path to your .jar trimmomatic
     pe:
       trimmer:
         # See trimmomatic manual for adding additional options, e.g. for adapter trimming.

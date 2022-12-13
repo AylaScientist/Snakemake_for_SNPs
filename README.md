@@ -83,7 +83,10 @@ If this point doesn't work, please contact me: ayla.bcn@gmail.com
 
 
 ### Set up configuration for your personal project
-Customize the workflow based on your need in `configs/config_main.yaml`.
+Customize the workflow based on your need in 
+
+`configs/config_main.yaml`.
+
 In this file you should also change the species and the different databases for gene/transcript/protein/GO_function/KEGG correct annotation and mining of the data
 
 Modify the metafiles describing your data and the experiment:
@@ -103,6 +106,8 @@ Modify the metafiles describing your data and the experiment:
 `config/tb1_colnames.csv`
 
 `config/tb2_colnames.csv`
+
+And very important: ADD the genome or transcriptome of your species! Here we have the genome of the Nile Tilapia in the folder `genome` in the root of the git.
 
 
 ## Evaluation

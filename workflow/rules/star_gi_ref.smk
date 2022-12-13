@@ -6,7 +6,7 @@ rule ref_index:
     params:
         threads= config['threads'],
         dir = "genome/",
-        annotation = "genome/Tilapia_GCF_001858045.2_annotation.gtf",
+        annotation = config['ref']['annotation'],
         read_length = config['params']['star']['read_length'], #Read length -1
         java_opts=config['java_opts'],
     threads: config['threads']

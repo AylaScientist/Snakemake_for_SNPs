@@ -1,3 +1,18 @@
+rule restore:
+    priority: 1
+    input:
+        vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz.copy"
+    output:
+        vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz"
+    conda:
+        "envs/bgzip.yaml"
+    log:
+        "logs/pseudogenomes/backup.log"
+    shell:
+        "mv {input.vcf} {output.vcf}
+
+
+
 rule pseudogenome:
     input:
         vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz",

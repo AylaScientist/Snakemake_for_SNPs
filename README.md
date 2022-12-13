@@ -53,6 +53,8 @@ Install the packages including the bio tools:
 
 `conda install -c bioconda vcftools=0.1.16`
 
+`conda install -c bioconda htslib=1.9`
+
 `conda install -c anaconda perl=5.26.2`
 
 `conda install -c anaconda pandas`

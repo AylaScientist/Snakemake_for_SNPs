@@ -31,11 +31,11 @@ rule all:
         psgi = expand(config['files_pseudogenomes']['PSG_index'], pseudo = pseudos), # Index of the pseudogenomes
         psgf = expand(config['files_pseudogenomes']['PSG_fai'], sample = samples, pseudo = pseudos), # fai index of the pseudogenomes
         #error = config['error'], # Estimate the error of your SNP call if you have genomic data with known SNPs
-        #bam = config['Other_intermediate_files']['bam'],
-        #bqsr = config['Other_intermediate_files']['bqsr'],
-        #val_bqsr = config['Other_intermediate_files']['valid_bqsr'],
-        #val_psg = config['Other_intermediate_files']['valid_bqsr_PSG'],
-        #recal = config['Other_intermediate_files']['recal_table']
+        #bam = expand(config['Other_intermediate_files']['bam'], sample = samples),
+        #bqsr = expand(config['Other_intermediate_files']['bqsr'], sample = samples),
+        #val_bqsr = expand(config['Other_intermediate_files']['valid_bqsr'], sample = samples),
+        #val_psg = expand(config['Other_intermediate_files']['valid_bqsr_PSG'],sample = samples, pseudo = pseudos),
+        #recal = expand(config['Other_intermediate_files']['recal_table'], sample = samples),
 
 
 ##### MODULES #####

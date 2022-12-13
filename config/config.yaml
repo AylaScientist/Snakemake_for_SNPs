@@ -69,11 +69,11 @@ files_pseudogenomes:
   PSG_fai: "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa.fai"
 
 other_intermediate_files: # For bqsr recalibration, in case you have known SNPs
-  bam: expand("recal/{sample}_ref.bam", sample = samples), 
-  bqsr: expand("recal_tables/{sample}_after_ref.table", sample = samples)
-  valid_bqsr: expand("logs/picard/ValidateSamFile/Validate_bqsr_{sample}.log", sample = samples)
-  valid_bqsr_PSG: expand("logs/picard/ValidateSamFile_{pseudo}/Validate_bqsr_{sample}_{pseudo}.log", sample = samples, pseudo = pseudos)
-  recal_table: expand("recal_tables/{sample}_after_ref.table"
+  bam: "recal/{sample}_ref.bam"
+  bqsr: recal_tables/{sample}_after_ref.table"
+  valid_bqsr: logs/picard/ValidateSamFile/Validate_bqsr_{sample}.log"
+  valid_bqsr_PSG: logs/picard/ValidateSamFile_{pseudo}/Validate_bqsr_{sample}_{pseudo}.log"
+  recal_table: "recal_tables/{sample}_after_ref.table"
 
 error: "results/Error_in_SNP_calling_valid_genome.csv"
 

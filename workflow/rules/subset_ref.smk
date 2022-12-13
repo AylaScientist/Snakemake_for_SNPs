@@ -37,7 +37,7 @@ rule backup:
     log:
         "logs/pseudogenomes/backup.log"
     shell:
-        "cp {input.vcf} {output.vcf}
+        "cp {input.vcf} {output.vcf}"
 
 rule tabix:
     input:

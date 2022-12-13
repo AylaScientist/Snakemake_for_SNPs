@@ -40,6 +40,7 @@ rule backup:
         "cp {input.vcf} {output.vcf}"
 
 rule tabix:
+    priority: 1
     input:
         vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz"
     output:

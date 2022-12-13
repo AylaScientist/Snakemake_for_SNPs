@@ -1,5 +1,5 @@
 rule restore:
-    priority: 1
+    priority: 2
     input:
         vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz.copy"
     output:
@@ -9,7 +9,7 @@ rule restore:
     log:
         "logs/pseudogenomes/backup.log"
     shell:
-        "mv {input.vcf} {output.vcf}
+        "mv {input.vcf} {output.vcf}"
 
 
 

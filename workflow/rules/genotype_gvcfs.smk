@@ -1,7 +1,7 @@
 rule genotype_gvcfs:
     input:
         gvcf="calls/all_ref_g.vcf",  # combined gvcf over multiple samples
-        ref="genome/Tilapia_header_GCF_001858045.2.fa"
+        ref=config['ref']['genome'],
     output:
         vcf="calls/all_ref.vcf",
     conda:

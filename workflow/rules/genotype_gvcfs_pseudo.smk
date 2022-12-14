@@ -1,7 +1,7 @@
 rule genotype_gvcfs_PSG:
     input:
         gvcf="calls/all_g_{pseudo}.vcf",  # combined gvcf over multiple samples
-        ref="pseudogenomes/14FW20-7/14FW20-7_GCF_001858045.2.fa",
+        ref=config['ref']['genome'],
     output:
         vcf="calls/all_{pseudo}.vcf",
     conda:

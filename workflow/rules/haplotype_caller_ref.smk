@@ -1,8 +1,8 @@
 rule haplotype_caller:
     input:
         # single or list of bam files
-        bam="recal/{sample}_ref.bam",
-        ref="genome/Tilapia_header_GCF_001858045.2.fa"
+        bam="split/{sample}_ref.bam",
+        ref=config['ref']['genome']
     output:
         gvcf="calls/{sample}_ref.g.vcf"
     conda:

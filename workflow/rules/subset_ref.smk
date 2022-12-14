@@ -1,5 +1,4 @@
 rule subset_ref_vcf:
-    priority: 1
     input:
         vcf="calls/selected_ref_RNA.vcf",
     output:
@@ -27,20 +26,8 @@ rule bgzip:
         # gzip and index the vcf file created from the reference genome
         "bgzip {input.vcf} "
 
-rule backup:
-    input:
-        vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz"
-    output:
-        vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz.copy"
-    conda:
-        "envs/bgzip.yaml"
-    log:
-        "logs/pseudogenomes/backup.log"
-    shell:
-        "cp {input.vcf} {output.vcf}"
 
 rule tabix:
-    priority: 1
     input:
         vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz"
     output:

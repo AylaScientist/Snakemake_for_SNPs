@@ -1,7 +1,7 @@
 rule gatk_select:
     input:
         vcf="calls/all_ref_g.vcf",
-        ref="genome/Tilapia_header_GCF_001858045.2.fa"
+        ref=config['ref']['genome'],
     output:
         vcf="calls/selected_ref_RNA.vcf"
     conda:

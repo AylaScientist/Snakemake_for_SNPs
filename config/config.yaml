@@ -85,11 +85,11 @@ ref:
   # genome build
   build: NMBU
   # file name
-  genome: "../genome/Tilapia_header_GCF_001858045.2.fa"
-  annotation: "../genome/Tilapia_GCF_001858045.2_annotation.gff3"
-  gtf: "../genome/Tilapia_GCF_001858045.2_annotation.gtf"
-  SAindex: "../genome/SAindex"
-  dict: "../genome/Tilapia_header_GCF_001858045.2.dict"
+  genome: "genome/Tilapia_NC_031967.2_GCF_001858045.2.fa"
+  annotation: "genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gff3"
+  gtf: "genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf"
+  SAindex: "genome/SAindex"
+  dict: "genome/Tilapia_NC_031967.2_GCF_001858045.2.dict"
   read_length: 89 # Read length - 1
 
 filtering:

@@ -1,9 +1,9 @@
 rule htseq:
     input:
         bam = "split/{sample}_ref.bam",
-        annotation ="genome/Tilapia_GCF_001858045.2_annotation.gff3"
+        annotation =config['ref']['annotation']
     output:
-        config["path"]+"gene_counts/{sample}.count_ref.txt"
+        "gene_counts/{sample}.count_ref.txt"
     params:
         extra=" -f bam -r pos -s no -i Parent", # -n is the number of samples that process in parallel, may need to change in every experimental design.
         java_opts=config['java_opts'],

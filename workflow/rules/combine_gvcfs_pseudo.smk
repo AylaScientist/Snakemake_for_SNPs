@@ -1,7 +1,7 @@
 rule combine_gvcfs_PSG:
     input:
         gvcfs=expand("calls/{sample}_{pseudo}.g.vcf", sample = samples, pseudo = pseudos),
-        ref="pseudogenomes/14FW20-7/14FW20-7_GCF_001858045.2.fa",
+        ref=config['ref']['genome'],
     output:
         gvcf=temp("calls/all_g_{pseudo}.vcf")
     conda:

@@ -1,22 +1,8 @@
-rule restore:
-    priority: 2
-    input:
-        vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz.copy"
-    output:
-        vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz"
-    conda:
-        "envs/bgzip.yaml"
-    log:
-        "logs/pseudogenomes/backup.log"
-    shell:
-        "mv {input.vcf} {output.vcf}"
-
-
 
 rule pseudogenome:
     input:
         vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz",
-        ref="genome/Tilapia_header_GCF_001858045.2.fa",
+        ref=config['ref']['genome'],
         index="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz.tbi"
     output:
         pseudo = "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"
@@ -37,7 +23,7 @@ rule pseudogenome:
 # Make index for the pseudogenomes for further mapping
 rule pseudo_index:
     input:
-        "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"
+        "pseudogenomes/{pseudo}/{pseudo}_"+config['ref']['release']+".fa"
     output:
         "pseudogenomes/{pseudo}/SAindex"
     params:
@@ -58,9 +44,9 @@ rule pseudo_index:
 
 rule pseudo_dict:
     input:
-        "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"
+        "pseudogenomes/{pseudo}/{pseudo}_"+config['ref']['release']+".fa"
     output:
-        "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.dict"
+        "pseudogenomes/{pseudo}/{pseudo}_"+config['ref']['release']+".dict"
     resources:
         mem_mb=config['mem_mb_combine']
     threads: config['threads_combine']
@@ -75,10 +61,10 @@ rule pseudo_dict:
 
 rule pseudo_fai:
     input:
-        "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"
+        "pseudogenomes/{pseudo}/{pseudo}_"+config['ref']['release']+".fa"
     output:
-        "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa.fai"
+        "pseudogenomes/{pseudo}/{pseudo}_"+config['ref']['release']+".fa.fai"
     conda:
         "envs/samtools.yaml"
     shell:
-        "samtools faidx pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"
+        "samtools faidx {input}"

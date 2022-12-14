@@ -1,7 +1,7 @@
 rule gatk_variantstotable:
     input:
         vcf="calls/selected_ref_RNA.vcf",
-        ref="genome/Tilapia_header_GCF_001858045.2.fa"
+        ref=config['ref']['genome'],
     output:
         vcf="variants/AD_GT_counts_bi.table"
     conda:

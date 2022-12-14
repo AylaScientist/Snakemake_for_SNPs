@@ -1,0 +1,45 @@
+Multiple includes of /home/fish/Snakemake_for_SNPs/workflow/rules/trimmomatic_se.smk ignored
+Multiple includes of /home/fish/Snakemake_for_SNPs/workflow/rules/star_gi_ref.smk ignored
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                       count    min threads    max threads
+----------------------  -------  -------------  -------------
+all                           1              1              1
+bgzip                         1              1              1
+combine_gvcfs                 1             12             12
+create_dict                   1             12             12
+gatk_select                   1             12             12
+haplotype_caller              4              3              3
+htseq                         4             12             12
+mark_duplicates_pseudo        4              3              3
+pseudo_dict                   2              6              6
+pseudo_fai                    2              1              1
+pseudo_index                  2              6              6
+pseudogenome                  2              6              6
+ref_index                     1             12             12
+replace_rg_PSG                4              3              3
+splitncigarreads              4              3              3
+star_se                       4              3              3
+subset_ref_vcf                1             12             12
+tabix                         1              1              1
+trimmomatic_se                4              3              3
+total                        44              1             12
+
+Select jobs to execute...
+
+[Wed Dec 14 17:25:01 2022]
+rule ref_index:
+    input: genome/Tilapia_NC_031967.2_GCF_001858045.2.fa
+    output: genome/SAindex
+    log: logs/genomes/REF_index.log
+    jobid: 8
+    reason: Missing output files: genome/SAindex
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+Terminating processes on user request, this might take some time.
+Complete log: .snakemake/log/2022-12-14T172501.608472.snakemake.log

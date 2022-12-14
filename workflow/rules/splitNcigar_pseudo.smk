@@ -1,7 +1,7 @@
 rule splitncigarreads_PSG:
     input:
         bam="marked_dedup/{sample}_{pseudo}.bam",
-        ref="genome/Tilapia_header_GCF_001858045.2.fa"
+        ref=config['ref']['genome'],
     output:
         bam=temp("split/{sample}_{pseudo}.bam")
     conda:

@@ -120,11 +120,11 @@ params:
     pe:
       trimmer:
         # See trimmomatic manual for adding additional options, e.g. for adapter trimming.
-        - "ILLUMINACLIP:./resources/TruSeq3-PE-2.fa:2:30:10:2:keepBothReads "
+        #- "ILLUMINACLIP:./resources/TruSeq3-PE-2.fa:2:30:10:2:keepBothReads "
         - "LEADING:3 "
-        - "TRAILING:3 "
+        #- "TRAILING:3 "
         #- "SLIDINGWINDOW:4:15 "
-        - "MINLEN:36 "
+        #- "MINLEN:36 "
     se:
       trimmer:
         # See trimmomatic manual for adding additional options, e.g. for adapter trimming.

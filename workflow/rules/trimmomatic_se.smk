@@ -16,5 +16,5 @@ rule trimmomatic_se:
     threads: config['threads_parallel']
     resources:
         mem_mb=config['mem_mb_parallel']
-    wrapper:
+    script:
         "scripts/trimmomatic_se.py"

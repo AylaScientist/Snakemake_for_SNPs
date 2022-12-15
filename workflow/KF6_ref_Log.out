@@ -1,0 +1,61 @@
+STAR version=2.7.10a
+STAR compilation time,server,dir=2022-01-14T18:50:00-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
+STAR git: On branch master ; commit ae26add7ea1724f3281ec8abedb71bcff6a4ae73 ; diff files: CHANGES.md README.md RELEASEnotes.md doc/STARmanual.pdf extras/doc-latex/STARmanual.tex extras/doc-latex/convertParDefToLatexTable.awk extras/doc-latex/parametersDefault.tex extras/docker/Dockerfile source/VERSION 
+##### Command Line:
+STAR --runThreadN 3 --genomeDir genome --readFilesIn trimmed/KF6.1.fastq None --outFileNamePrefix KF6_ref_ --outStd Log --twopassMode Basic --quantMode GeneCounts --outSAMattrIHstart 0 --alignSoftClipAtReferenceEnds No --limitBAMsortRAM 300647556788 --outBAMsortingThreadN 2 --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --outSAMattributes All --outFilterScoreMinOverLread 0 --outFilterMatchNminOverLread 0 --outFilterMatchNmin 0 --outFilterMismatchNmax 2 --outSAMtype BAM SortedByCoordinate
+##### Initial USER parameters from Command Line:
+outFileNamePrefix                 KF6_ref_
+outStd                            Log
+###### All USER parameters from Command Line:
+runThreadN                    3     ~RE-DEFINED
+genomeDir                     genome     ~RE-DEFINED
+readFilesIn                   trimmed/KF6.1.fastq   None        ~RE-DEFINED
+outFileNamePrefix             KF6_ref_     ~RE-DEFINED
+outStd                        Log     ~RE-DEFINED
+twopassMode                   Basic     ~RE-DEFINED
+quantMode                     GeneCounts        ~RE-DEFINED
+outSAMattrIHstart             0     ~RE-DEFINED
+alignSoftClipAtReferenceEnds  No     ~RE-DEFINED
+limitBAMsortRAM               300647556788     ~RE-DEFINED
+outBAMsortingThreadN          2     ~RE-DEFINED
+outSAMstrandField             intronMotif     ~RE-DEFINED
+outFilterIntronMotifs         RemoveNoncanonical     ~RE-DEFINED
+outSAMattributes              All        ~RE-DEFINED
+outFilterScoreMinOverLread    0     ~RE-DEFINED
+outFilterMatchNminOverLread   0     ~RE-DEFINED
+outFilterMatchNmin            0     ~RE-DEFINED
+outFilterMismatchNmax         2     ~RE-DEFINED
+outSAMtype                    BAM   SortedByCoordinate        ~RE-DEFINED
+##### Finished reading parameters from all sources
+
+##### Final user re-defined parameters-----------------:
+runThreadN                        3
+genomeDir                         genome
+readFilesIn                       trimmed/KF6.1.fastq   None   
+limitBAMsortRAM                   300647556788
+outFileNamePrefix                 KF6_ref_
+outStd                            Log
+outSAMtype                        BAM   SortedByCoordinate   
+outSAMstrandField                 intronMotif
+outSAMattributes                  All   
+outBAMsortingThreadN              2
+outSAMattrIHstart                 0
+outFilterScoreMinOverLread        0
+outFilterMatchNmin                0
+outFilterMatchNminOverLread       0
+outFilterMismatchNmax             2
+outFilterIntronMotifs             RemoveNoncanonical
+alignSoftClipAtReferenceEnds      No
+quantMode                         GeneCounts   
+twopassMode                       Basic
+
+-------------------------------
+##### Final effective command line:
+STAR   --runThreadN 3   --genomeDir genome   --readFilesIn trimmed/KF6.1.fastq   None      --limitBAMsortRAM 300647556788   --outFileNamePrefix KF6_ref_   --outStd Log   --outSAMtype BAM   SortedByCoordinate      --outSAMstrandField intronMotif   --outSAMattributes All      --outBAMsortingThreadN 2   --outSAMattrIHstart 0   --outFilterScoreMinOverLread 0   --outFilterMatchNmin 0   --outFilterMatchNminOverLread 0   --outFilterMismatchNmax 2   --outFilterIntronMotifs RemoveNoncanonical   --alignSoftClipAtReferenceEnds No   --quantMode GeneCounts      --twopassMode Basic
+----------------------------------------
+
+Number of fastq files for each mate = 1
+
+EXITING because of fatal input ERROR: could not open readFilesIn=None
+
+Dec 15 14:10:04 ...... FATAL ERROR, exiting

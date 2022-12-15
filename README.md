@@ -35,6 +35,8 @@ Install the packages including the bio tools:
 
 `pip install git+https://github.com/snakemake/snakemake`
 
+`conda install -c bioconda snakemake-wrapper-utils`
+
 `conda install -c bioconda trimmomatic=0.39`
 
 `conda install -c bioconda fastqc=0.11.9`

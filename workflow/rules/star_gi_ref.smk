@@ -35,5 +35,4 @@ rule create_dict:
     conda:
         "envs/picard.yaml"
     script:
-        "scripts/createsequencedictionary"
-    
+        "scripts/createsequencedictionary.py"

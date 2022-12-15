@@ -1,0 +1,6 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+TrimmomaticSE: Started with arguments:
+ -phred64 ./fastq_merged/GS4.fastq ./trimmed/GS4.1.fastq LEADING:3 TRAILING:3 MINLEN:36
+Automatically using 1 threads
+Input Reads: 25000 Surviving: 24984 (99.94%) Dropped: 16 (0.06%)
+TrimmomaticSE: Completed successfully

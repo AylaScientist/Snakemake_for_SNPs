@@ -1,0 +1,188 @@
+Multiple includes of /home/fish/Snakemake_for_SNPs/workflow/rules/trimmomatic_se.smk ignored
+Multiple includes of /home/fish/Snakemake_for_SNPs/workflow/rules/star_gi_ref.smk ignored
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+all                   1              1              1
+star_se               4              3              3
+trimmomatic_se        4              3              3
+total                 9              1              3
+
+Select jobs to execute...
+
+[Thu Dec 15 11:58:23 2022]
+rule trimmomatic_se:
+    input: fastq_merged/GS4.fastq
+    output: trimmed/GS4.1.fastq
+    log: logs/trimmomatic/GS4.log
+    jobid: 8
+    reason: Missing output files: trimmed/GS4.1.fastq
+    wildcards: sample=GS4
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+rule trimmomatic_se:
+    input: fastq_merged/GF6.fastq
+    output: trimmed/GF6.1.fastq
+    log: logs/trimmomatic/GF6.log
+    jobid: 2
+    reason: Missing output files: trimmed/GF6.1.fastq
+    wildcards: sample=GF6
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+rule trimmomatic_se:
+    input: fastq_merged/KF6.fastq
+    output: trimmed/KF6.1.fastq
+    log: logs/trimmomatic/KF6.log
+    jobid: 6
+    reason: Missing output files: trimmed/KF6.1.fastq
+    wildcards: sample=KF6
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+rule trimmomatic_se:
+    input: fastq_merged/KS4.fastq
+    output: trimmed/KS4.1.fastq
+    log: logs/trimmomatic/KS4.log
+    jobid: 10
+    reason: Missing output files: trimmed/KS4.1.fastq
+    wildcards: sample=KS4
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+Finished job 6.
+1 of 9 steps (11%) done
+Select jobs to execute...
+
+[Thu Dec 15 11:58:23 2022]
+rule star_se:
+    input: trimmed/KF6.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: KF6_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/KF6_ref.log
+    jobid: 5
+    reason: Missing output files: KF6_ref_Aligned.sortedByCoord.out.bam; Input files updated by another job: trimmed/KF6.1.fastq
+    wildcards: sample=KF6
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+Finished job 10.
+2 of 9 steps (22%) done
+Select jobs to execute...
+
+[Thu Dec 15 11:58:23 2022]
+rule star_se:
+    input: trimmed/KS4.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: KS4_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/KS4_ref.log
+    jobid: 9
+    reason: Missing output files: KS4_ref_Aligned.sortedByCoord.out.bam; Input files updated by another job: trimmed/KS4.1.fastq
+    wildcards: sample=KS4
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+Finished job 8.
+3 of 9 steps (33%) done
+Select jobs to execute...
+
+[Thu Dec 15 11:58:23 2022]
+rule star_se:
+    input: trimmed/GS4.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: GS4_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/GS4_ref.log
+    jobid: 7
+    reason: Missing output files: GS4_ref_Aligned.sortedByCoord.out.bam; Input files updated by another job: trimmed/GS4.1.fastq
+    wildcards: sample=GS4
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+Finished job 2.
+4 of 9 steps (44%) done
+Select jobs to execute...
+
+[Thu Dec 15 11:58:23 2022]
+rule star_se:
+    input: trimmed/GF6.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: GF6_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/GF6_ref.log
+    jobid: 1
+    reason: Missing output files: GF6_ref_Aligned.sortedByCoord.out.bam; Input files updated by another job: trimmed/GF6.1.fastq
+    wildcards: sample=GF6
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=30000
+
+[Thu Dec 15 11:58:23 2022]
+Error in rule star_se:
+    jobid: 5
+    input: trimmed/KF6.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: KF6_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/KF6_ref.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/cc92388ef3b272b7e6d758f99f9b834c_
+
+RuleException:
+CalledProcessError in line 26 of /home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmphki0fq7t.star.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk", line 26, in __rule_star_se
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Removing output files of failed job star_se since they might be corrupted:
+KF6_ref_Aligned.sortedByCoord.out.bam
+[Thu Dec 15 11:58:23 2022]
+Error in rule star_se:
+    jobid: 9
+    input: trimmed/KS4.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: KS4_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/KS4_ref.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/cc92388ef3b272b7e6d758f99f9b834c_
+
+RuleException:
+CalledProcessError in line 26 of /home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmp_bwp2vhw.star.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk", line 26, in __rule_star_se
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Removing output files of failed job star_se since they might be corrupted:
+KS4_ref_Aligned.sortedByCoord.out.bam
+[Thu Dec 15 11:58:24 2022]
+Error in rule star_se:
+    jobid: 7
+    input: trimmed/GS4.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: GS4_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/GS4_ref.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/cc92388ef3b272b7e6d758f99f9b834c_
+
+RuleException:
+CalledProcessError in line 26 of /home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmpeodxk39m.star.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk", line 26, in __rule_star_se
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Removing output files of failed job star_se since they might be corrupted:
+GS4_ref_Aligned.sortedByCoord.out.bam
+[Thu Dec 15 11:58:24 2022]
+Error in rule star_se:
+    jobid: 1
+    input: trimmed/GF6.1.fastq, genome/Tilapia_NC_031967.2_GCF_001858045.2.dict, genome/SAindex
+    output: GF6_ref_Aligned.sortedByCoord.out.bam
+    log: logs/star/GF6_ref.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/cc92388ef3b272b7e6d758f99f9b834c_
+
+RuleException:
+CalledProcessError in line 26 of /home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmpws859pse.star.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/star_se_ref.smk", line 26, in __rule_star_se
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Removing output files of failed job star_se since they might be corrupted:
+GF6_ref_Aligned.sortedByCoord.out.bam
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-12-15T115823.068762.snakemake.log

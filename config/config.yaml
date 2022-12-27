@@ -12,8 +12,6 @@ Experimental_groups: ../config/Experimental_groups.csv
 Pseudogenome_codes: ../config/Pseudogenome_codes.csv # after you choose the samples from where you will make the pseudogenomes
 GeneID_to_Genebank: ../config/GeneID_to_Genebank.csv
 GO_dict: ../config/GO_dictionary.csv
-tb1_colnames: ../config/tb1_colnames.csv
-tb2_colnames: ../config/tb2_colnames.csv
 species_dict: ../config/Tilapia gene transcript protein GO KEGG uniprot.csv
 fastq_merged: fastq_merged
 Samples_MAE: ../config/Samples_MAE.csv

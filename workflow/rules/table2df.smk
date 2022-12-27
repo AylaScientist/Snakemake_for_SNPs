@@ -10,7 +10,7 @@ rule table_step1_PSG:
 rule table_step2_PSG:
     input:
         table="variants/AD_GT_counts_bi_{pseudo}_step1.csv",
-        tb_colnames = "complementary/tb1_colnames.csv",
+        tb_colnames = "../config/tb{pseudo}_colnames.csv",
     output:
         csv="workflow/AD_GT_counts_bi_{pseudo}.csv"
     resources:

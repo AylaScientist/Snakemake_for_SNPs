@@ -97,19 +97,21 @@ Modify the metafiles describing your data and the experiment:
 
 `config/Experiemntal_groups.csv`
 
-`config/Pseudogenome_codes.csv`
-
 `config/Sample_names.csv`
 
 `config/Samples_MAE.csv`
 
 `config/samples.csv`
 
-`config/tb1_colnames.csv`
+You need to chose two samples from different groups, preferably one sample from the control group and one sample from a treatment group. The SNPs from these samples will be used to construct the pseudogenomes. The codes of these two samples in the example are GF6 and KS4. In order to create the pseudogenomes of your experiment, these codes should be substituted in the next files, including the file name of the `*colnames.csv` files:
 
-`config/tb2_colnames.csv`
+`config/Pseudogenome_codes.csv`
 
-And very important: ADD the genome or transcriptome of your species! Here we have the genome of the Nile Tilapia in the folder `genome` in the root of the git.
+`config/tbGF6_colnames.csv` 
+
+`config/tbKS4_colnames.csv`
+
+Very important: ADD the genome or transcriptome of your species! Here we have the genome of the Nile Tilapia in the folder `genome` in the root of the git.
 
 
 ## Evaluation

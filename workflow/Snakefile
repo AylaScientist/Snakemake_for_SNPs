@@ -54,7 +54,12 @@ rule all:
         #vcf=expand("calls/selected_{pseudo}.vcf", pseudo = pseudos),
         #annotated=expand(config['params']['annotation']['convert']+'{pseudo}', pseudo = pseudos),
         #o1=expand(config['params']['annotation']['output_annotate']+"{pseudo}.variant_function", pseudo = pseudos),
-        o1=expand("annotated/annotated_all_snps_{pseudo}"+config['params']['annotation']['output'], pseudo = pseudos)
+        #o1=expand("annotated/annotated_all_snps_{pseudo}"+config['params']['annotation']['output'], pseudo = pseudos),
+        #vcf=expand("variants/AD_GT_counts_bi_{pseudo}.table", pseudo = pseudos),
+        #table1=expand("variants/AD_GT_counts_bi_{pseudo}_step1.csv", pseudo = pseudos),
+        #csv=expand("workflow/AD_GT_counts_bi_{pseudo}.csv", pseudo = pseudos),
+        merged="workflow/merged_df.csv",
+        
         #vcf="variants/AD_GT_counts_bi.table",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz",
@@ -152,7 +157,7 @@ include: "rules/select_pseudo.smk"            # Select biallelic variants
 # Make tokens for the tables with the annotation
 # Annotate the file. This file can be used for the creation of the pseudogenomes
 include: "rules/annotation.smk"
-"""
+
 ## Data science ##
 ##################
 ## Create the count table for the data wrangling
@@ -166,4 +171,3 @@ include: "rules/stats.smk"              # Apply Chi^2, Fisher and Binomial on NO
 # Tables and figures for publication
 include: "rules/results.smk"
 include: "rules/results_mae.smk"        # For study of the SNPs in MAE
-"""

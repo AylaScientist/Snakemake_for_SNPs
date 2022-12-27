@@ -1,0 +1,61 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count    min threads    max threads
+------------------------  -------  -------------  -------------
+all                             1              1              1
+an_table                        2             12             12
+gatk_variantstotable_PSG        2              6              6
+merge_dataframes                1             12             12
+table_step1_PSG                 2              1              1
+table_step2_PSG                 2              6              6
+total                          10              1             12
+
+Select jobs to execute...
+
+[Tue Dec 27 14:47:24 2022]
+rule an_table:
+    input: annotated/annovar_Nile_GF6, annotated/annotated_Nile_snps_GF6.variant_function, annotated/annotated_all_snps_GF6, calls/all_GF6.vcf, ON, ON
+    output: annotated/annotated_all_snps_GF6.ON_multianno.vcf
+    jobid: 5
+    reason: Updated input files: ON
+    wildcards: pseudo=GF6
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 14:47:26 2022]
+Finished job 5.
+1 of 10 steps (10%) done
+Select jobs to execute...
+
+[Tue Dec 27 14:47:26 2022]
+rule gatk_variantstotable_PSG:
+    input: annotated/annotated_all_snps_GF6.ON_multianno.vcf, pseudogenomes/GF6/GF6_GCF_001858045.2.fa
+    output: variants/AD_GT_counts_bi_GF6.table
+    log: logs/gatk/var2table/snvs_GF6.log
+    jobid: 4
+    reason: Missing output files: variants/AD_GT_counts_bi_GF6.table; Input files updated by another job: annotated/annotated_all_snps_GF6.ON_multianno.vcf
+    wildcards: pseudo=GF6
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Dec 27 14:47:26 2022]
+Error in rule gatk_variantstotable_PSG:
+    jobid: 4
+    input: annotated/annotated_all_snps_GF6.ON_multianno.vcf, pseudogenomes/GF6/GF6_GCF_001858045.2.fa
+    output: variants/AD_GT_counts_bi_GF6.table
+    log: logs/gatk/var2table/snvs_GF6.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/cc9537fc1e1a43ea37b10ee499f035dc_
+
+RuleException:
+WorkflowError in line 19 of /home/fish/Snakemake_for_SNPs/workflow/rules/variants_to_table.smk:
+Failed to open source file /home/fish/Snakemake_for_SNPs/workflow/rules/scripts/variantstotable.py
+FileNotFoundError: [Errno 2] No such file or directory: '/home/fish/Snakemake_for_SNPs/workflow/rules/scripts/variantstotable.py'
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/variants_to_table.smk", line 19, in __rule_gatk_variantstotable_PSG
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-12-27T144723.340109.snakemake.log

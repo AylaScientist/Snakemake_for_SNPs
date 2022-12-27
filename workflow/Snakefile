@@ -18,7 +18,8 @@ pseudos = pseudo_codes['PSGs'].values
 print("Sample names: ")
 print(samples)
 print("pseudogenomes:")
-print(pseudos)
+print(pseudos[0])
+print(pseudos[1])
 test = expand(config["input_files"]["r1"],sample = samples)
 print(test)
 test2 = expand("trimmed/{sample}.1.fastq",sample = samples)
@@ -38,11 +39,21 @@ rule all:
         #o3 = config['results']['o3'],
         #o4 = config['results']['o4'],
         #o5 = config['results']['o5'],
-        bam=expand("{sample}_ref_Aligned.sortedByCoord.out.bam",sample = samples),
+        #bam=expand("{sample}_ref_Aligned.sortedByCoord.out.bam",sample = samples),
         #bam=expand("calls/{sample}_ref.g.vcf", sample = samples),
+        #bam0 = expand ("{sample}_{pseudo}_Aligned.sortedByCoord.out.bam", sample = samples, pseudo = pseudos[0]),
+        #bam = expand ("split/{sample}_{pseudo}.bam", sample = samples, pseudo = pseudos),
+        #gvcf = expand ("calls/{sample}_{pseudo}.g.vcf", sample = samples, pseudo = pseudos),
         #gvcf="calls/all_ref_g.vcf",
         #vcf="calls/all_ref.vcf",
         #vcf="calls/selected_ref_RNA.vcf",
+        #gvcfs=expand("calls/{sample}_{pseudo}.g.vcf", sample = samples, pseudo = pseudos),
+        #gvcf0="calls/all_g_"+pseudos[0]+".vcf",
+        #gvcf1="calls/all_g_"+pseudos[1]+".vcf",
+        #vcf=expand("calls/all_{pseudo}.vcf", pseudo = pseudos),
+        #vcf=expand("calls/selected_{pseudo}.vcf", pseudo = pseudos),
+        #annotated=expand(config['params']['annotation']['convert']+'{pseudo}', pseudo = pseudos),
+        o1=expand(config['params']['annotation']['output_annotate']+"{pseudo}.variant_function", pseudo = pseudos),
         #vcf="variants/AD_GT_counts_bi.table",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz",
@@ -69,6 +80,8 @@ print(ends)
 
 include: "rules/trimmomatic_se.smk"#In the trimming R3 input is called 2 for the output
 include: "rules/star_gi_ref.smk"
+
+""""
 # First SNP callling on the reference genome #
 ##############################################
 
@@ -107,9 +120,12 @@ include: "rules/gatk_variantstotable.smk" # Make the table
 include: "rules/subset_ref.smk"         # Subset the genome
 include: "rules/pseudogenomes.smk"      # Create the Pseudogenomes
 
+"""
+
 
 ## Second calling of SNPs on the pseudogenomes ##
 #################################################
+# Uncomment this section for the second call 
 ## Now you can start the pipeline again from the fastq file for the pseudogenomes:
 
 if ends == "SE":
@@ -119,7 +135,6 @@ else:
 
 include: "rules/replace_rg_pseudo.smk"        # Replace or add read groups
 include: "rules/mark_duplicates_pseudo.smk"   # Mark and eliminate duplicates
-"""
 include: "rules/splitNcigar_pseudo.smk"       # Split Ncigars
 include: "rules/validate_bam_pseudo.smk"      # Validate bam
 include: "rules/haplotype_caller_pseudo.smk"  # Haplotype caller
@@ -136,7 +151,7 @@ include: "rules/select_pseudo.smk"            # Select biallelic variants
 # Make tokens for the tables with the annotation
 # Annotate the file. This file can be used for the creation of the pseudogenomes
 include: "rules/annotation.smk"
-
+"""
 ## Data science ##
 ##################
 ## Create the count table for the data wrangling

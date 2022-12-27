@@ -1,0 +1,22 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+INFO	2022-12-15 17:18:42	AddOrReplaceReadGroups	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    AddOrReplaceReadGroups -SORT_ORDER coordinate -RGID NextSeq -RGLB idp -RGPL illumina -RGPU KS4 -RGSM KS4 -CREATE_INDEX True -I KS4_KS4_Aligned.sortedByCoord.out.bam -O fixed-rg/KS4_KS4.bam
+**********
+
+
+17:18:42.427 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Thu Dec 15 17:18:42 IST 2022] AddOrReplaceReadGroups INPUT=KS4_KS4_Aligned.sortedByCoord.out.bam OUTPUT=fixed-rg/KS4_KS4.bam SORT_ORDER=coordinate RGID=NextSeq RGLB=idp RGPL=illumina RGPU=KS4 RGSM=KS4 CREATE_INDEX=true    VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Thu Dec 15 17:18:42 IST 2022] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
+INFO	2022-12-15 17:18:42	AddOrReplaceReadGroups	Created read-group ID=NextSeq PL=illumina LB=idp SM=KS4
+
+[Thu Dec 15 17:18:43 IST 2022] picard.sam.AddOrReplaceReadGroups done. Elapsed time: 0.02 minutes.
+Runtime.totalMemory()=26843545600

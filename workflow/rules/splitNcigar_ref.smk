@@ -1,7 +1,9 @@
 rule splitncigarreads:
     input:
         bam="marked_dedup/{sample}_ref.bam",
-        ref=config['ref']['genome']
+        ref=config['ref']['genome'],
+        dict=config['ref']['dict'],
+        idx=config['ref']['fai'],
     output:
         bam=temp("split/{sample}_ref.bam")
     conda:

@@ -21,5 +21,6 @@ with tempfile.TemporaryDirectory() as tmpdir:
         " --REFERENCE {snakemake.input[0]}"
         " --TMP_DIR {tmpdir}"
         " --OUTPUT {snakemake.output[0]}"
+        " --CREATE_INDEX true"
         " {log}"
     )

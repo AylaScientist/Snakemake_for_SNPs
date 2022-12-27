@@ -4,7 +4,7 @@ rule haplotype_caller_PSG:
         bam="split/{sample}_{pseudo}.bam",
         ref="pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa",
     output:
-        gvcf=temp("calls/{sample}_{pseudo}.g.vcf")
+        gvcf="calls/{sample}_{pseudo}.g.vcf"
     conda:
         "envs/gatk.yaml"
     log:

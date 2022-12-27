@@ -1,0 +1,43 @@
+STAR version=2.7.10a
+STAR compilation time,server,dir=2022-01-14T18:50:00-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
+STAR git: On branch master ; commit ae26add7ea1724f3281ec8abedb71bcff6a4ae73 ; diff files: CHANGES.md README.md RELEASEnotes.md doc/STARmanual.pdf extras/doc-latex/STARmanual.tex extras/doc-latex/convertParDefToLatexTable.awk extras/doc-latex/parametersDefault.tex extras/docker/Dockerfile source/VERSION 
+##### Command Line:
+STAR --runThreadN 16 --runMode genomeGenerate --genomeDir pseudogenomes/GF6/ --genomeFastaFiles pseudogenomes/GF6/GF6_GCF_001858045.2.fa --sjdbGTFfile genome/Tilapia_GCF_001858045.2_annotation.gtf --sjdbOverhang 147
+##### Initial USER parameters from Command Line:
+###### All USER parameters from Command Line:
+runThreadN                    16     ~RE-DEFINED
+runMode                       genomeGenerate        ~RE-DEFINED
+genomeDir                     pseudogenomes/GF6/     ~RE-DEFINED
+genomeFastaFiles              pseudogenomes/GF6/GF6_GCF_001858045.2.fa        ~RE-DEFINED
+sjdbGTFfile                   genome/Tilapia_GCF_001858045.2_annotation.gtf     ~RE-DEFINED
+sjdbOverhang                  147     ~RE-DEFINED
+##### Finished reading parameters from all sources
+
+##### Final user re-defined parameters-----------------:
+runMode                           genomeGenerate   
+runThreadN                        16
+genomeDir                         pseudogenomes/GF6/
+genomeFastaFiles                  pseudogenomes/GF6/GF6_GCF_001858045.2.fa   
+sjdbGTFfile                       genome/Tilapia_GCF_001858045.2_annotation.gtf
+sjdbOverhang                      147
+
+-------------------------------
+##### Final effective command line:
+STAR   --runMode genomeGenerate      --runThreadN 16   --genomeDir pseudogenomes/GF6/   --genomeFastaFiles pseudogenomes/GF6/GF6_GCF_001858045.2.fa      --sjdbGTFfile genome/Tilapia_GCF_001858045.2_annotation.gtf   --sjdbOverhang 147
+----------------------------------------
+
+Number of fastq files for each mate = 1
+ParametersSolo: --soloCellFilterType CellRanger2.2 filtering parameters:  3000 0.99 10
+Finished loading and checking parameters
+--genomeDir directory exists and will be overwritten: pseudogenomes/GF6/
+Dec 15 15:38:24 ... starting to generate Genome files
+pseudogenomes/GF6/GF6_GCF_001858045.2.fa : chr # 0  "NC_031967.2" chrStart: 0
+Chromosome sequence lengths: 
+NC_031967.2	87567345
+Genome sequence total length = 87567345
+Genome size with padding = 87818240
+Dec 15 15:38:25 ..... processing annotations GTF
+
+FATAL error, could not open file pGe.sjdbGTFfile=genome/Tilapia_GCF_001858045.2_annotation.gtf
+
+Dec 15 15:38:25 ...... FATAL ERROR, exiting

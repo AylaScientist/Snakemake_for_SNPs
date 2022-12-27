@@ -1,0 +1,43 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+15:37:06.093 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Dec 15, 2022 3:37:06 PM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+15:37:06.213 INFO  SplitNCigarReads - ------------------------------------------------------------
+15:37:06.213 INFO  SplitNCigarReads - The Genome Analysis Toolkit (GATK) v4.2.5.0
+15:37:06.213 INFO  SplitNCigarReads - For support and documentation go to https://software.broadinstitute.org/gatk/
+15:37:06.213 INFO  SplitNCigarReads - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+15:37:06.213 INFO  SplitNCigarReads - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+15:37:06.214 INFO  SplitNCigarReads - Start Date/Time: 15 December 2022 at 15:37:06 IST
+15:37:06.214 INFO  SplitNCigarReads - ------------------------------------------------------------
+15:37:06.214 INFO  SplitNCigarReads - ------------------------------------------------------------
+15:37:06.214 INFO  SplitNCigarReads - HTSJDK Version: 2.24.1
+15:37:06.215 INFO  SplitNCigarReads - Picard Version: 2.25.4
+15:37:06.215 INFO  SplitNCigarReads - Built for Spark Version: 2.4.5
+15:37:06.215 INFO  SplitNCigarReads - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+15:37:06.215 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+15:37:06.215 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+15:37:06.215 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+15:37:06.215 INFO  SplitNCigarReads - Deflater: IntelDeflater
+15:37:06.215 INFO  SplitNCigarReads - Inflater: IntelInflater
+15:37:06.215 INFO  SplitNCigarReads - GCS max retries/reopens: 20
+15:37:06.215 INFO  SplitNCigarReads - Requester pays: disabled
+15:37:06.216 INFO  SplitNCigarReads - Initializing engine
+15:37:06.349 INFO  SplitNCigarReads - Done initializing engine
+15:37:06.368 INFO  ProgressMeter - Starting traversal
+15:37:06.368 INFO  ProgressMeter -        Current Locus  Elapsed Minutes       Reads Processed     Reads/Minute
+15:37:07.306 WARN  IntelInflater - Zero Bytes Written : 0
+15:37:07.308 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+
+15:37:07.497 INFO  OverhangFixingManager - Overhang Fixing Manager saved 0 reads in the first pass
+15:37:07.498 INFO  SplitNCigarReads - Starting traversal pass 2
+15:37:07.890 WARN  IntelInflater - Zero Bytes Written : 0
+15:37:07.890 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+
+15:37:07.891 INFO  ProgressMeter - NC_031967.2:86947144              0.0                147610        5819053.9
+15:37:07.891 INFO  ProgressMeter - Traversal complete. Processed 147610 total reads in 0.0 minutes.
+15:37:08.460 INFO  SplitNCigarReads - Shutting down engine
+[15 December 2022 at 15:37:08 IST] org.broadinstitute.hellbender.tools.walkers.rnaseq.SplitNCigarReads done. Elapsed time: 0.04 minutes.
+Runtime.totalMemory()=26843545600
+Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms25G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=3 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar SplitNCigarReads -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -I marked_dedup/GS4_ref.bam -O split/GS4_ref.bam

@@ -1,3 +1,0 @@
-WorkflowError in line 3 of /home/fish_station/GitHub/workflow/Snakefile:
-Config file config/config.yaml not found.
-  File "/home/fish_station/GitHub/workflow/Snakefile", line 3, in <module>

@@ -1,0 +1,40 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+10:45:02.659 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Dec 27, 2022 10:45:02 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+10:45:02.798 INFO  CombineGVCFs - ------------------------------------------------------------
+10:45:02.798 INFO  CombineGVCFs - The Genome Analysis Toolkit (GATK) v4.2.5.0
+10:45:02.798 INFO  CombineGVCFs - For support and documentation go to https://software.broadinstitute.org/gatk/
+10:45:02.798 INFO  CombineGVCFs - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+10:45:02.798 INFO  CombineGVCFs - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+10:45:02.798 INFO  CombineGVCFs - Start Date/Time: 27 December 2022 at 10:45:02 IST
+10:45:02.798 INFO  CombineGVCFs - ------------------------------------------------------------
+10:45:02.798 INFO  CombineGVCFs - ------------------------------------------------------------
+10:45:02.799 INFO  CombineGVCFs - HTSJDK Version: 2.24.1
+10:45:02.799 INFO  CombineGVCFs - Picard Version: 2.25.4
+10:45:02.799 INFO  CombineGVCFs - Built for Spark Version: 2.4.5
+10:45:02.799 INFO  CombineGVCFs - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+10:45:02.799 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+10:45:02.799 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+10:45:02.799 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+10:45:02.799 INFO  CombineGVCFs - Deflater: IntelDeflater
+10:45:02.799 INFO  CombineGVCFs - Inflater: IntelInflater
+10:45:02.799 INFO  CombineGVCFs - GCS max retries/reopens: 20
+10:45:02.799 INFO  CombineGVCFs - Requester pays: disabled
+10:45:02.799 INFO  CombineGVCFs - Initializing engine
+10:45:02.890 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/GF6_GF6.g.vcf
+10:45:02.910 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/KF6_KS4.g.vcf
+10:45:02.915 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/GS4_KS4.g.vcf
+10:45:02.923 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/KS4_KS4.g.vcf
+10:45:02.963 INFO  CombineGVCFs - Done initializing engine
+10:45:02.976 INFO  ProgressMeter - Starting traversal
+10:45:02.976 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+10:45:03.021 WARN  ReferenceConfidenceVariantContextMerger - Detected invalid annotations: When trying to merge variant contexts at location NC_031967.2:122688 the annotation MLEAC=[1, 0] was not a numerical value and was ignored
+10:45:04.649 INFO  ProgressMeter - NC_031967.2:86270958              0.0                 43538        1561434.5
+10:45:04.649 INFO  ProgressMeter - Traversal complete. Processed 43538 total variants in 0.0 minutes.
+10:45:04.683 INFO  CombineGVCFs - Shutting down engine
+[27 December 2022 at 10:45:04 IST] org.broadinstitute.hellbender.tools.walkers.CombineGVCFs done. Elapsed time: 0.03 minutes.
+Runtime.totalMemory()=53687091200
+Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms50G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar CombineGVCFs -V calls/GF6_GF6.g.vcf -V calls/KF6_GF6.g.vcf -V calls/GS4_GF6.g.vcf -V calls/KS4_GF6.g.vcf -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -O calls/all_g_GF6.vcf

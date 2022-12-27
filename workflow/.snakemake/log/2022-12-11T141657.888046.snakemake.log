@@ -1,3 +1,0 @@
-WorkflowError in line 3 of /home/aurora/Dropbox/salinity_RNAseq/Github/workflow/Snakefile:
-Config file is not valid JSON or YAML. In case of YAML, make sure to not mix whitespace and tab indentation.
-  File "/home/aurora/Dropbox/salinity_RNAseq/Github/workflow/Snakefile", line 3, in <module>

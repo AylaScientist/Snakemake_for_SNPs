@@ -1,0 +1,18 @@
+INFO	2022-12-15 15:38:25	CreateSequenceDictionary	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    CreateSequenceDictionary -REFERENCE pseudogenomes/KS4/KS4_GCF_001858045.2.fa -OUTPUT  pseudogenomes/KS4/KS4_GCF_001858045.2.dict
+**********
+
+
+15:38:25.584 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Thu Dec 15 15:38:25 IST 2022] CreateSequenceDictionary OUTPUT=pseudogenomes/KS4/KS4_GCF_001858045.2.dict REFERENCE=pseudogenomes/KS4/KS4_GCF_001858045.2.fa    TRUNCATE_NAMES_AT_WHITESPACE=true NUM_SEQUENCES=2147483647 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Thu Dec 15 15:38:25 IST 2022] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
+[Thu Dec 15 15:38:25 IST 2022] picard.sam.CreateSequenceDictionary done. Elapsed time: 0.01 minutes.
+Runtime.totalMemory()=536870912

@@ -1,0 +1,40 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+INFO	2022-12-20 11:31:04	MarkDuplicates	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    MarkDuplicates -REMOVE_DUPLICATES true -INPUT fixed-rg/KS4_KS4.bam -OUTPUT marked_dedup/KS4_KS4.bam -METRICS_FILE marked_dedup/KS4_KS4.metrics.txt
+**********
+
+
+11:31:05.213 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Tue Dec 20 11:31:05 IST 2022] MarkDuplicates INPUT=[fixed-rg/KS4_KS4.bam] OUTPUT=marked_dedup/KS4_KS4.bam METRICS_FILE=marked_dedup/KS4_KS4.metrics.txt REMOVE_DUPLICATES=true    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true DUPLEX_UMI=false ADD_PG_TAG_TO_READS=true ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Tue Dec 20 11:31:05 IST 2022] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
+INFO	2022-12-20 11:31:05	MarkDuplicates	Start of doWork freeMemory: 26833435288; totalMemory: 26843545600; maxMemory: 32178700288
+INFO	2022-12-20 11:31:05	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2022-12-20 11:31:05	MarkDuplicates	Will retain up to 116589493 data points before spilling to disk.
+WARNING: BAM index file /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_KS4.bai is older than BAM /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_KS4.bam
+INFO	2022-12-20 11:31:05	MarkDuplicates	Read 72272 records. 0 pairs never matched.
+INFO	2022-12-20 11:31:05	MarkDuplicates	After buildSortedReadEndLists freeMemory: 25892045472; totalMemory: 26843545600; maxMemory: 32178700288
+INFO	2022-12-20 11:31:05	MarkDuplicates	Will retain up to 1005584384 duplicate indices before spilling to disk.
+INFO	2022-12-20 11:31:07	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2022-12-20 11:31:07	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2022-12-20 11:31:07	MarkDuplicates	Sorting list of duplicate records.
+INFO	2022-12-20 11:31:07	MarkDuplicates	After generateDuplicateIndexes freeMemory: 18779953144; totalMemory: 26843545600; maxMemory: 32178700288
+INFO	2022-12-20 11:31:07	MarkDuplicates	Marking 4602 records as duplicates.
+INFO	2022-12-20 11:31:07	MarkDuplicates	Found 0 optical duplicate clusters.
+WARNING: BAM index file /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_KS4.bai is older than BAM /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_KS4.bam
+INFO	2022-12-20 11:31:07	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2022-12-20 11:31:08	MarkDuplicates	Writing complete. Closing input iterator.
+INFO	2022-12-20 11:31:08	MarkDuplicates	Duplicate Index cleanup.
+INFO	2022-12-20 11:31:08	MarkDuplicates	Getting Memory Stats.
+INFO	2022-12-20 11:31:08	MarkDuplicates	Before output close freeMemory: 26832674720; totalMemory: 26843545600; maxMemory: 32178700288
+INFO	2022-12-20 11:31:08	MarkDuplicates	Closed outputs. Getting more Memory Stats.
+INFO	2022-12-20 11:31:08	MarkDuplicates	After output close freeMemory: 26832944080; totalMemory: 26843545600; maxMemory: 32178700288
+[Tue Dec 20 11:31:08 IST 2022] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.06 minutes.
+Runtime.totalMemory()=26843545600

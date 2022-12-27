@@ -1,0 +1,1 @@
+!!!!! WARNING: --genomeSAindexNbases 14 is too large for the genome size=87567345, which may cause seg-fault at the mapping step. Re-run genome generation with recommended --genomeSAindexNbases 12

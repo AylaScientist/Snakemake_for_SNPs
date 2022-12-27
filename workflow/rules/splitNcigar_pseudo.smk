@@ -2,8 +2,10 @@ rule splitncigarreads_PSG:
     input:
         bam="marked_dedup/{sample}_{pseudo}.bam",
         ref=config['ref']['genome'],
+        dict=config['ref']['dict'],
+        idx=config['ref']['fai'],
     output:
-        bam=temp("split/{sample}_{pseudo}.bam")
+        bam="split/{sample}_{pseudo}.bam"
     conda:
         "envs/gatk.yaml"
     log:

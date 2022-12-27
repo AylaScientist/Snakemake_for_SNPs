@@ -1,0 +1,19 @@
+### STAR   --runMode genomeGenerate      --runThreadN 16   --genomeDir pseudogenomes/GF6/   --genomeFastaFiles pseudogenomes/GF6/GF6_GCF_001858045.2.fa      --sjdbGTFfile genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf   --sjdbOverhang 147
+### GstrandBit 32
+versionGenome	2.7.4a
+genomeType	Full
+genomeFastaFiles	pseudogenomes/GF6/GF6_GCF_001858045.2.fa 
+genomeSAindexNbases	14
+genomeChrBinNbits	18
+genomeSAsparseD	1
+genomeTransformType	None
+genomeTransformVCF	-
+sjdbOverhang	147
+sjdbFileChrStartEnd	- 
+sjdbGTFfile	genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf
+sjdbGTFchrPrefix	-
+sjdbGTFfeatureExon	exon
+sjdbGTFtagExonParentTranscript	transcript_id
+sjdbGTFtagExonParentGene	gene_id
+sjdbInsertSave	Basic
+genomeFileSizes	94086990 773898464

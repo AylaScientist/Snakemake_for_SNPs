@@ -36,3 +36,21 @@ rule create_dict:
         "envs/picard.yaml"
     script:
         "scripts/createsequencedictionary.py"
+
+rule genome_faindex:
+    input:
+        config['ref']['genome'],
+    output:
+        config['ref']['fai'],
+    log:
+        "logs/samtools/faindex.log",
+    params:
+        extra="",  
+        java_opts=config['java_opts'],
+    threads: config['threads']
+    resources:
+        mem_mb=config['mem_mb']
+    conda:
+        "envs/samtools.yaml"
+    script:
+        "scripts/faidx.py"

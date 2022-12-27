@@ -90,6 +90,7 @@ ref:
   gtf: "genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf"
   SAindex: "genome/SAindex"
   dict: "genome/Tilapia_NC_031967.2_GCF_001858045.2.dict"
+  fai: "genome/Tilapia_NC_031967.2_GCF_001858045.2.fa.fai"
   read_length: 89 # Read length - 1
 
 filtering:
@@ -135,12 +136,11 @@ params:
   annotation:
     buildver: "ON" # Write here the location of the database refGene.txt with the speces prefix (ON Oreochromis nilotius)
     path: "ON/"
-    pathbuild: "ON/ON"
-    o1: "annotated/annotated_all_snps_{pseudo}.ON_multianno.vcf" # Change the prefix by the one in the database of the annotation, defined just in the line above
+    pathbuild: "ON/ON" 
+    output: ".ON_multianno.vcf" # Change the prefix by the one in the database of the annotation, defined just in the line above
     extra: "-SMA TRUE -F CHROM -F POS -F Gene.refGene -F Func.refGene -F ExonicFunc.refGene -F AF -GF AD -GF GT" #Parameters to take
     #Change the name of the example species (Nile) into your studied species
-    convert: "annotated/annovar_Nile_{pseudo}"
-    output_token: "annotated/annotated_Nile_snps_{pseudo}"
-    output_annotate: "annotated/annotated_Nile_snps_{pseudo}.variant_function"
-  
+    convert: "annotated/annovar_Nile_"
+    output_annotate: "annotated/annotated_Nile_snps_"
+      
   var2table: "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"

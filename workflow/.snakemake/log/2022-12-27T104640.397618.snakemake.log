@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule gatk_select_PSG  in line 1 of /home/fish/Snakemake_for_SNPs/workflow/rules/select_pseudo.smk:
+Missing input files for rule gatk_select_PSG:
+    output: calls/selected_GF6.vcf
+    wildcards: pseudo=GF6
+    affected files:
+        pseudogenomes/14FW20-7/14FW20-7_GCF_001858045.2.fa

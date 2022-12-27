@@ -29,7 +29,7 @@ rule pseudo_index:
     params:
         threads= "16",
         dir = "pseudogenomes/{pseudo}/",
-        annotation = "genome/Tilapia_GCF_001858045.2_annotation.gtf",
+        annotation = config['ref']['gtf'],
         read_length = "148" #Read length -1
     resources:
         mem_mb=config['mem_mb_combine']

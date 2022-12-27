@@ -23,4 +23,4 @@ rule star_se:
     conda:
         "envs/star.yaml"
     script:
-        "scripts/star.py"
+        "scripts/star_se.py"

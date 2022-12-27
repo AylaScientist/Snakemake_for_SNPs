@@ -3,7 +3,7 @@ rule mark_duplicates_pseudo:
     input:
         "fixed-rg/{sample}_{pseudo}.bam"
     output:
-        bam=temp("marked_dedup/{sample}_{pseudo}.bam"),
+        bam="marked_dedup/{sample}_{pseudo}.bam",
         metrics="marked_dedup/{sample}_{pseudo}.metrics.txt"
     conda:
         "envs/picard.yaml"

@@ -1,0 +1,38 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+combine_gvcfs_PSG0        1              6              6
+combine_gvcfs_PSG1        1              6              6
+total                     3              1              6
+
+Select jobs to execute...
+
+[Tue Dec 27 10:41:10 2022]
+rule combine_gvcfs_PSG0:
+    input: calls/GF6_GF6.g.vcf, calls/KF6_GF6.g.vcf, calls/GS4_GF6.g.vcf, calls/KS4_GF6.g.vcf, genome/Tilapia_NC_031967.2_GCF_001858045.2.fa
+    output: calls/all_g_GF6.vcf
+    log: logs/gatk/combinegvcfs/combinegvcfs_GF6.log
+    jobid: 1
+    reason: Missing output files: calls/all_g_GF6.vcf
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Dec 27 10:41:10 2022]
+rule combine_gvcfs_PSG1:
+    input: calls/GF6_KS4.g.vcf, calls/KF6_KS4.g.vcf, calls/GS4_KS4.g.vcf, calls/KS4_KS4.g.vcf, genome/Tilapia_NC_031967.2_GCF_001858045.2.fa
+    output: calls/all_g_KS4.vcf
+    log: logs/gatk/combinegvcfs/combinegvcfs_GF6.log
+    jobid: 28
+    reason: Missing output files: calls/all_g_KS4.vcf
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+Waiting at most 5 seconds for missing files.
+Terminating processes on user request, this might take some time.
+Complete log: .snakemake/log/2022-12-27T104110.591237.snakemake.log

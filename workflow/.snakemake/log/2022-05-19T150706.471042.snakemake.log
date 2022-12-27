@@ -1,4 +1,0 @@
-CreateRuleException in line 1 of /home/fish_station/GitHub/workflow/rules/results_mae.smk:
-The name results is already used by another rule
-  File "/home/fish_station/GitHub/workflow/Snakefile", line 107, in <module>
-  File "/home/fish_station/GitHub/workflow/rules/results_mae.smk", line 1, in <module>

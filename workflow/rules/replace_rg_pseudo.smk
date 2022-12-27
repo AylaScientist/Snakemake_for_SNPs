@@ -2,7 +2,7 @@ rule replace_rg_PSG:
     input:
         "{sample}_{pseudo}_Aligned.sortedByCoord.out.bam"
     output:
-        temp("fixed-rg/{sample}_{pseudo}.bam")
+        "fixed-rg/{sample}_{pseudo}.bam"
     conda:
         "envs/picard.yaml"
     log:

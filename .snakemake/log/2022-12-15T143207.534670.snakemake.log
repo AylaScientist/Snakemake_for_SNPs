@@ -1,0 +1,3 @@
+WorkflowError in line 3 of /home/fish/Snakemake_for_SNPs/workflow/Snakefile:
+Workflow defines configfile ../config/config.yaml but it is not present or accessible.
+  File "/home/fish/Snakemake_for_SNPs/workflow/Snakefile", line 3, in <module>

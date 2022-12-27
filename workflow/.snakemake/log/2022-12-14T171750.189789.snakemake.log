@@ -1,3 +1,0 @@
-Multiple includes of /home/fish/Snakemake_for_SNPs/workflow/rules/trimmomatic_se.smk ignored
-Multiple includes of /home/fish/Snakemake_for_SNPs/workflow/rules/star_gi_ref.smk ignored
-Building DAG of jobs...

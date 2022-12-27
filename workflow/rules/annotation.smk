@@ -23,7 +23,13 @@ rule token_annotation:
     shell:
         "touch {output.o1} "
 
-
+rule token_pathbuild:
+    input:
+        config['params']['annotation']['convert']+pseudos[0]
+    output:
+        o1 = config['params']['annotation']['pathbuild']
+    shell:
+        "touch {output.o1} "
 
 # Collect the annotations in the db
 rule annotate:
@@ -58,7 +64,7 @@ rule an_table:
     input:
         i1=config['params']['annotation']['convert']+'{pseudo}',
         i2=config['params']['annotation']['output_annotate']+"{pseudo}.variant_function",
-        i3=config['params']['annotation']['output_annotate']+'{pseudo}',
+        i3="annotated/annotated_all_snps_{pseudo}",
         gvcf1="calls/all_{pseudo}.vcf",
         path=config['params']['annotation']['path'], #Path to the database (buildver)
         buildver=config['params']['annotation']['buildver']

@@ -1,0 +1,113 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+an_table                  2             12             12
+annotate                  2             12             12
+convert_to_annovar        2             12             12
+token_annotation          2              1              1
+token_pathbuild           1              1              1
+total                    10              1             12
+
+Select jobs to execute...
+
+[Tue Dec 27 13:36:46 2022]
+rule convert_to_annovar:
+    input: calls/selected_KS4.vcf
+    output: annotated/annovar_Nile_KS4
+    jobid: 36
+    reason: Missing output files: annotated/annovar_Nile_KS4
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 13:36:46 2022]
+Finished job 36.
+1 of 10 steps (10%) done
+Select jobs to execute...
+
+[Tue Dec 27 13:36:46 2022]
+rule convert_to_annovar:
+    input: calls/selected_GF6.vcf
+    output: annotated/annovar_Nile_GF6
+    jobid: 2
+    reason: Missing output files: annotated/annovar_Nile_GF6
+    wildcards: pseudo=GF6
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 13:36:46 2022]
+Finished job 2.
+2 of 10 steps (20%) done
+Select jobs to execute...
+
+[Tue Dec 27 13:36:46 2022]
+rule token_annotation:
+    input: annotated/annovar_Nile_KS4
+    output: annotated/annotated_Nile_snps_KS4
+    jobid: 61
+    reason: Missing output files: annotated/annotated_Nile_snps_KS4; Input files updated by another job: annotated/annovar_Nile_KS4
+    wildcards: pseudo=KS4
+    resources: tmpdir=/tmp
+
+
+[Tue Dec 27 13:36:46 2022]
+rule token_pathbuild:
+    input: annotated/annovar_Nile_GF6
+    output: ON/ON
+    jobid: 33
+    reason: Missing output files: ON/ON; Input files updated by another job: annotated/annovar_Nile_GF6
+    resources: tmpdir=/tmp
+
+
+[Tue Dec 27 13:36:46 2022]
+rule token_annotation:
+    input: annotated/annovar_Nile_GF6
+    output: annotated/annotated_Nile_snps_GF6
+    jobid: 34
+    reason: Missing output files: annotated/annotated_Nile_snps_GF6; Input files updated by another job: annotated/annovar_Nile_GF6
+    wildcards: pseudo=GF6
+    resources: tmpdir=/tmp
+
+[Tue Dec 27 13:36:46 2022]
+Finished job 61.
+3 of 10 steps (30%) done
+[Tue Dec 27 13:36:46 2022]
+Finished job 33.
+4 of 10 steps (40%) done
+[Tue Dec 27 13:36:46 2022]
+Finished job 34.
+5 of 10 steps (50%) done
+Select jobs to execute...
+
+[Tue Dec 27 13:36:46 2022]
+rule annotate:
+    input: annotated/annovar_Nile_KS4, ON/ON, annotated/annotated_Nile_snps_KS4
+    output: annotated/annotated_Nile_snps_KS4.variant_function
+    jobid: 60
+    reason: Missing output files: annotated/annotated_Nile_snps_KS4.variant_function; Input files updated by another job: ON/ON, annotated/annotated_Nile_snps_KS4, annotated/annovar_Nile_KS4
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+Select jobs to execute...
+[Tue Dec 27 13:36:48 2022]
+Error in rule annotate:
+    jobid: 60
+    input: annotated/annovar_Nile_KS4, ON/ON, annotated/annotated_Nile_snps_KS4
+    output: annotated/annotated_Nile_snps_KS4.variant_function
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/f265d7e8063ddbe6a87fa85bc44d258d_
+    shell:
+        perl scripts/annotate_variation.pl -geneanno annotated/annovar_Nile_KS4 -buildver ON/ON ./ -outfile annotated/annotated_Nile_snps_KS4
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job annotate since they might be corrupted:
+annotated/annotated_Nile_snps_KS4.variant_function
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-12-27T133645.779211.snakemake.log

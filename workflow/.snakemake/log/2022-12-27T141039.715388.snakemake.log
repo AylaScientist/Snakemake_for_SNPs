@@ -1,0 +1,100 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job            count    min threads    max threads
+-----------  -------  -------------  -------------
+all                1              1              1
+an_table           2             12             12
+annotate           1             12             12
+token_table        2              1              1
+total              6              1             12
+
+Select jobs to execute...
+
+[Tue Dec 27 14:10:40 2022]
+rule token_table:
+    input: annotated/annotated_Nile_snps_KS4.variant_function
+    output: annotated/annotated_all_snps_KS4
+    jobid: 63
+    reason: Missing output files: annotated/annotated_all_snps_KS4
+    wildcards: pseudo=KS4
+    resources: tmpdir=/tmp
+
+[Tue Dec 27 14:10:40 2022]
+Finished job 63.
+1 of 6 steps (17%) done
+Select jobs to execute...
+
+[Tue Dec 27 14:10:40 2022]
+rule an_table:
+    input: annotated/annovar_Nile_KS4, annotated/annotated_Nile_snps_KS4.variant_function, annotated/annotated_all_snps_KS4, calls/all_KS4.vcf, ON, ON
+    output: annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    jobid: 36
+    reason: Missing output files: annotated/annotated_all_snps_KS4.ON_multianno.vcf; Input files updated by another job: annotated/annotated_all_snps_KS4
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 14:10:42 2022]
+Finished job 36.
+2 of 6 steps (33%) done
+Select jobs to execute...
+
+[Tue Dec 27 14:10:42 2022]
+rule annotate:
+    input: annotated/annovar_Nile_GF6, ON/ON, annotated/annotated_Nile_snps_GF6
+    output: annotated/annotated_Nile_snps_GF6.variant_function
+    jobid: 32
+    reason: Missing output files: annotated/annotated_Nile_snps_GF6.variant_function
+    wildcards: pseudo=GF6
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 14:10:44 2022]
+Finished job 32.
+3 of 6 steps (50%) done
+Select jobs to execute...
+
+[Tue Dec 27 14:10:44 2022]
+rule token_table:
+    input: annotated/annotated_Nile_snps_GF6.variant_function
+    output: annotated/annotated_all_snps_GF6
+    jobid: 35
+    reason: Missing output files: annotated/annotated_all_snps_GF6; Input files updated by another job: annotated/annotated_Nile_snps_GF6.variant_function
+    wildcards: pseudo=GF6
+    resources: tmpdir=/tmp
+
+[Tue Dec 27 14:10:44 2022]
+Finished job 35.
+4 of 6 steps (67%) done
+Select jobs to execute...
+
+[Tue Dec 27 14:10:44 2022]
+rule an_table:
+    input: annotated/annovar_Nile_GF6, annotated/annotated_Nile_snps_GF6.variant_function, annotated/annotated_all_snps_GF6, calls/all_GF6.vcf, ON, ON
+    output: annotated/annotated_all_snps_GF6.ON_multianno.vcf
+    jobid: 1
+    reason: Missing output files: annotated/annotated_all_snps_GF6.ON_multianno.vcf; Input files updated by another job: annotated/annotated_all_snps_GF6, annotated/annotated_Nile_snps_GF6.variant_function
+    wildcards: pseudo=GF6
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 14:10:46 2022]
+Finished job 1.
+5 of 6 steps (83%) done
+Select jobs to execute...
+
+[Tue Dec 27 14:10:46 2022]
+localrule all:
+    input: annotated/annotated_all_snps_GF6.ON_multianno.vcf, annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    jobid: 0
+    reason: Input files updated by another job: annotated/annotated_all_snps_GF6.ON_multianno.vcf, annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    resources: tmpdir=/tmp
+
+[Tue Dec 27 14:10:46 2022]
+Finished job 0.
+6 of 6 steps (100%) done
+Complete log: .snakemake/log/2022-12-27T141039.715388.snakemake.log

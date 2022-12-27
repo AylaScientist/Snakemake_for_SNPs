@@ -53,7 +53,8 @@ rule all:
         #vcf=expand("calls/all_{pseudo}.vcf", pseudo = pseudos),
         #vcf=expand("calls/selected_{pseudo}.vcf", pseudo = pseudos),
         #annotated=expand(config['params']['annotation']['convert']+'{pseudo}', pseudo = pseudos),
-        o1=expand(config['params']['annotation']['output_annotate']+"{pseudo}.variant_function", pseudo = pseudos),
+        #o1=expand(config['params']['annotation']['output_annotate']+"{pseudo}.variant_function", pseudo = pseudos),
+        o1=expand("annotated/annotated_all_snps_{pseudo}"+config['params']['annotation']['output'], pseudo = pseudos)
         #vcf="variants/AD_GT_counts_bi.table",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz",

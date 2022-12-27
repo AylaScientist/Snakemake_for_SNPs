@@ -1,0 +1,41 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+an_table                  2             12             12
+annotate                  2             12             12
+convert_to_annovar        2             12             12
+token_annotation          2              1              1
+token_pathbuild           1              1              1
+total                    10              1             12
+
+Select jobs to execute...
+
+[Tue Dec 27 13:34:37 2022]
+rule convert_to_annovar:
+    input: calls/selected_KS4.vcf
+    output: annotated/annovar_Nile_KS4
+    jobid: 36
+    reason: Missing output files: annotated/annovar_Nile_KS4
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 13:34:37 2022]
+Error in rule convert_to_annovar:
+    jobid: 36
+    input: calls/selected_KS4.vcf
+    output: annotated/annovar_Nile_KS4
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/f265d7e8063ddbe6a87fa85bc44d258d_
+    shell:
+        perl scripts/convert2annovar.pl calls/selected_KS4.vcf -format vcf4 -allsample -withfreq -withfilter -context -out annotated/annovar_Nile_KS4
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-12-27T133436.850715.snakemake.log

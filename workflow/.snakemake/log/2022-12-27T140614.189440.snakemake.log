@@ -1,0 +1,32 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job         count    min threads    max threads
+--------  -------  -------------  -------------
+all             1              1              1
+an_table        2             12             12
+annotate        1             12             12
+total           4              1             12
+
+Select jobs to execute...
+
+[Tue Dec 27 14:06:15 2022]
+rule an_table:
+    input: annotated/annovar_Nile_KS4, annotated/annotated_Nile_snps_KS4.variant_function, annotated/annotated_Nile_snps_KS4, calls/all_KS4.vcf, ON, ON
+    output: annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    jobid: 35
+    reason: Missing output files: annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule an_table  in line 63 of /home/fish/Snakemake_for_SNPs/workflow/rules/annotation.smk:
+Job Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+annotated/annotated_all_snps_KS4.ON_multianno.vcf completed successfully, but some output files are missing. 35
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-12-27T140614.189440.snakemake.log

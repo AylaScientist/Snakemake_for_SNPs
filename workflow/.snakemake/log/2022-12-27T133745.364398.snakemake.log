@@ -1,0 +1,40 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job         count    min threads    max threads
+--------  -------  -------------  -------------
+all             1              1              1
+an_table        2             12             12
+annotate        2             12             12
+total           5              1             12
+
+Select jobs to execute...
+
+[Tue Dec 27 13:37:46 2022]
+rule annotate:
+    input: annotated/annovar_Nile_GF6, ON/ON, annotated/annotated_Nile_snps_GF6
+    output: annotated/annotated_Nile_snps_GF6.variant_function
+    jobid: 32
+    reason: Missing output files: annotated/annotated_Nile_snps_GF6.variant_function
+    wildcards: pseudo=GF6
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=120000
+
+[Tue Dec 27 13:37:47 2022]
+Error in rule annotate:
+    jobid: 32
+    input: annotated/annovar_Nile_GF6, ON/ON, annotated/annotated_Nile_snps_GF6
+    output: annotated/annotated_Nile_snps_GF6.variant_function
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/f265d7e8063ddbe6a87fa85bc44d258d_
+    shell:
+        perl scripts/annotate_variation.pl -geneanno annotated/annovar_Nile_GF6 -buildver ON/ON ./ -outfile annotated/annotated_Nile_snps_GF6
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job annotate since they might be corrupted:
+annotated/annotated_Nile_snps_GF6.variant_function
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-12-27T133745.364398.snakemake.log

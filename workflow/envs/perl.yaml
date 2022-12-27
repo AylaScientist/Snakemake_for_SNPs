@@ -1,0 +1,8 @@
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - perl ==5.26.2
+  - conda == 22.11.1
+  

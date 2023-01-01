@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule gatk_variantstotable_PSG in file /home/ayla/Dropbox/salinity_RNAseq/Github/workflow/rules/variants_to_table.smk, line 1:
+Missing input files for rule gatk_variantstotable_PSG:
+    output: variants/AD_GT_counts_bi_GF6.table
+    wildcards: pseudo=GF6
+    affected files:
+        pseudogenomes/GF6/GF6_GCF_001858045.2.fa

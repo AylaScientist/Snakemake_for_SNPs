@@ -10,6 +10,9 @@ If you use our pipeline you need to cite us:
 
 WARNING: adapt the citation to our link:
 
+
+NOTE: This pipeline is created in Linux and other platforms may not work out accurately. 
+
 ## Workflow
 <img src="https://github.com/AylaScientist/Snakemake_for_SNPs/blob/master/Figure%201%20Pipeline%20white%20background.png" width="800">
 
@@ -51,11 +54,11 @@ Install the packages including the bio tools:
 
 `conda install -c bioconda samtools=1.6`
 
-`conda install -c bioconda bcftools=1.9`
+`conda install -c bioconda bcftools=1.16`
 
 `conda install -c bioconda vcftools=0.1.16`
 
-`conda install -c bioconda htslib=1.9`
+`conda install -c bioconda htslib=1.16`
 
 `conda install -c anaconda perl=5.26.2`
 
@@ -80,14 +83,16 @@ Now that the resources are adapted to your computer, run a dry run for the pipel
 If this point doesn't work, please contact me: ayla.bcn@gmail.com
 
 
-### Run the pipeline with the desired resources. This is an example for 4 threads at 4GB
-`snakemake --cores 4 --mem_mb 40000 `
+### Run the pipeline with the desired resources. 
+This is an example for 4 threads at 4GB.
+
+`snakemake --use-conda --cores 4`
 
 
 ### Set up configuration for your personal project
-Customize the workflow based on your need in 
+Customize the workflow based on your need in the next file:
 
-`configs/config_main.yaml`.
+`./config/config_main.yaml`.
 
 In this file you should also change the species and the different databases for gene/transcript/protein/GO_function/KEGG correct annotation and mining of the data
 

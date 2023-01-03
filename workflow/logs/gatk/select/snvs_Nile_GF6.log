@@ -1,36 +1,36 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-10:49:13.028 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
-Dec 27, 2022 10:49:13 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+10:06:07.797 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Jan 03, 2023 10:06:07 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
 INFO: Failed to detect whether we are running on Google Compute Engine.
-10:49:13.116 INFO  SelectVariants - ------------------------------------------------------------
-10:49:13.116 INFO  SelectVariants - The Genome Analysis Toolkit (GATK) v4.2.5.0
-10:49:13.116 INFO  SelectVariants - For support and documentation go to https://software.broadinstitute.org/gatk/
-10:49:13.116 INFO  SelectVariants - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
-10:49:13.116 INFO  SelectVariants - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
-10:49:13.116 INFO  SelectVariants - Start Date/Time: 27 December 2022 at 10:49:13 IST
-10:49:13.117 INFO  SelectVariants - ------------------------------------------------------------
-10:49:13.117 INFO  SelectVariants - ------------------------------------------------------------
-10:49:13.117 INFO  SelectVariants - HTSJDK Version: 2.24.1
-10:49:13.117 INFO  SelectVariants - Picard Version: 2.25.4
-10:49:13.117 INFO  SelectVariants - Built for Spark Version: 2.4.5
-10:49:13.117 INFO  SelectVariants - HTSJDK Defaults.COMPRESSION_LEVEL : 2
-10:49:13.117 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
-10:49:13.117 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
-10:49:13.117 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
-10:49:13.117 INFO  SelectVariants - Deflater: IntelDeflater
-10:49:13.118 INFO  SelectVariants - Inflater: IntelInflater
-10:49:13.118 INFO  SelectVariants - GCS max retries/reopens: 20
-10:49:13.118 INFO  SelectVariants - Requester pays: disabled
-10:49:13.118 INFO  SelectVariants - Initializing engine
-10:49:13.215 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/all_GF6.vcf
-10:49:13.228 INFO  SelectVariants - Done initializing engine
-10:49:13.250 INFO  ProgressMeter - Starting traversal
-10:49:13.251 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
-10:49:13.319 INFO  ProgressMeter -             unmapped              0.0                   576         508235.3
-10:49:13.320 INFO  ProgressMeter - Traversal complete. Processed 576 total variants in 0.0 minutes.
-10:49:13.354 INFO  SelectVariants - Shutting down engine
-[27 December 2022 at 10:49:13 IST] org.broadinstitute.hellbender.tools.walkers.variantutils.SelectVariants done. Elapsed time: 0.01 minutes.
-Runtime.totalMemory()=53687091200
+10:06:07.892 INFO  SelectVariants - ------------------------------------------------------------
+10:06:07.892 INFO  SelectVariants - The Genome Analysis Toolkit (GATK) v4.2.5.0
+10:06:07.892 INFO  SelectVariants - For support and documentation go to https://software.broadinstitute.org/gatk/
+10:06:07.893 INFO  SelectVariants - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+10:06:07.893 INFO  SelectVariants - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+10:06:07.893 INFO  SelectVariants - Start Date/Time: 3 January 2023 at 10:06:07 IST
+10:06:07.893 INFO  SelectVariants - ------------------------------------------------------------
+10:06:07.893 INFO  SelectVariants - ------------------------------------------------------------
+10:06:07.893 INFO  SelectVariants - HTSJDK Version: 2.24.1
+10:06:07.893 INFO  SelectVariants - Picard Version: 2.25.4
+10:06:07.893 INFO  SelectVariants - Built for Spark Version: 2.4.5
+10:06:07.893 INFO  SelectVariants - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+10:06:07.894 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+10:06:07.894 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+10:06:07.894 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+10:06:07.894 INFO  SelectVariants - Deflater: IntelDeflater
+10:06:07.894 INFO  SelectVariants - Inflater: IntelInflater
+10:06:07.894 INFO  SelectVariants - GCS max retries/reopens: 20
+10:06:07.894 INFO  SelectVariants - Requester pays: disabled
+10:06:07.894 INFO  SelectVariants - Initializing engine
+10:06:08.004 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/all_GF6.vcf
+10:06:08.016 INFO  SelectVariants - Done initializing engine
+10:06:08.033 INFO  ProgressMeter - Starting traversal
+10:06:08.033 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+10:06:08.090 INFO  ProgressMeter -             unmapped              0.0                   576         606315.8
+10:06:08.090 INFO  ProgressMeter - Traversal complete. Processed 576 total variants in 0.0 minutes.
+10:06:08.125 INFO  SelectVariants - Shutting down engine
+[3 January 2023 at 10:06:08 IST] org.broadinstitute.hellbender.tools.walkers.variantutils.SelectVariants done. Elapsed time: 0.01 minutes.
+Runtime.totalMemory()=6442450944
 Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
 Running:
-    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms50G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar SelectVariants -R pseudogenomes/GF6/GF6_GCF_001858045.2.fa -V calls/all_GF6.vcf --restrict-alleles-to BIALLELIC -O calls/selected_GF6.vcf
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms6G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar SelectVariants -R pseudogenomes/GF6/GF6_GCF_001858045.2.fa -V calls/all_GF6.vcf --restrict-alleles-to BIALLELIC -O calls/selected_GF6.vcf

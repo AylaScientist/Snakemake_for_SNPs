@@ -12,6 +12,10 @@ java_opts = get_java_opts(snakemake)
 
 log = snakemake.log_fmt_shell(stdout=True, stderr=True)
 shell(
-    "gatk --java-options '{java_opts}' VariantsToTable -R {snakemake.input.ref} -V {snakemake.input.vcf} "
-    "{extra} -O {snakemake.output.vcf} {log}"
+    "gatk --java-options '{java_opts}' "
+    "VariantsToTable "
+    "-R {snakemake.input.ref} "
+    "-V {snakemake.input.vcf} "
+    "{extra} "
+    "-O {snakemake.output.vcf} {log}"
 )

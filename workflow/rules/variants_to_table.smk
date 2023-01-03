@@ -1,6 +1,6 @@
 rule gatk_variantstotable_PSG:
     input:
-        o1="annotated/annotated_all_snps_{pseudo}"+config['params']['annotation']['output'],
+        vcf="annotated/annotated_all_snps_{pseudo}"+config['params']['annotation']['output'],
         ref=config['params']['var2table']
     output:
         vcf="variants/AD_GT_counts_bi_{pseudo}.table"
@@ -9,7 +9,6 @@ rule gatk_variantstotable_PSG:
     log:
         "logs/gatk/var2table/snvs_{pseudo}.log"
     params:
-        o1="annotated/annotated_all_snps_{pseudo}"+config['params']['annotation']['output'],
         extra= config['params']['annotation']['extra'],  # optional filter arguments, see GATK docs
         java_opts=config['java_opts_combine'],
     threads: config['threads_combine']

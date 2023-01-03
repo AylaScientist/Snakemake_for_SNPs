@@ -1,0 +1,141 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count    min threads    max threads
+------------------------  -------  -------------  -------------
+all                             1              1              1
+an_table                        2             12             12
+annotate                        2             12             12
+combine_gvcfs_PSG0              1              6              6
+combine_gvcfs_PSG1              1              6              6
+convert_to_annovar              2             12             12
+gatk_select_PSG                 2              6              6
+gatk_variantstotable_PSG        2              6              6
+genotype_gvcfs_PSG              2              3              3
+table_step1_PSG                 2              1              1
+table_step2_PSG                 2              6              6
+token_annotation                2              1              1
+token_pathbuild                 1              1              1
+token_table                     2              1              1
+total                          24              1             12
+
+Select jobs to execute...
+
+[Tue Jan  3 10:05:59 2023]
+rule combine_gvcfs_PSG1:
+    input: calls/GF6_KS4.g.vcf, calls/KF6_KS4.g.vcf, calls/GS4_KS4.g.vcf, calls/KS4_KS4.g.vcf, genome/Tilapia_NC_031967.2_GCF_001858045.2.fa
+    output: calls/all_g_KS4.vcf
+    log: logs/gatk/combinegvcfs/combinegvcfs_GF6.log
+    jobid: 46
+    reason: Params have changed since last execution
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 10:05:59 2023]
+rule combine_gvcfs_PSG0:
+    input: calls/GF6_GF6.g.vcf, calls/KF6_GF6.g.vcf, calls/GS4_GF6.g.vcf, calls/KS4_GF6.g.vcf, genome/Tilapia_NC_031967.2_GCF_001858045.2.fa
+    output: calls/all_g_GF6.vcf
+    log: logs/gatk/combinegvcfs/combinegvcfs_GF6.log
+    jobid: 8
+    reason: Params have changed since last execution
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 10:06:03 2023]
+Finished job 8.
+1 of 24 steps (4%) done
+Select jobs to execute...
+
+[Tue Jan  3 10:06:03 2023]
+rule genotype_gvcfs_PSG:
+    input: calls/all_g_GF6.vcf, genome/Tilapia_NC_031967.2_GCF_001858045.2.fa
+    output: calls/all_GF6.vcf
+    log: logs/gatk/genotypegvcfs/genotypegvcfs_GF6.log
+    jobid: 7
+    reason: Input files updated by another job: calls/all_g_GF6.vcf
+    wildcards: pseudo=GF6
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=3000
+
+[Tue Jan  3 10:06:03 2023]
+Finished job 46.
+2 of 24 steps (8%) done
+Select jobs to execute...
+
+[Tue Jan  3 10:06:03 2023]
+rule genotype_gvcfs_PSG:
+    input: calls/all_g_KS4.vcf, genome/Tilapia_NC_031967.2_GCF_001858045.2.fa
+    output: calls/all_KS4.vcf
+    log: logs/gatk/genotypegvcfs/genotypegvcfs_KS4.log
+    jobid: 45
+    reason: Input files updated by another job: calls/all_g_KS4.vcf
+    wildcards: pseudo=KS4
+    threads: 3
+    resources: tmpdir=/tmp, mem_mb=3000
+
+[Tue Jan  3 10:06:06 2023]
+Finished job 7.
+3 of 24 steps (12%) done
+Select jobs to execute...
+
+[Tue Jan  3 10:06:06 2023]
+rule gatk_select_PSG:
+    input: calls/all_GF6.vcf, pseudogenomes/GF6/GF6_GCF_001858045.2.fa
+    output: calls/selected_GF6.vcf
+    log: logs/gatk/select/snvs_Nile_GF6.log
+    jobid: 6
+    reason: Input files updated by another job: calls/all_GF6.vcf
+    wildcards: pseudo=GF6
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 10:06:06 2023]
+Finished job 45.
+4 of 24 steps (17%) done
+Select jobs to execute...
+
+[Tue Jan  3 10:06:06 2023]
+rule gatk_select_PSG:
+    input: calls/all_KS4.vcf, pseudogenomes/KS4/KS4_GCF_001858045.2.fa
+    output: calls/selected_KS4.vcf
+    log: logs/gatk/select/snvs_Nile_KS4.log
+    jobid: 44
+    reason: Input files updated by another job: calls/all_KS4.vcf
+    wildcards: pseudo=KS4
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 10:06:08 2023]
+Finished job 6.
+5 of 24 steps (21%) done
+Select jobs to execute...
+[Tue Jan  3 10:06:08 2023]
+Finished job 44.
+6 of 24 steps (25%) done
+
+[Tue Jan  3 10:06:08 2023]
+rule convert_to_annovar:
+    input: calls/selected_GF6.vcf
+    output: annotated/annovar_Nile_GF6
+    jobid: 5
+    reason: Input files updated by another job: calls/selected_GF6.vcf
+    wildcards: pseudo=GF6
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan  3 10:06:08 2023]
+Error in rule convert_to_annovar:
+    jobid: 5
+    input: calls/selected_GF6.vcf
+    output: annotated/annovar_Nile_GF6
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/f265d7e8063ddbe6a87fa85bc44d258d_
+    shell:
+        perl scripts/convert2annovar.pl calls/selected_GF6.vcf -format vcf4 -allsample -withfreq -withfilter -context -out annotated/annovar_Nile_GF6
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-03T100558.448813.snakemake.log

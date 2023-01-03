@@ -21,20 +21,20 @@ gpu: 0
 #jobs_per_gpu: 6
 
 #Parallel_jobs: Is the total resources divided by the number of samples, 4 in this case
-java_opts_parallel: "-XX:MinRAMPercentage=80.0 -Xms25G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=3 -XX:+UseTLAB"
-threads_parallel: 1 # that refers to the number of cores. The parallel threads are defined above
-mem_mb_parallel: 1000
+java_opts_parallel: "-XX:MinRAMPercentage=80.0 -Xms3G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=3 -XX:+UseTLAB"
+threads_parallel: 3 # that refers to the number of cores. The parallel threads are defined above
+mem_mb_parallel: 3000
 
 
 #Combine: Is total resources divided by two pseudogenomes
-java_opts_combine: "-XX:MinRAMPercentage=80.0 -Xms50G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB"
-threads_combine: 2 # that refers to the number of cores. The parallel threads are defined above
-mem_mb_combine: 2000
+java_opts_combine: "-XX:MinRAMPercentage=80.0 -Xms6G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB"
+threads_combine: 6 # that refers to the number of cores. The parallel threads are defined above
+mem_mb_combine: 6000
 
 #Reference genome: Total resources for rules that do not have parallel works. 
-java_opts: "-XX:MinRAMPercentage=80.0 -Xms100G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=12 -XX:+UseTLAB"
-threads: 4 # that refers to the number of cores. The parallel threads are defined above
-mem_mb: 4000
+java_opts: "-XX:MinRAMPercentage=80.0 -Xms12G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=12 -XX:+UseTLAB"
+threads: 12 # that refers to the number of cores. The parallel threads are defined above
+mem_mb: 12000
 
 # Path to workflow with relation to snakefile. Can vary depending on your HPC configuration
 path: "~/AylaScientist/Snakemake_for_SNPs/GitHub/workflow/"

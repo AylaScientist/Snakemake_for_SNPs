@@ -1,6 +1,36 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-Error occurred during initialization of VM
-Initial heap size set to a larger value than the maximum heap size
+10:13:33.314 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Jan 03, 2023 10:13:33 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+INFO: Failed to detect whether we are running on Google Compute Engine.
+10:13:33.402 INFO  VariantsToTable - ------------------------------------------------------------
+10:13:33.402 INFO  VariantsToTable - The Genome Analysis Toolkit (GATK) v4.2.5.0
+10:13:33.402 INFO  VariantsToTable - For support and documentation go to https://software.broadinstitute.org/gatk/
+10:13:33.402 INFO  VariantsToTable - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+10:13:33.403 INFO  VariantsToTable - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+10:13:33.403 INFO  VariantsToTable - Start Date/Time: 3 January 2023 at 10:13:33 IST
+10:13:33.403 INFO  VariantsToTable - ------------------------------------------------------------
+10:13:33.403 INFO  VariantsToTable - ------------------------------------------------------------
+10:13:33.403 INFO  VariantsToTable - HTSJDK Version: 2.24.1
+10:13:33.403 INFO  VariantsToTable - Picard Version: 2.25.4
+10:13:33.403 INFO  VariantsToTable - Built for Spark Version: 2.4.5
+10:13:33.403 INFO  VariantsToTable - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+10:13:33.403 INFO  VariantsToTable - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+10:13:33.403 INFO  VariantsToTable - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+10:13:33.403 INFO  VariantsToTable - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+10:13:33.404 INFO  VariantsToTable - Deflater: IntelDeflater
+10:13:33.404 INFO  VariantsToTable - Inflater: IntelInflater
+10:13:33.404 INFO  VariantsToTable - GCS max retries/reopens: 20
+10:13:33.404 INFO  VariantsToTable - Requester pays: disabled
+10:13:33.404 INFO  VariantsToTable - Initializing engine
+10:13:33.495 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/annotated/annotated_all_snps_GF6.ON_multianno.vcf
+10:13:33.507 INFO  VariantsToTable - Done initializing engine
+10:13:33.510 INFO  ProgressMeter - Starting traversal
+10:13:33.510 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+10:13:33.576 INFO  ProgressMeter -             unmapped              0.0                   576         531692.3
+10:13:33.576 INFO  ProgressMeter - Traversal complete. Processed 576 total variants in 0.0 minutes.
+10:13:33.576 INFO  VariantsToTable - Shutting down engine
+[3 January 2023 at 10:13:33 IST] org.broadinstitute.hellbender.tools.walkers.variantutils.VariantsToTable done. Elapsed time: 0.00 minutes.
+Runtime.totalMemory()=5368709120
 Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
 Running:
-    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms50G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB -Xmx6000M -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar VariantsToTable -R pseudogenomes/GF6/GF6_GCF_001858045.2.fa -V annotated/annotated_all_snps_GF6.ON_multianno.vcf -SMA TRUE -F CHROM -F POS -F Gene.refGene -F Func.refGene -F ExonicFunc.refGene -F AF -GF AD -GF GT -O variants/AD_GT_counts_bi_GF6.table
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms5G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB -Xmx6000M -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar VariantsToTable -R pseudogenomes/GF6/GF6_GCF_001858045.2.fa -V annotated/annotated_all_snps_GF6.ON_multianno.vcf -SMA TRUE -F CHROM -F POS -F Gene.refGene -F Func.refGene -F ExonicFunc.refGene -F AF -GF AD -GF GT -O variants/AD_GT_counts_bi_GF6.table

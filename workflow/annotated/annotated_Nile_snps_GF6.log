@@ -3,9 +3,9 @@ ANNOVAR Version:
 ANNOVAR Information:
 	For questions, comments, documentation, bug reports and program update, please visit http://www.openbioinformatics.org/annovar/
 ANNOVAR Command:
-	scripts/annotate_variation.pl -geneanno annotated/annovar_Nile_GF6 -buildver ON/ON ./ -outfile annotated/annotated_Nile_snps_GF6
+	./rules/scripts/annotate_variation.pl -geneanno annotated/annovar_Nile_GF6 -buildver ON/ON ./ -outfile annotated/annotated_Nile_snps_GF6
 ANNOVAR Started:
-	Tue Dec 27 14:10:42 2022
+	Tue Jan  3 10:13:28 2023
 NOTICE: Output files were written to annotated/annotated_Nile_snps_GF6.variant_function, annotated/annotated_Nile_snps_GF6.exonic_variant_function
 NOTICE: Reading gene annotation from ./ON/ON_refGene.txt ... Done with 80429 transcripts (including 18397 without coding sequence annotation) for 42623 unique genes
 NOTICE: Processing next batch with 575 unique variants in 575 input lines

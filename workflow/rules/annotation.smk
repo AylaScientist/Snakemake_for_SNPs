@@ -10,7 +10,7 @@ rule convert_to_annovar:
     conda:
         "envs/perl.yaml"
     shell:
-        "perl scripts/convert2annovar.pl {input.gvcf1} -format vcf4 -allsample -withfreq -withfilter -context -out {output.o1}"
+        "perl ./rules/scripts/convert2annovar.pl {input.gvcf1} -format vcf4 -allsample -withfreq -withfilter -context -out {output.o1}"
 
 
 
@@ -45,7 +45,7 @@ rule annotate:
     conda:
         "envs/perl.yaml"
     shell:
-        "perl scripts/annotate_variation.pl -geneanno {input.i1} -buildver {input.buildver} ./ -outfile {input.i2}"
+        "perl ./rules/scripts/annotate_variation.pl -geneanno {input.i1} -buildver {input.buildver} ./ -outfile {input.i2}"
 
 
 
@@ -76,4 +76,4 @@ rule an_table:
     conda:
         "envs/perl.yaml"
     shell:
-        "perl scripts/table_annovar.pl {input.gvcf1} {input.path} -buildver {input.buildver} -out {input.i3} -remove -protocol refGene -operation g -nastring . -vcfinput"
+        "perl ./rules/scripts/table_annovar.pl {input.gvcf1} {input.path} -buildver {input.buildver} -out {input.i3} -remove -protocol refGene -operation g -nastring . -vcfinput"

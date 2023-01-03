@@ -1,0 +1,45 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count    min threads    max threads
+------------------------  -------  -------------  -------------
+all                             1              1              1
+an_table                        2             12             12
+annotate                        2             12             12
+convert_to_annovar              2             12             12
+gatk_variantstotable_PSG        2              6              6
+table_step1_PSG                 2              1              1
+table_step2_PSG                 2              6              6
+token_annotation                2              1              1
+token_pathbuild                 1              1              1
+token_table                     2              1              1
+total                          18              1             12
+
+Select jobs to execute...
+
+[Tue Jan  3 10:10:44 2023]
+rule convert_to_annovar:
+    input: calls/selected_KS4.vcf
+    output: annotated/annovar_Nile_KS4
+    jobid: 43
+    reason: Updated input files: calls/selected_KS4.vcf
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan  3 10:10:44 2023]
+Error in rule convert_to_annovar:
+    jobid: 43
+    input: calls/selected_KS4.vcf
+    output: annotated/annovar_Nile_KS4
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/f265d7e8063ddbe6a87fa85bc44d258d_
+    shell:
+        perl ./scripts/convert2annovar.pl calls/selected_KS4.vcf -format vcf4 -allsample -withfreq -withfilter -context -out annotated/annovar_Nile_KS4
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-03T101043.584993.snakemake.log

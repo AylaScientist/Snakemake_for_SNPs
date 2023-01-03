@@ -1,40 +1,40 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-10:06:01.259 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
-Jan 03, 2023 10:06:01 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+10:13:21.031 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Jan 03, 2023 10:13:21 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
 INFO: Failed to detect whether we are running on Google Compute Engine.
-10:06:01.438 INFO  CombineGVCFs - ------------------------------------------------------------
-10:06:01.438 INFO  CombineGVCFs - The Genome Analysis Toolkit (GATK) v4.2.5.0
-10:06:01.438 INFO  CombineGVCFs - For support and documentation go to https://software.broadinstitute.org/gatk/
-10:06:01.438 INFO  CombineGVCFs - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
-10:06:01.438 INFO  CombineGVCFs - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
-10:06:01.439 INFO  CombineGVCFs - Start Date/Time: 3 January 2023 at 10:06:01 IST
-10:06:01.439 INFO  CombineGVCFs - ------------------------------------------------------------
-10:06:01.439 INFO  CombineGVCFs - ------------------------------------------------------------
-10:06:01.440 INFO  CombineGVCFs - HTSJDK Version: 2.24.1
-10:06:01.440 INFO  CombineGVCFs - Picard Version: 2.25.4
-10:06:01.440 INFO  CombineGVCFs - Built for Spark Version: 2.4.5
-10:06:01.440 INFO  CombineGVCFs - HTSJDK Defaults.COMPRESSION_LEVEL : 2
-10:06:01.440 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
-10:06:01.440 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
-10:06:01.440 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
-10:06:01.440 INFO  CombineGVCFs - Deflater: IntelDeflater
-10:06:01.440 INFO  CombineGVCFs - Inflater: IntelInflater
-10:06:01.441 INFO  CombineGVCFs - GCS max retries/reopens: 20
-10:06:01.441 INFO  CombineGVCFs - Requester pays: disabled
-10:06:01.441 INFO  CombineGVCFs - Initializing engine
-10:06:01.538 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/GF6_GF6.g.vcf
-10:06:01.557 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/KF6_GF6.g.vcf
-10:06:01.563 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/GS4_GF6.g.vcf
-10:06:01.570 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/KS4_GF6.g.vcf
-10:06:01.618 INFO  CombineGVCFs - Done initializing engine
-10:06:01.629 INFO  ProgressMeter - Starting traversal
-10:06:01.630 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
-10:06:01.672 WARN  ReferenceConfidenceVariantContextMerger - Detected invalid annotations: When trying to merge variant contexts at location NC_031967.2:122688 the annotation MLEAC=[1, 0] was not a numerical value and was ignored
-10:06:03.057 INFO  ProgressMeter - NC_031967.2:86270958              0.0                 43538        1830609.7
-10:06:03.057 INFO  ProgressMeter - Traversal complete. Processed 43538 total variants in 0.0 minutes.
-10:06:03.090 INFO  CombineGVCFs - Shutting down engine
-[3 January 2023 at 10:06:03 IST] org.broadinstitute.hellbender.tools.walkers.CombineGVCFs done. Elapsed time: 0.03 minutes.
-Runtime.totalMemory()=6442450944
+10:13:21.137 INFO  CombineGVCFs - ------------------------------------------------------------
+10:13:21.138 INFO  CombineGVCFs - The Genome Analysis Toolkit (GATK) v4.2.5.0
+10:13:21.138 INFO  CombineGVCFs - For support and documentation go to https://software.broadinstitute.org/gatk/
+10:13:21.138 INFO  CombineGVCFs - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+10:13:21.138 INFO  CombineGVCFs - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+10:13:21.138 INFO  CombineGVCFs - Start Date/Time: 3 January 2023 at 10:13:21 IST
+10:13:21.138 INFO  CombineGVCFs - ------------------------------------------------------------
+10:13:21.138 INFO  CombineGVCFs - ------------------------------------------------------------
+10:13:21.138 INFO  CombineGVCFs - HTSJDK Version: 2.24.1
+10:13:21.138 INFO  CombineGVCFs - Picard Version: 2.25.4
+10:13:21.138 INFO  CombineGVCFs - Built for Spark Version: 2.4.5
+10:13:21.139 INFO  CombineGVCFs - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+10:13:21.139 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+10:13:21.139 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+10:13:21.139 INFO  CombineGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+10:13:21.139 INFO  CombineGVCFs - Deflater: IntelDeflater
+10:13:21.139 INFO  CombineGVCFs - Inflater: IntelInflater
+10:13:21.139 INFO  CombineGVCFs - GCS max retries/reopens: 20
+10:13:21.139 INFO  CombineGVCFs - Requester pays: disabled
+10:13:21.139 INFO  CombineGVCFs - Initializing engine
+10:13:21.234 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/GF6_GF6.g.vcf
+10:13:21.252 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/KF6_GF6.g.vcf
+10:13:21.256 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/GS4_GF6.g.vcf
+10:13:21.261 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/KS4_GF6.g.vcf
+10:13:21.295 INFO  CombineGVCFs - Done initializing engine
+10:13:21.305 INFO  ProgressMeter - Starting traversal
+10:13:21.306 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+10:13:21.348 WARN  ReferenceConfidenceVariantContextMerger - Detected invalid annotations: When trying to merge variant contexts at location NC_031967.2:122688 the annotation MLEAC=[1, 0] was not a numerical value and was ignored
+10:13:22.746 INFO  ProgressMeter - NC_031967.2:86270958              0.0                 43538        1814083.3
+10:13:22.747 INFO  ProgressMeter - Traversal complete. Processed 43538 total variants in 0.0 minutes.
+10:13:22.778 INFO  CombineGVCFs - Shutting down engine
+[3 January 2023 at 10:13:22 IST] org.broadinstitute.hellbender.tools.walkers.CombineGVCFs done. Elapsed time: 0.03 minutes.
+Runtime.totalMemory()=5368709120
 Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
 Running:
-    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms6G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar CombineGVCFs -V calls/GF6_KS4.g.vcf -V calls/KF6_KS4.g.vcf -V calls/GS4_KS4.g.vcf -V calls/KS4_KS4.g.vcf -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -O calls/all_g_KS4.vcf
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms5G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar CombineGVCFs -V calls/GF6_GF6.g.vcf -V calls/KF6_GF6.g.vcf -V calls/GS4_GF6.g.vcf -V calls/KS4_GF6.g.vcf -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -O calls/all_g_GF6.vcf

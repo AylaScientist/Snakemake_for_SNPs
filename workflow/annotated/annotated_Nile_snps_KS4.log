@@ -5,7 +5,7 @@ ANNOVAR Information:
 ANNOVAR Command:
 	./rules/scripts/annotate_variation.pl -geneanno annotated/annovar_Nile_KS4 -buildver ON/ON ./ -outfile annotated/annotated_Nile_snps_KS4
 ANNOVAR Started:
-	Tue Jan  3 10:11:33 2023
+	Tue Jan  3 14:23:05 2023
 NOTICE: Output files were written to annotated/annotated_Nile_snps_KS4.variant_function, annotated/annotated_Nile_snps_KS4.exonic_variant_function
 NOTICE: Reading gene annotation from ./ON/ON_refGene.txt ... Done with 80429 transcripts (including 18397 without coding sequence annotation) for 42623 unique genes
 NOTICE: Processing next batch with 575 unique variants in 575 input lines

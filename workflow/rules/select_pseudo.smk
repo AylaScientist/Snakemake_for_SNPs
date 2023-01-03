@@ -1,7 +1,7 @@
 rule gatk_select_PSG:
     input:
         vcf="calls/all_{pseudo}.vcf",
-        ref="pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa",
+        ref=config['ref']['genome'],# Use reference genome for correct filtration of biallellic sites
     output:
         vcf="calls/selected_{pseudo}.vcf"
     conda:

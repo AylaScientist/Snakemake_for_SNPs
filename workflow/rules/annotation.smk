@@ -15,6 +15,7 @@ rule convert_to_annovar:
 
 
 #Make tokens for the annotation script
+"""
 rule token_annotation:
     input:
         config['params']['annotation']['convert']+'{pseudo}'
@@ -22,6 +23,7 @@ rule token_annotation:
         o1 = config['params']['annotation']['output_annotate']+'{pseudo}'
     shell:
         "touch {output.o1} "
+"""
 
 rule token_pathbuild:
     input:
@@ -36,16 +38,17 @@ rule annotate:
     input:
         i1=config['params']['annotation']['convert']+'{pseudo}',
         buildver= config['params']['annotation']['pathbuild'],
-        i2=config['params']['annotation']['output_annotate']+'{pseudo}'
     output:
         o2=config['params']['annotation']['output_annotate']+"{pseudo}.variant_function"
+    params:
+        i2=config['params']['annotation']['output_annotate']+'{pseudo}'
     resources:
         mem_mb=config['mem_mb']
     threads: config['threads']
     conda:
         "envs/perl.yaml"
     shell:
-        "perl ./rules/scripts/annotate_variation.pl -geneanno {input.i1} -buildver {input.buildver} ./ -outfile {input.i2}"
+        "perl ./rules/scripts/annotate_variation.pl -geneanno {input.i1} -buildver {input.buildver} ./ -outfile {params.i2}"
 
 
 

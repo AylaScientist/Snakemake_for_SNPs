@@ -1,0 +1,73 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count    min threads    max threads
+------------------------  -------  -------------  -------------
+all                             1              1              1
+an_table                        1             12             12
+gatk_variantstotable_PSG        1              6              6
+table_step1_PSG                 1              1              1
+table_step2_PSG                 2              6              6
+total                           6              1             12
+
+Select jobs to execute...
+
+[Tue Jan  3 11:00:28 2023]
+rule an_table:
+    input: annotated/annovar_Nile_KS4, annotated/annotated_Nile_snps_KS4.variant_function, annotated/annotated_all_snps_KS4, calls/all_KS4.vcf, ON, ON
+    output: annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    jobid: 42
+    reason: Updated input files: calls/all_KS4.vcf, ON
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan  3 11:00:30 2023]
+Finished job 42.
+1 of 6 steps (17%) done
+Select jobs to execute...
+
+[Tue Jan  3 11:00:30 2023]
+rule gatk_variantstotable_PSG:
+    input: annotated/annotated_all_snps_KS4.ON_multianno.vcf, pseudogenomes/KS4/KS4_GCF_001858045.2.fa
+    output: variants/AD_GT_counts_bi_KS4.table
+    log: logs/gatk/var2table/snvs_KS4.log
+    jobid: 41
+    reason: Missing output files: variants/AD_GT_counts_bi_KS4.table; Input files updated by another job: annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    wildcards: pseudo=KS4
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 11:00:30 2023]
+rule table_step2_PSG:
+    input: variants/AD_GT_counts_bi_GF6_step1.csv, ../config/tbGF6_colnames.csv
+    output: workflow/AD_GT_counts_bi_GF6.csv
+    log: logs/python/table_step2/AD_GT_counts_bi_GF6.log
+    jobid: 1
+    reason: Missing output files: workflow/AD_GT_counts_bi_GF6.csv
+    wildcards: pseudo=GF6
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 11:00:31 2023]
+Error in rule table_step2_PSG:
+    jobid: 1
+    input: variants/AD_GT_counts_bi_GF6_step1.csv, ../config/tbGF6_colnames.csv
+    output: workflow/AD_GT_counts_bi_GF6.csv
+    log: logs/python/table_step2/AD_GT_counts_bi_GF6.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/06703ee70a1e765ec642f5b57953594f_
+
+RuleException:
+CalledProcessError in line 24 of /home/fish/Snakemake_for_SNPs/workflow/rules/table2df.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmpmz8y8442.table2df_step2.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/table2df.smk", line 24, in __rule_table_step2_PSG
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+[Tue Jan  3 11:00:32 2023]
+Finished job 41.
+2 of 6 steps (33%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-03T110027.843560.snakemake.log

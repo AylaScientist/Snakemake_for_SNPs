@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count    min threads    max threads
+------------------------  -------  -------------  -------------
+all                             1              1              1
+an_table                        1             12             12
+annotate                        1             12             12
+gatk_variantstotable_PSG        1              6              6
+table_step1_PSG                 2              1              1
+table_step2_PSG                 2              6              6
+token_table                     1              1              1
+total                           9              1             12
+
+Select jobs to execute...
+
+[Tue Jan  3 13:58:15 2023]
+rule table_step1_PSG:
+    input: variants/AD_GT_counts_bi_GF6.table
+    output: variants/AD_GT_counts_bi_GF6_step1.csv
+    jobid: 2
+    reason: Missing output files: variants/AD_GT_counts_bi_GF6_step1.csv; Code has changed since last execution
+    wildcards: pseudo=GF6
+    resources: tmpdir=/tmp
+
+[Tue Jan  3 13:58:15 2023]
+Error in rule table_step1_PSG:
+    jobid: 2
+    input: variants/AD_GT_counts_bi_GF6.table
+    output: variants/AD_GT_counts_bi_GF6_step1.csv
+    shell:
+        sed 's/|/\//g' variants/AD_GT_counts_bi_GF6.table > characters.table awk -F, '!seen[$0,$1]++' characters.table > variants/AD_GT_counts_bi_GF6_step1.csv rm characters.table
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job table_step1_PSG since they might be corrupted:
+variants/AD_GT_counts_bi_GF6_step1.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-03T135815.349934.snakemake.log

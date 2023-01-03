@@ -1,0 +1,150 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count    min threads    max threads
+------------------------  -------  -------------  -------------
+all                             1              1              1
+an_table                        1             12             12
+annotate                        1             12             12
+gatk_variantstotable_PSG        1              6              6
+table_step1_PSG                 2              1              1
+table_step2_PSG                 2              6              6
+token_table                     1              1              1
+total                           9              1             12
+
+Select jobs to execute...
+
+[Tue Jan  3 14:23:04 2023]
+rule table_step1_PSG:
+    input: variants/AD_GT_counts_bi_GF6.table
+    output: variants/AD_GT_counts_bi_GF6_step1.csv
+    jobid: 2
+    reason: Missing output files: variants/AD_GT_counts_bi_GF6_step1.csv; Code has changed since last execution
+    wildcards: pseudo=GF6
+    resources: tmpdir=/tmp
+
+[Tue Jan  3 14:23:05 2023]
+Finished job 2.
+1 of 9 steps (11%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:05 2023]
+rule table_step2_PSG:
+    input: variants/AD_GT_counts_bi_GF6_step1.csv, ../config/tbGF6_colnames.csv
+    output: workflow/AD_GT_counts_bi_GF6.csv
+    log: logs/python/table_step2/AD_GT_counts_bi_GF6.log
+    jobid: 1
+    reason: Missing output files: workflow/AD_GT_counts_bi_GF6.csv; Input files updated by another job: variants/AD_GT_counts_bi_GF6_step1.csv
+    wildcards: pseudo=GF6
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 14:23:05 2023]
+Finished job 1.
+2 of 9 steps (22%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:05 2023]
+rule annotate:
+    input: annotated/annovar_Nile_KS4, ON/ON
+    output: annotated/annotated_Nile_snps_KS4.variant_function
+    jobid: 66
+    reason: Missing output files: annotated/annotated_Nile_snps_KS4.variant_function; Set of input files has changed since last execution; Code has changed since last execution; Params have changed since last execution
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan  3 14:23:07 2023]
+Finished job 66.
+3 of 9 steps (33%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:07 2023]
+rule token_table:
+    input: annotated/annotated_Nile_snps_KS4.variant_function
+    output: annotated/annotated_all_snps_KS4
+    jobid: 67
+    reason: Missing output files: annotated/annotated_all_snps_KS4; Input files updated by another job: annotated/annotated_Nile_snps_KS4.variant_function
+    wildcards: pseudo=KS4
+    resources: tmpdir=/tmp
+
+[Tue Jan  3 14:23:07 2023]
+Finished job 67.
+4 of 9 steps (44%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:07 2023]
+rule an_table:
+    input: annotated/annovar_Nile_KS4, annotated/annotated_Nile_snps_KS4.variant_function, annotated/annotated_all_snps_KS4, calls/all_KS4.vcf, ON, ON
+    output: annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    jobid: 41
+    reason: Missing output files: annotated/annotated_all_snps_KS4.ON_multianno.vcf; Input files updated by another job: annotated/annotated_all_snps_KS4, annotated/annotated_Nile_snps_KS4.variant_function
+    wildcards: pseudo=KS4
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan  3 14:23:09 2023]
+Finished job 41.
+5 of 9 steps (56%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:09 2023]
+rule gatk_variantstotable_PSG:
+    input: annotated/annotated_all_snps_KS4.ON_multianno.vcf, pseudogenomes/KS4/KS4_GCF_001858045.2.fa
+    output: variants/AD_GT_counts_bi_KS4.table
+    log: logs/gatk/var2table/snvs_KS4.log
+    jobid: 40
+    reason: Missing output files: variants/AD_GT_counts_bi_KS4.table; Input files updated by another job: annotated/annotated_all_snps_KS4.ON_multianno.vcf
+    wildcards: pseudo=KS4
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 14:23:11 2023]
+Finished job 40.
+6 of 9 steps (67%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:11 2023]
+rule table_step1_PSG:
+    input: variants/AD_GT_counts_bi_KS4.table
+    output: variants/AD_GT_counts_bi_KS4_step1.csv
+    jobid: 39
+    reason: Missing output files: variants/AD_GT_counts_bi_KS4_step1.csv; Input files updated by another job: variants/AD_GT_counts_bi_KS4.table
+    wildcards: pseudo=KS4
+    resources: tmpdir=/tmp
+
+[Tue Jan  3 14:23:11 2023]
+Finished job 39.
+7 of 9 steps (78%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:11 2023]
+rule table_step2_PSG:
+    input: variants/AD_GT_counts_bi_KS4_step1.csv, ../config/tbKS4_colnames.csv
+    output: workflow/AD_GT_counts_bi_KS4.csv
+    log: logs/python/table_step2/AD_GT_counts_bi_KS4.log
+    jobid: 38
+    reason: Missing output files: workflow/AD_GT_counts_bi_KS4.csv; Input files updated by another job: variants/AD_GT_counts_bi_KS4_step1.csv
+    wildcards: pseudo=KS4
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 14:23:12 2023]
+Finished job 38.
+8 of 9 steps (89%) done
+Select jobs to execute...
+
+[Tue Jan  3 14:23:12 2023]
+localrule all:
+    input: workflow/AD_GT_counts_bi_GF6.csv, workflow/AD_GT_counts_bi_KS4.csv
+    jobid: 0
+    reason: Input files updated by another job: workflow/AD_GT_counts_bi_GF6.csv, workflow/AD_GT_counts_bi_KS4.csv
+    resources: tmpdir=/tmp
+
+[Tue Jan  3 14:23:12 2023]
+Finished job 0.
+9 of 9 steps (100%) done
+Complete log: .snakemake/log/2023-01-03T142304.102394.snakemake.log

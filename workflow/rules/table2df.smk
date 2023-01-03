@@ -3,8 +3,13 @@ rule table_step1_PSG:
         table1="variants/AD_GT_counts_bi_{pseudo}.table"
     output:
         table1="variants/AD_GT_counts_bi_{pseudo}_step1.csv"
-    shell:
-        "sed 's/|/\//g' {input.table1} > {output.table1}"
+    run:
+        shell("sed 's/|/\//g' {input.table1} > characters.table ")
+        shell("awk -F, 'seen[$1,$2]++' characters.table > delete_multiallelic.table") #Collect SNPs with same chromosome and position thus are multiallelic by duplication of CHROM and POS columns 1 and 2
+        shell("grep -Fvxf delete_multiallelic.table characters.table  > {output.table1} ") #Eliminate multiallelics, will output contents in file1 not in file2 
+        shell("rm characters.table delete_multiallelic.table")
+
+
 
 
 rule table_step2_PSG:

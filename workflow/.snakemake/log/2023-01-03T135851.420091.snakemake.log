@@ -1,0 +1,3 @@
+SyntaxError in line 9 of /home/fish/Snakemake_for_SNPs/workflow/rules/table2df.smk:
+EOL while scanning string literal
+  File "/home/fish/Snakemake_for_SNPs/workflow/Snakefile", line 164, in <module>

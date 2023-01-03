@@ -1,0 +1,46 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count    min threads    max threads
+------------------------  -------  -------------  -------------
+all                             1              1              1
+an_table                        1             12             12
+annotate                        1             12             12
+gatk_variantstotable_PSG        1              6              6
+table_step1_PSG                 1              1              1
+table_step2_PSG                 2              6              6
+token_table                     1              1              1
+total                           8              1             12
+
+Select jobs to execute...
+
+[Tue Jan  3 12:32:16 2023]
+rule table_step2_PSG:
+    input: variants/AD_GT_counts_bi_GF6_step1.csv, ../config/tbGF6_colnames.csv
+    output: workflow/AD_GT_counts_bi_GF6.csv
+    log: logs/python/table_step2/AD_GT_counts_bi_GF6.log
+    jobid: 1
+    reason: Missing output files: workflow/AD_GT_counts_bi_GF6.csv
+    wildcards: pseudo=GF6
+    threads: 6
+    resources: tmpdir=/tmp, mem_mb=6000
+
+[Tue Jan  3 12:32:16 2023]
+Error in rule table_step2_PSG:
+    jobid: 1
+    input: variants/AD_GT_counts_bi_GF6_step1.csv, ../config/tbGF6_colnames.csv
+    output: workflow/AD_GT_counts_bi_GF6.csv
+    log: logs/python/table_step2/AD_GT_counts_bi_GF6.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/06703ee70a1e765ec642f5b57953594f_
+
+RuleException:
+CalledProcessError in line 24 of /home/fish/Snakemake_for_SNPs/workflow/rules/table2df.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmp1b95s015.table2df_step2.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/table2df.smk", line 24, in __rule_table_step2_PSG
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-03T123215.517080.snakemake.log

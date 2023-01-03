@@ -43,15 +43,19 @@ def main():
 
     tb1_colnames = pd.read_csv ( snakemake.input.get("tb_colnames") )
     tb1_cols = tb1_colnames['Col_names'].values
+    print("Cols read")
 
+    #tb1 = pd.read_csv(snakemake.input.get("table"), sep = "\,|/|\t", header=None, engine = "python")
     tb1 = pd.read_csv(snakemake.input.get("table"), sep = "\,|/|\t", names = tb1_cols, engine = "python")
+    print("Table read")
 
     tb1 = pd.DataFrame ( tb1 )
 
     tb1.drop ( tb1.index[:1], inplace=True )
 
     tb1.to_csv ( snakemake.output.get("csv") )
-
+    print("Table with correct column names is created for each pseudogenome in the folder called \"variants\".")
+    print("Please verify the order of the samples on the new .csv table is the same as in the header of the .table file")
 
 if __name__ == '__main__':
     main()

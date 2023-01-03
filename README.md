@@ -52,7 +52,7 @@ Install the packages including the bio tools:
 
 `conda install -c bioconda gatk4=4.2.5.0`
 
-`conda install -c bioconda samtools=1.6`
+`conda install -c bioconda samtools=1.16`
 
 `conda install -c bioconda bcftools=1.16`
 

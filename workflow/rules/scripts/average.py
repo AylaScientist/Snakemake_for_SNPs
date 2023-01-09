@@ -12,6 +12,11 @@ from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
 shell.executable("bash")
 
+extra = snakemake.params.get("extra")
+java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
+
+
 
 """
 COMPARE GENOTYPES AND MAKE THE AVERAGE OF COUNTS

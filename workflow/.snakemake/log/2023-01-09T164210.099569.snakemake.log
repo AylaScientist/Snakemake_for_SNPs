@@ -1,0 +1,40 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+all          1              1              1
+mae          1             12             12
+total        2              1             12
+
+Select jobs to execute...
+
+[Mon Jan  9 16:42:10 2023]
+rule mae:
+    input: results/Uniform_to_validate_SNPs_valid_genome.csv, ../config/Sample_names.csv, ../config/Samples_MAE.csv
+    output: results/SNPs_ready_mae.csv, results/SNPs_ready_no_mae.csv
+    log: logs/workflow/mae.log
+    jobid: 1
+    reason: Missing output files: results/SNPs_ready_mae.csv, results/SNPs_ready_no_mae.csv
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Mon Jan  9 16:42:11 2023]
+Error in rule mae:
+    jobid: 1
+    input: results/Uniform_to_validate_SNPs_valid_genome.csv, ../config/Sample_names.csv, ../config/Samples_MAE.csv
+    output: results/SNPs_ready_mae.csv, results/SNPs_ready_no_mae.csv
+    log: logs/workflow/mae.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/06703ee70a1e765ec642f5b57953594f_
+
+RuleException:
+CalledProcessError in line 124 of /home/fish/Snakemake_for_SNPs/workflow/rules/workflow.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmpr5tloi9p.ASE_workflow_MAE.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/workflow.smk", line 124, in __rule_mae
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-09T164210.099569.snakemake.log

@@ -13,7 +13,7 @@ Pseudogenome_codes: ../config/Pseudogenome_codes.csv # after you choose the samp
 GeneID_to_Genebank: ../config/GeneID_to_Genebank.csv
 GO_dict: ../config/GO_dictionary.csv
 species_dict: ../config/Tilapia gene transcript protein GO KEGG uniprot.csv
-fastq_merged: fastq_merged
+fastq_merged: fastq_merged #folder with the fastq files 
 Samples_MAE: ../config/Samples_MAE.csv
 
 ## Resources of the system:

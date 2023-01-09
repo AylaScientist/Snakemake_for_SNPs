@@ -10,7 +10,6 @@ import numpy as np
 from os import path
 from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
-
 shell.executable("bash")
 
 extra = snakemake.params.get("extra")

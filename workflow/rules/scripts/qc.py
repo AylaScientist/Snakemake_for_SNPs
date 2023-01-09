@@ -47,7 +47,6 @@ log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
 def frequencies(df, samples):
     """
-
     :param df: dataframe with unbiased SNP counts without allele frequencies
     :param samples: list of strings including the sample names
     :return: dataframe with the allele frequencies by sample

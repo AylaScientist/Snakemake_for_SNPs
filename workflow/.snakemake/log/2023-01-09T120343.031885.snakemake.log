@@ -1,0 +1,3 @@
+SyntaxError in line 3 of /home/fish/Snakemake_for_SNPs/workflow/rules/workflow.smk:
+invalid syntax
+  File "/home/fish/Snakemake_for_SNPs/workflow/Snakefile", line 167, in <module>

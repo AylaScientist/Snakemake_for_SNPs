@@ -34,11 +34,11 @@ rule all:
         #psgi = expand(config['files_pseudogenomes']['PSG_index'], pseudo = pseudos), # Index of the pseudogenomes
         #psgf = expand(config['files_pseudogenomes']['PSG_fai'], pseudo = pseudos), # fai index of the pseudogenomes
         ## Uncomment for the second call:
-        #o1 = config['results']['o1'],
-        #o2 = config['results']['o2'],
-        #o3 = config['results']['o3'],
-        #o4 = config['results']['o4'],
-        #o5 = config['results']['o5'],
+        o1 = config['results']['o1'],
+        o2 = config['results']['o2'],
+        o3 = config['results']['o3'],
+        o4 = config['results']['o4'],
+        o5 = config['results']['o5'],
         #bam=expand("{sample}_ref_Aligned.sortedByCoord.out.bam",sample = samples),
         #bam=expand("calls/{sample}_ref.g.vcf", sample = samples),
         #bam0 = expand ("{sample}_{pseudo}_Aligned.sortedByCoord.out.bam", sample = samples, pseudo = pseudos[0]),
@@ -57,8 +57,13 @@ rule all:
         #o1=expand("annotated/annotated_all_snps_{pseudo}"+config['params']['annotation']['output'], pseudo = pseudos),
         #vcf=expand("variants/AD_GT_counts_bi_{pseudo}.table", pseudo = pseudos),
         #table1=expand("variants/AD_GT_counts_bi_{pseudo}_step1.csv", pseudo = pseudos),
-        csv=expand("workflow/AD_GT_counts_bi_{pseudo}.csv", pseudo = pseudos),
+        #csv=expand("workflow/AD_GT_counts_bi_{pseudo}.csv", pseudo = pseudos),
         #merged="workflow/merged_df.csv",
+        #result1="results/Uniform_to_validate_SNPs_valid_genome.csv",
+        #result2="results/SNP_panel_valid_genome.csv", #This SNP panel contains the SNPs found expressed in the experimental popilation
+        #result3="results/Genotype_models_valid_genome.csv",
+        #result_mae="results/SNPs_ready_mae.csv", # SNPs that follow monoallelic expression for one tissue
+        #result_no_mae="results/SNPs_ready_no_mae.csv", # SNPs that do not follow monoallelic expression
         #vcf="variants/AD_GT_counts_bi.table",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf",
         #vcf="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz",

@@ -1,6 +1,7 @@
 rule merge_dataframes:
     input:
-        csv = expand("workflow/AD_GT_counts_bi_{pseudo}.csv", pseudo = pseudos)
+        csv1 = "workflow/AD_GT_counts_bi_"+pseudos[0]+".csv",
+        csv2 = "workflow/AD_GT_counts_bi_"+pseudos[1]+".csv",
     output:
         "workflow/merged_df.csv"
     params:

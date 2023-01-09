@@ -1,0 +1,60 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+AD10                   1             12             12
+all                    1              1              1
+average                1             12             12
+biallelic_sites        1             12             12
+genotype               1             12             12
+total                  5              1             12
+
+Select jobs to execute...
+
+[Mon Jan  9 12:06:24 2023]
+rule biallelic_sites:
+    input: workflow/merged_df.csv, ../config/Sample_names.csv, ../config/Pseudogenome_codes.csv
+    output: workflow/biallelic.csv
+    log: logs/workflow/biallelic_sites.log
+    jobid: 4
+    reason: Missing output files: workflow/biallelic.csv
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Mon Jan  9 12:06:24 2023]
+Finished job 4.
+1 of 5 steps (20%) done
+Select jobs to execute...
+
+[Mon Jan  9 12:06:24 2023]
+rule average:
+    input: workflow/biallelic.csv, ../config/Sample_names.csv, ../config/Pseudogenome_codes.csv
+    output: workflow/average.csv
+    log: logs/workflow/average.log
+    jobid: 3
+    reason: Missing output files: workflow/average.csv; Input files updated by another job: workflow/biallelic.csv
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Mon Jan  9 12:06:25 2023]
+Error in rule average:
+    jobid: 3
+    input: workflow/biallelic.csv, ../config/Sample_names.csv, ../config/Pseudogenome_codes.csv
+    output: workflow/average.csv
+    log: logs/workflow/average.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/06703ee70a1e765ec642f5b57953594f_
+
+RuleException:
+CalledProcessError in line 60 of /home/fish/Snakemake_for_SNPs/workflow/rules/workflow.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmp2etxjm0r.average.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/workflow.smk", line 60, in __rule_average
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Removing output files of failed job average since they might be corrupted:
+workflow/average.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-09T120623.574606.snakemake.log

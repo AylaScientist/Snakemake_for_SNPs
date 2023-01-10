@@ -64,6 +64,12 @@ Install the packages including the bio tools:
 
 `conda install -c anaconda pandas`
 
+`conda install -c anaconda scipy`
+
+`conda install -c anaconda statsmodels`
+
+`conda install -c anaconda seaborn`
+
 `conda install -c conda-forge matplotlib`
 
 `conda install -c conda-forge py-bgzip`
@@ -98,15 +104,19 @@ In this file you should also change the species and the different databases for 
 
 Modify the metafiles describing your data and the experiment:
 
-`config/Experiemntal_design.csv`
+`config/Experimental_design.csv`
 
-`config/Experiemntal_groups.csv`
+`config/Experimental_groups.csv`
 
 `config/Sample_names.csv`
 
 `config/Samples_MAE.csv`
 
 `config/samples.csv`
+
+Please note that the column names on the file "Experimental_groups.csv" should be called "Group_1" and "Group_2" for applying the Chi-square test. 
+
+#### For configuring your pseudogenomes
 
 You need to chose two samples from different groups, preferably one sample from the control group and one sample from a treatment group. The SNPs from these samples will be used to construct the pseudogenomes. The codes of these two samples in the example are GF6 and KS4. In order to create the pseudogenomes of your experiment, these codes should be substituted in the next files, including the file name of the `*colnames.csv` files:
 

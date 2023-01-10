@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job        count    min threads    max threads
+-------  -------  -------------  -------------
+QC             1             12             12
+all            1              1              1
+results        1             12             12
+stats          1             12             12
+total          4              1             12
+
+Select jobs to execute...
+
+[Tue Jan 10 09:44:18 2023]
+rule QC:
+    input: results/SNPs_ready_no_mae.csv, ../config/Experimental_groups.csv, ../config/Sample_names.csv
+    output: results/QC_valid_genome.csv
+    log: logs/workflow/qc.log
+    jobid: 3
+    reason: Missing output files: results/QC_valid_genome.csv
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan 10 09:44:18 2023]
+Error in rule QC:
+    jobid: 3
+    input: results/SNPs_ready_no_mae.csv, ../config/Experimental_groups.csv, ../config/Sample_names.csv
+    output: results/QC_valid_genome.csv
+    log: logs/workflow/qc.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/06703ee70a1e765ec642f5b57953594f_
+
+RuleException:
+CalledProcessError in line 20 of /home/fish/Snakemake_for_SNPs/workflow/rules/stats.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmpkrmxw3eq.qc.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/stats.smk", line 20, in __rule_QC
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-10T094417.550475.snakemake.log

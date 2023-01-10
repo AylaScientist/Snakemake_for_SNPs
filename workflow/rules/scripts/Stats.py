@@ -40,6 +40,10 @@ from snakemake.shell import shell
 from snakemake_wrapper_utils.java import get_java_opts
 shell.executable("bash")
 
+extra = snakemake.params.get("extra")
+java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
+
 
 def chi_test(df, af_samples, experiment, exp):
     # Collect the row of the experiment where the design is described
@@ -111,6 +115,10 @@ def chi_test(df, af_samples, experiment, exp):
         df[pvalue] = p_chi_group2
         df[pfdr] = multi[1]
 
+    elif (len(group1_samples) < 5) | (len(group2_samples) < 5):
+        print("The number of counts for ", experiment," is too low and the chi_square test cannot be performed")
+        print("The number of samples in each group must be at least 5")
+
     else:
         cols_control = df[df.columns[df.columns.isin(group1_samples)]]
         cols_exp = df[df.columns[df.columns.isin(group2_samples)]]
@@ -148,7 +156,7 @@ def chi_square(df, samples, exp, experiments):
     # Elements for the test
     for experiment in experiments:
         df_chi = chi_test(df, af_samples, experiment, exp)
-    print("Chi^2 test successfully performed on all the experiments\n")
+    print("Chi^2 test performed if possible on all the experiments\nOtherwise, Fisher test will be used for the final report of the results.")
 
     return df_chi
 
@@ -192,8 +200,8 @@ def fisher_test(df, samples, exp, experiment):
                                                 returnsorted=False)
 
             # Make columns of the dataframe with the results
-            fisher_pval = experiment + "_" + group1_sample + group2_samples[k] + "_Fisher_p-val"
-            fisher_fdr = experiment + "_" + group1_sample + group2_samples[k] + "_Fisher_p-fdr"
+            fisher_pval = experiment + "_Fisher_p-val"
+            fisher_fdr = experiment + "_Fisher_p-fdr"
             df[fisher_pval] = pd.Series(p_fisher, index = df.index)
             df[fisher_fdr] = pd.Series(multi[1], index = df.index)
             k = (k + 1)
@@ -393,7 +401,7 @@ def main ():
         observed probability (reference allele frequency from the experimental group)
 
     NOTE: The number of samples in the control and experimental groups have to be the same. Otherwise the script will
-    pop the extra samples in the biggest group.
+    pop the extra samples in the biggest group. Also the number of samples in each group must be at least 5
 
     Now let's perform the test.
     """

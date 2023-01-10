@@ -65,9 +65,13 @@ from math import pi
 from scipy.stats import uniform
 from scipy.stats import randint
 import seaborn as sns
-
+from snakemake.shell import shell
+from snakemake_wrapper_utils.java import get_java_opts
 shell.executable("bash")
 
+extra = snakemake.params.get("extra")
+java_opts = snakemake.params.get("java_opts")
+log = snakemake.log_fmt_shell(stdout=False, stderr=True)
 
 
 def GO_graph (df_stats,experiments):
@@ -76,47 +80,92 @@ def GO_graph (df_stats,experiments):
     tests=experiments
     for test in tests :
         test_name = str(test) + "_CHI_p-fdr"
-        # Table 7
-        index_exp = df_stats[(df_stats[test_name] >= 0.05)].index
-        index_nan = df_stats[df_stats[test_name].isnull ()].index
-        df_sig = df_stats.drop ( index=index_exp )  # Collect the significant SNPs in a table for this experiment
-        df_exp = df_sig.drop ( index=index_nan )  # Drop the empty values for the tests
-        genes_sig = df_exp["Gene_ID"].unique ()
-        results = { 'SNPs in ASE':  [len(df_exp)],
-                    'Genes containing ASE': [len(genes_sig)]}
-        df_results = pd.DataFrame (results, columns = ['SNPs in ASE','Genes containing ASE'])
-        PATH = os.getcwd()
-        os.chdir("results")
-        df_results.to_csv(test_name + "_basic_results.csv")
-        df_exp.to_csv(test_name + "_ASE_description.csv")
-        os.chdir(PATH)
+        if test_name in df_stats:
+            # Table 7
+            index_exp = df_stats[(df_stats[test_name] >= 0.05)].index
+            index_nan = df_stats[df_stats[test_name].isnull ()].index
+            df_sig = df_stats.drop ( index=index_exp )  # Collect the significant SNPs in a table for this experiment
+            df_exp = df_sig.drop ( index=index_nan )  # Drop the empty values for the tests
+            genes_sig = df_exp["Gene_ID"].unique ()
+            results = { 'SNPs in ASE':  [len(df_exp)],
+                        'Genes containing ASE': [len(genes_sig)]}
+            df_results = pd.DataFrame (results, columns = ['SNPs in ASE','Genes containing ASE'])
+            PATH = os.getcwd()
+            os.chdir("results")
+            df_results.to_csv(test_name + "_basic_results_chi_square.csv")
+            df_exp.to_csv(test_name + "_ASE_description_chi_square.csv")
+            os.chdir(PATH)
 
-        # GO terms analysis
-        mega_dict = pd.read_csv ( snakemake.input.get("i1"), low_memory=False )
-        df_func = pd.merge ( df_stats, mega_dict, on='Gene_ID', how='right' )
-        df_func.to_csv ( snakemake.output.get("o1") )
+            # GO terms analysis
+            mega_dict = pd.read_csv ( snakemake.input.get("i1"), low_memory=False )
+            df_func = pd.merge ( df_stats, mega_dict, on='Gene_ID', how='right' )
+            df_func.to_csv ( snakemake.output.get("o1") )
 
-        GO_dict = pd.read_csv ( snakemake.input.get("i2"), low_memory=False )
+            GO_dict = pd.read_csv ( snakemake.input.get("i2"), low_memory=False )
 
-        df_GO = pd.merge(df_exp,GO_dict, on = "Genebank", how = "left")
-        GO_counts = df_GO['GO term accession'].value_counts ()
-        GO_counts = pd.DataFrame(GO_counts)
-        GO_counts.columns = ['Frequency']
-        GO_most = GO_counts.head(15)
+            df_GO = pd.merge(df_exp,GO_dict, on = "Genebank", how = "left")
+            GO_counts = df_GO['GO term accession'].value_counts ()
+            GO_counts = pd.DataFrame(GO_counts)
+            GO_counts.columns = ['Frequency']
+            GO_most = GO_counts.head(15)
 
-        # Pie chart
-        sizes = []
-        labels = GO_most.index.values
-        sizes.append (GO_most['Frequency'].tolist() )
-        fig1, ax1 = plt.subplots ()
-        ax1.pie ( sizes[0], labels=labels, autopct='%1.1f%%', shadow=True, startangle=90 )
-        ax1.axis ( 'equal' )  # Equal aspect ratio ensures that pie is drawn as a circle.
-        PATH = os.getcwd ()
-        os.chdir("results")
-        filename = test_name + "_GO_pie_chart.svg"
-        plt.savefig ( filename )
-        plt.clf()
-        os.chdir(PATH)
+            # Pie chart
+            sizes = []
+            labels = GO_most.index.values
+            sizes.append (GO_most['Frequency'].tolist() )
+            fig1, ax1 = plt.subplots ()
+            ax1.pie ( sizes[0], labels=labels, autopct='%1.1f%%', shadow=True, startangle=90 )
+            ax1.axis ( 'equal' )  # Equal aspect ratio ensures that pie is drawn as a circle.
+            PATH = os.getcwd ()
+            os.chdir("results")
+            filename = test_name + "_GO_pie_chart_chi_square.svg"
+            plt.savefig ( filename )
+            plt.clf()
+            os.chdir(PATH)
+
+        else:
+            test_name = str(test) + "_Fisher_p-fdr"
+                 # Table 7
+            index_exp = df_stats[(df_stats[test_name] >= 0.05)].index
+            index_nan = df_stats[df_stats[test_name].isnull ()].index
+            df_sig = df_stats.drop ( index=index_exp )  # Collect the significant SNPs in a table for this experiment
+            df_exp = df_sig.drop ( index=index_nan )  # Drop the empty values for the tests
+            genes_sig = df_exp["Gene_ID"].unique ()
+            results = { 'SNPs in ASE':  [len(df_exp)],
+                        'Genes containing ASE': [len(genes_sig)]}
+            df_results = pd.DataFrame (results, columns = ['SNPs in ASE','Genes containing ASE'])
+            PATH = os.getcwd()
+            os.chdir("results")
+            df_results.to_csv(test_name + "_basic_results_fisher_test.csv")
+            df_exp.to_csv(test_name + "_ASE_description_fisher_test.csv")
+            os.chdir(PATH)
+
+            # GO terms analysis
+            mega_dict = pd.read_csv ( snakemake.input.get("i1"), low_memory=False )
+            df_func = pd.merge ( df_stats, mega_dict, on='Gene_ID', how='right' )
+            df_func.to_csv ( snakemake.output.get("o1") )
+
+            GO_dict = pd.read_csv ( snakemake.input.get("i2"), low_memory=False )
+
+            df_GO = pd.merge(df_exp,GO_dict, on = "Genebank", how = "left")
+            GO_counts = df_GO['GO term accession'].value_counts ()
+            GO_counts = pd.DataFrame(GO_counts)
+            GO_counts.columns = ['Frequency']
+            GO_most = GO_counts.head(15)
+
+            # Pie chart
+            sizes = []
+            labels = GO_most.index.values
+            sizes.append (GO_most['Frequency'].tolist() )
+            fig1, ax1 = plt.subplots ()
+            ax1.pie ( sizes[0], labels=labels, autopct='%1.1f%%', shadow=True, startangle=90 )
+            ax1.axis ( 'equal' )  # Equal aspect ratio ensures that pie is drawn as a circle.
+            PATH = os.getcwd ()
+            os.chdir("results")
+            filename = test_name + "_GO_pie_chart_fisher_test.svg"
+            plt.savefig ( filename )
+            plt.clf()
+            os.chdir(PATH)       
 
         
 
@@ -131,21 +180,39 @@ def tables_1_2(df_stats, experiments):
     for experiment in experiments:
         # Initalize the intermediate table:
         col_name = str ( experiment ) + "_CHI_p-fdr"
-        index_exp = df_stats[(df_stats[col_name] >= 0.05)].index
-        df_exp = df_stats.drop ( index=index_exp )  # Collect the significant SNPs in a table for this experiment
-        df_new = pd.DataFrame ()
-        df_new[col_name] = df_exp["SNP_ID"]
+        if col_name in df_stats:
+            index_exp = df_stats[(df_stats[col_name] >= 0.05)].index
+            df_exp = df_stats.drop ( index=index_exp )  # Collect the significant SNPs in a table for this experiment
+            df_new = pd.DataFrame ()
+            df_new[col_name] = df_exp["SNP_ID"]
 
-        # Table 1
-        all_treatment_snp = pd.concat ( [all_treatment_snp, df_new], axis=1 )
+            # Table 1
+            all_treatment_snp = pd.concat ( [all_treatment_snp, df_new], axis=1 )
 
-        # Table 2
-        func_refgene = df_exp['Func.refGene_x'].value_counts ()
-        exonicfunc_refgene = df_exp['ExonicFunc.refGene_x'].value_counts ()
-        polymorphism_exp = pd.Series ( func_refgene.append ( exonicfunc_refgene ) )
-        df_polymorphism = pd.concat ( [df_polymorphism, polymorphism_exp.to_frame ().T] )
-        df_polymorphism.rename ( index={0: col_name}, inplace=True )  # add row name that is the column of the origin
+            # Table 2
+            func_refgene = df_exp['Func.refGene_x'].value_counts ()
+            exonicfunc_refgene = df_exp['ExonicFunc.refGene_x'].value_counts ()
+            polymorphism_exp = pd.Series ( func_refgene.append ( exonicfunc_refgene ) )
+            df_polymorphism = pd.concat ( [df_polymorphism, polymorphism_exp.to_frame ().T] )
+            df_polymorphism.rename ( index={0: col_name}, inplace=True )  # add row name that is the column of the origin
+        else:
+            col_name = str ( experiment ) + "_Fisher_p-fdr"
+            index_exp = df_stats[(df_stats[col_name] >= 0.05)].index
+            df_exp = df_stats.drop ( index=index_exp )  # Collect the significant SNPs in a table for this experiment
+            df_new = pd.DataFrame ()
+            df_new[col_name] = df_exp["SNP_ID"]
 
+            # Table 1
+            all_treatment_snp = pd.concat ( [all_treatment_snp, df_new], axis=1 )
+
+            # Table 2
+            func_refgene = df_exp['Func.refGene_x'].value_counts ()
+            exonicfunc_refgene = df_exp['ExonicFunc.refGene_x'].value_counts ()
+            polymorphism_exp = pd.Series ( func_refgene.append ( exonicfunc_refgene ) )
+            df_polymorphism = pd.concat ( [df_polymorphism, polymorphism_exp.to_frame ().T] )
+            df_polymorphism.rename ( index={0: col_name}, inplace=True )  # add row name that is the column of the origin
+
+     
     # Table 1:
     all_treatment_snp.to_csv ( snakemake.output.get("o3") )
     
@@ -157,8 +224,7 @@ def tables_1_2(df_stats, experiments):
     # subset SNP Function and Exonic SNP Function
     categories_exo = list ( df_polymorphism )[10:20]  # It avoids the category "." that is non-informative
     df_pol_fun = df_polymorphism[
-        ["UTR3", "exonic", "ncRNA_exonic", "intronic", "intergenic", "downstream", "UTR5", "ncRNA_intronic",
-         "upstream"]]
+        ["UTR3", "exonic", "ncRNA_exonic", "intronic", "intergenic", "downstream", "UTR5", "ncRNA_intronic","upstream"]]
     df_pol_exo = df_polymorphism[categories_exo]
     
 
@@ -347,7 +413,7 @@ def main():
     groups = groups_df.values
 
     # Create a numpy array with the name of each group
-    group_names = list ( groups_df["Date1"] )
+    group_names = list ( groups_df.columns[0] )
 
     # Create arrays of the sample names
     samples = sample_names["Sample_name"].values

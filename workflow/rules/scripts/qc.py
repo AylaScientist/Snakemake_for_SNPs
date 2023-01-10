@@ -121,7 +121,7 @@ def main():
     samples = sample_names['Sample_name'].values
     groups_df = pd.read_csv(snakemake.input.get("i2"))
     # Create a numpy array with the name of each group
-    group_names = list(groups_df["Date1"])
+    group_names = list(groups_df.columns[0])
 
     # Mine the data
     df_af = frequencies(df, samples)

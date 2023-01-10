@@ -1,0 +1,41 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job        count    min threads    max threads
+-------  -------  -------------  -------------
+all            1              1              1
+results        1             12             12
+stats          1             12             12
+total          3              1             12
+
+Select jobs to execute...
+
+[Tue Jan 10 09:56:10 2023]
+rule stats:
+    input: ../config/Experimental_design.csv, ../config/Experimental_groups.csv, ../config/Sample_names.csv, results/QC_valid_genome.csv
+    output: stats/Chi_test_valid_genome.csv, stats/Fisher_test_valid_genome.csv, results/SNPs_analysed_valid_genome.csv
+    log: logs/python/stats/SNPs_analysed.log
+    jobid: 2
+    reason: Missing output files: results/SNPs_analysed_valid_genome.csv
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan 10 09:56:11 2023]
+Error in rule stats:
+    jobid: 2
+    input: ../config/Experimental_design.csv, ../config/Experimental_groups.csv, ../config/Sample_names.csv, results/QC_valid_genome.csv
+    output: stats/Chi_test_valid_genome.csv, stats/Fisher_test_valid_genome.csv, results/SNPs_analysed_valid_genome.csv
+    log: logs/python/stats/SNPs_analysed.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/06703ee70a1e765ec642f5b57953594f_
+
+RuleException:
+CalledProcessError in line 44 of /home/fish/Snakemake_for_SNPs/workflow/rules/stats.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmpyiwev4ii.Stats.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/stats.smk", line 44, in __rule_stats
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-10T095609.577571.snakemake.log

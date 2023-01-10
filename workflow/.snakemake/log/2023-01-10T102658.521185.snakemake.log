@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job        count    min threads    max threads
+-------  -------  -------------  -------------
+all            1              1              1
+results        1             12             12
+total          2              1             12
+
+Select jobs to execute...
+
+[Tue Jan 10 10:26:59 2023]
+rule results:
+    input: ../config/Tilapia gene transcript protein GO KEGG uniprot.csv, ../config/GO_dictionary.csv, results/SNPs_analysed_valid_genome.csv, ../config/Sample_names.csv, ../config/Experimental_groups.csv, ../config/Experimental_design.csv, ../config/GeneID_to_Genebank.csv
+    output: results/SNPs_function.csv, results/SNP_dictionary.csv, results/Treatment_SNPs_sig_all_for_Venn.csv, results/Summary_of_polymorphisms.csv, results/Intronic_SNPs_caryotype.csv
+    log: logs/python/results/tables.log
+    jobid: 1
+    reason: Missing output files: results/Treatment_SNPs_sig_all_for_Venn.csv, results/SNP_dictionary.csv, results/SNPs_function.csv, results/Intronic_SNPs_caryotype.csv, results/Summary_of_polymorphisms.csv
+    threads: 12
+    resources: tmpdir=/tmp, mem_mb=12000
+
+[Tue Jan 10 10:27:00 2023]
+Error in rule results:
+    jobid: 1
+    input: ../config/Tilapia gene transcript protein GO KEGG uniprot.csv, ../config/GO_dictionary.csv, results/SNPs_analysed_valid_genome.csv, ../config/Sample_names.csv, ../config/Experimental_groups.csv, ../config/Experimental_design.csv, ../config/GeneID_to_Genebank.csv
+    output: results/SNPs_function.csv, results/SNP_dictionary.csv, results/Treatment_SNPs_sig_all_for_Venn.csv, results/Summary_of_polymorphisms.csv, results/Intronic_SNPs_caryotype.csv
+    log: logs/python/results/tables.log (check log file(s) for error message)
+    conda-env: /home/fish/Snakemake_for_SNPs/workflow/.snakemake/conda/06703ee70a1e765ec642f5b57953594f_
+
+RuleException:
+CalledProcessError in line 27 of /home/fish/Snakemake_for_SNPs/workflow/rules/results.smk:
+Command 'set -euo pipefail;  /home/fish/anaconda3/envs/pipeline/bin/python /home/fish/Snakemake_for_SNPs/workflow/.snakemake/scripts/tmpaya_4ni2.Tables.py' returned non-zero exit status 1.
+  File "/home/fish/Snakemake_for_SNPs/workflow/rules/results.smk", line 27, in __rule_results
+  File "/home/fish/anaconda3/envs/pipeline/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Removing output files of failed job results since they might be corrupted:
+results/SNP_dictionary.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-01-10T102658.521185.snakemake.log

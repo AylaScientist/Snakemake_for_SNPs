@@ -5,9 +5,9 @@ ANNOVAR Information:
 ANNOVAR Command:
 	./rules/scripts/annotate_variation.pl -geneanno annotated/annovar_Nile_GF6 -buildver ON/ON ./ -outfile annotated/annotated_Nile_snps_GF6
 ANNOVAR Started:
-	Tue Jan  3 12:09:32 2023
+	Sun Jan 15 13:13:59 2023
 NOTICE: Output files were written to annotated/annotated_Nile_snps_GF6.variant_function, annotated/annotated_Nile_snps_GF6.exonic_variant_function
 NOTICE: Reading gene annotation from ./ON/ON_refGene.txt ... Done with 80429 transcripts (including 18397 without coding sequence annotation) for 42623 unique genes
-NOTICE: Processing next batch with 575 unique variants in 575 input lines
-NOTICE: Reading FASTA sequences from ./ON/ON_refGeneMrna.fa ... Done with 73 sequences
+NOTICE: Processing next batch with 91065 unique variants in 91065 input lines
+NOTICE: Reading FASTA sequences from ./ON/ON_refGeneMrna.fa ... Done with 3005 sequences
 WARNING: A total of 142 sequences will be ignored due to lack of correct ORF annotation

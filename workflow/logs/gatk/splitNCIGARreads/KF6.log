@@ -1,43 +1,77 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-15:37:06.127 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
-Dec 15, 2022 3:37:06 PM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+13:13:49.379 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Jan 13, 2023 1:13:49 PM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
 INFO: Failed to detect whether we are running on Google Compute Engine.
-15:37:06.243 INFO  SplitNCigarReads - ------------------------------------------------------------
-15:37:06.244 INFO  SplitNCigarReads - The Genome Analysis Toolkit (GATK) v4.2.5.0
-15:37:06.244 INFO  SplitNCigarReads - For support and documentation go to https://software.broadinstitute.org/gatk/
-15:37:06.244 INFO  SplitNCigarReads - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
-15:37:06.244 INFO  SplitNCigarReads - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
-15:37:06.244 INFO  SplitNCigarReads - Start Date/Time: 15 December 2022 at 15:37:06 IST
-15:37:06.244 INFO  SplitNCigarReads - ------------------------------------------------------------
-15:37:06.244 INFO  SplitNCigarReads - ------------------------------------------------------------
-15:37:06.245 INFO  SplitNCigarReads - HTSJDK Version: 2.24.1
-15:37:06.245 INFO  SplitNCigarReads - Picard Version: 2.25.4
-15:37:06.245 INFO  SplitNCigarReads - Built for Spark Version: 2.4.5
-15:37:06.245 INFO  SplitNCigarReads - HTSJDK Defaults.COMPRESSION_LEVEL : 2
-15:37:06.245 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
-15:37:06.245 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
-15:37:06.245 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
-15:37:06.245 INFO  SplitNCigarReads - Deflater: IntelDeflater
-15:37:06.245 INFO  SplitNCigarReads - Inflater: IntelInflater
-15:37:06.246 INFO  SplitNCigarReads - GCS max retries/reopens: 20
-15:37:06.246 INFO  SplitNCigarReads - Requester pays: disabled
-15:37:06.246 INFO  SplitNCigarReads - Initializing engine
-15:37:06.352 INFO  SplitNCigarReads - Done initializing engine
-15:37:06.370 INFO  ProgressMeter - Starting traversal
-15:37:06.370 INFO  ProgressMeter -        Current Locus  Elapsed Minutes       Reads Processed     Reads/Minute
-15:37:07.277 WARN  IntelInflater - Zero Bytes Written : 0
-15:37:07.278 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+13:13:49.482 INFO  SplitNCigarReads - ------------------------------------------------------------
+13:13:49.482 INFO  SplitNCigarReads - The Genome Analysis Toolkit (GATK) v4.2.5.0
+13:13:49.482 INFO  SplitNCigarReads - For support and documentation go to https://software.broadinstitute.org/gatk/
+13:13:49.482 INFO  SplitNCigarReads - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+13:13:49.482 INFO  SplitNCigarReads - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+13:13:49.482 INFO  SplitNCigarReads - Start Date/Time: 13 January 2023 at 13:13:49 IST
+13:13:49.483 INFO  SplitNCigarReads - ------------------------------------------------------------
+13:13:49.483 INFO  SplitNCigarReads - ------------------------------------------------------------
+13:13:49.483 INFO  SplitNCigarReads - HTSJDK Version: 2.24.1
+13:13:49.483 INFO  SplitNCigarReads - Picard Version: 2.25.4
+13:13:49.483 INFO  SplitNCigarReads - Built for Spark Version: 2.4.5
+13:13:49.483 INFO  SplitNCigarReads - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+13:13:49.483 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+13:13:49.483 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+13:13:49.483 INFO  SplitNCigarReads - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+13:13:49.483 INFO  SplitNCigarReads - Deflater: IntelDeflater
+13:13:49.483 INFO  SplitNCigarReads - Inflater: IntelInflater
+13:13:49.484 INFO  SplitNCigarReads - GCS max retries/reopens: 20
+13:13:49.484 INFO  SplitNCigarReads - Requester pays: disabled
+13:13:49.484 INFO  SplitNCigarReads - Initializing engine
+13:13:49.574 INFO  SplitNCigarReads - Done initializing engine
+13:13:49.589 INFO  ProgressMeter - Starting traversal
+13:13:49.589 INFO  ProgressMeter -        Current Locus  Elapsed Minutes       Reads Processed     Reads/Minute
+13:13:59.645 INFO  ProgressMeter -  NC_031967.2:8602793              0.2               1498000        8938836.4
+13:14:09.648 INFO  ProgressMeter - NC_031967.2:13610032              0.3               2518000        7532156.7
+13:14:19.652 INFO  ProgressMeter - NC_031967.2:18394768              0.5               3465000        6915477.5
+13:14:29.658 INFO  ProgressMeter - NC_031967.2:23226871              0.7               4340000        6498789.6
+13:14:39.661 INFO  ProgressMeter - NC_031967.2:28983785              0.8               5249000        6289868.4
+13:14:49.667 INFO  ProgressMeter - NC_031967.2:33266586              1.0               6047000        6039149.1
+13:14:59.675 INFO  ProgressMeter - NC_031967.2:38058099              1.2               6916000        5920726.0
+13:15:09.684 INFO  ProgressMeter - NC_031967.2:44292925              1.3               7946000        5952431.5
+13:15:19.685 INFO  ProgressMeter - NC_031967.2:49877431              1.5               8796000        5857751.7
+13:15:29.766 INFO  ProgressMeter - NC_031967.2:55993832              1.7               9740000        5833674.4
+13:15:39.768 INFO  ProgressMeter - NC_031967.2:62875882              1.8              10713000        5834014.0
+13:15:49.771 INFO  ProgressMeter - NC_031967.2:70013723              2.0              11679000        5830656.8
+13:15:59.773 INFO  ProgressMeter - NC_031967.2:75357707              2.2              12477000        5750476.2
+13:16:09.781 INFO  ProgressMeter - NC_031967.2:81644059              2.3              13366000        5720440.5
+13:16:19.497 WARN  IntelInflater - Zero Bytes Written : 0
+13:16:19.498 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
 
-15:37:07.420 INFO  OverhangFixingManager - Overhang Fixing Manager saved 0 reads in the first pass
-15:37:07.422 INFO  SplitNCigarReads - Starting traversal pass 2
-15:37:07.731 WARN  IntelInflater - Zero Bytes Written : 0
-15:37:07.731 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
+13:16:19.677 INFO  OverhangFixingManager - Overhang Fixing Manager saved 507 reads in the first pass
+13:16:19.678 INFO  SplitNCigarReads - Starting traversal pass 2
+13:16:19.781 INFO  ProgressMeter -   NC_031967.2:191975              2.5              14235000        5686721.0
+13:16:30.201 INFO  ProgressMeter -  NC_031967.2:6449311              2.7              15326000        5725386.2
+13:16:40.202 INFO  ProgressMeter - NC_031967.2:11190269              2.8              16197000        5696049.0
+13:16:50.206 INFO  ProgressMeter - NC_031967.2:14237788              3.0              16841000        5594490.0
+13:17:00.208 INFO  ProgressMeter - NC_031967.2:17968503              3.2              17558000        5526655.4
+13:17:10.207 INFO  ProgressMeter - NC_031967.2:21714194              3.3              18260000        5461125.1
+13:17:20.691 INFO  ProgressMeter - NC_031967.2:25142881              3.5              18847000        5356747.0
+13:17:30.702 INFO  ProgressMeter - NC_031967.2:30258461              3.7              19671000        5337813.7
+13:17:41.971 INFO  ProgressMeter - NC_031967.2:33772432              3.9              20345000        5252988.6
+13:17:52.139 INFO  ProgressMeter - NC_031967.2:37660231              4.0              21019000        5199505.3
+13:18:03.082 INFO  ProgressMeter - NC_031967.2:42325256              4.2              21844000        5170320.3
+13:18:13.089 INFO  ProgressMeter - NC_031967.2:47253335              4.4              22593000        5144516.1
+13:18:23.095 INFO  ProgressMeter - NC_031967.2:51210796              4.6              23203000        5090126.0
+13:18:33.099 INFO  ProgressMeter - NC_031967.2:55795994              4.7              23919000        5062043.7
+13:18:43.106 INFO  ProgressMeter - NC_031967.2:61156895              4.9              24671000        5043200.4
+13:18:53.791 INFO  ProgressMeter - NC_031967.2:66086913              5.1              25291000        4988330.1
+13:19:03.795 INFO  ProgressMeter - NC_031967.2:71781942              5.2              26126000        4988956.3
+13:19:14.681 INFO  ProgressMeter - NC_031967.2:76144073              5.4              26790000        4944446.5
+13:19:24.684 INFO  ProgressMeter - NC_031967.2:81738250              5.6              27583000        4938838.2
+13:19:35.577 INFO  ProgressMeter - NC_031967.2:86875687              5.8              28288000        4905603.7
+13:19:37.100 WARN  IntelInflater - Zero Bytes Written : 0
+13:19:37.101 INFO  SplitNCigarReads - 0 read(s) filtered by: AllowAllReadsReadFilter 
 
-15:37:07.731 INFO  ProgressMeter - NC_031967.2:86317697              0.0                138896        6123262.3
-15:37:07.732 INFO  ProgressMeter - Traversal complete. Processed 138896 total reads in 0.0 minutes.
-15:37:08.264 INFO  SplitNCigarReads - Shutting down engine
-[15 December 2022 at 15:37:08 IST] org.broadinstitute.hellbender.tools.walkers.rnaseq.SplitNCigarReads done. Elapsed time: 0.04 minutes.
-Runtime.totalMemory()=26843545600
+13:19:37.101 INFO  ProgressMeter - NC_031967.2:87562764              5.8              28405474        4904372.9
+13:19:37.101 INFO  ProgressMeter - Traversal complete. Processed 28405474 total reads in 5.8 minutes.
+13:19:54.153 INFO  SplitNCigarReads - Shutting down engine
+[13 January 2023 at 13:19:54 IST] org.broadinstitute.hellbender.tools.walkers.rnaseq.SplitNCigarReads done. Elapsed time: 6.08 minutes.
+Runtime.totalMemory()=4294967296
 Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
 Running:
-    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms25G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=3 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar SplitNCigarReads -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -I marked_dedup/KF6_ref.bam -O split/KF6_ref.bam
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms4G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=4 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar SplitNCigarReads -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -I marked_dedup/KF6_ref.bam -O split/KF6_ref.bam

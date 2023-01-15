@@ -24,8 +24,9 @@ from snakemake_wrapper_utils.java import get_java_opts
 java_opts = get_java_opts(snakemake)
 log = snakemake.log_fmt_shell(stdout=True, stderr=True)
 trimmer =snakemake.params.get("trimmer")
-threads = snakemake.threads
+threads = snakemake.params.get("threads")
 input_r1 = snakemake.input.get("r1")
+print(input_r1)
 output_r1 = snakemake.output.get("r1")
 path = snakemake.params.get("path")
 

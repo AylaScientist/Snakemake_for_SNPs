@@ -1,37 +1,39 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-10:13:24.305 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
-Jan 03, 2023 10:13:24 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+13:13:21.378 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Jan 15, 2023 1:13:21 PM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
 INFO: Failed to detect whether we are running on Google Compute Engine.
-10:13:24.395 INFO  GenotypeGVCFs - ------------------------------------------------------------
-10:13:24.395 INFO  GenotypeGVCFs - The Genome Analysis Toolkit (GATK) v4.2.5.0
-10:13:24.396 INFO  GenotypeGVCFs - For support and documentation go to https://software.broadinstitute.org/gatk/
-10:13:24.396 INFO  GenotypeGVCFs - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
-10:13:24.396 INFO  GenotypeGVCFs - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
-10:13:24.396 INFO  GenotypeGVCFs - Start Date/Time: 3 January 2023 at 10:13:24 IST
-10:13:24.396 INFO  GenotypeGVCFs - ------------------------------------------------------------
-10:13:24.396 INFO  GenotypeGVCFs - ------------------------------------------------------------
-10:13:24.396 INFO  GenotypeGVCFs - HTSJDK Version: 2.24.1
-10:13:24.396 INFO  GenotypeGVCFs - Picard Version: 2.25.4
-10:13:24.396 INFO  GenotypeGVCFs - Built for Spark Version: 2.4.5
-10:13:24.396 INFO  GenotypeGVCFs - HTSJDK Defaults.COMPRESSION_LEVEL : 2
-10:13:24.397 INFO  GenotypeGVCFs - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
-10:13:24.397 INFO  GenotypeGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
-10:13:24.397 INFO  GenotypeGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
-10:13:24.397 INFO  GenotypeGVCFs - Deflater: IntelDeflater
-10:13:24.397 INFO  GenotypeGVCFs - Inflater: IntelInflater
-10:13:24.397 INFO  GenotypeGVCFs - GCS max retries/reopens: 20
-10:13:24.397 INFO  GenotypeGVCFs - Requester pays: disabled
-10:13:24.397 INFO  GenotypeGVCFs - Initializing engine
-10:13:24.476 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/all_g_KS4.vcf
-10:13:24.499 INFO  GenotypeGVCFs - Done initializing engine
-10:13:24.524 INFO  ProgressMeter - Starting traversal
-10:13:24.524 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
-10:13:24.593 WARN  InbreedingCoeff - InbreedingCoeff will not be calculated at position NC_031967.2:122688 and possibly subsequent; at least 10 samples must have called genotypes
-10:13:25.716 INFO  ProgressMeter - NC_031967.2:87459265              0.0                 36023        1813238.3
-10:13:25.716 INFO  ProgressMeter - Traversal complete. Processed 36023 total variants in 0.0 minutes.
-10:13:25.758 INFO  GenotypeGVCFs - Shutting down engine
-[3 January 2023 at 10:13:25 IST] org.broadinstitute.hellbender.tools.walkers.GenotypeGVCFs done. Elapsed time: 0.02 minutes.
-Runtime.totalMemory()=3095396352
+13:13:21.483 INFO  GenotypeGVCFs - ------------------------------------------------------------
+13:13:21.483 INFO  GenotypeGVCFs - The Genome Analysis Toolkit (GATK) v4.2.5.0
+13:13:21.483 INFO  GenotypeGVCFs - For support and documentation go to https://software.broadinstitute.org/gatk/
+13:13:21.484 INFO  GenotypeGVCFs - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+13:13:21.484 INFO  GenotypeGVCFs - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+13:13:21.484 INFO  GenotypeGVCFs - Start Date/Time: 15 January 2023 at 13:13:21 IST
+13:13:21.484 INFO  GenotypeGVCFs - ------------------------------------------------------------
+13:13:21.484 INFO  GenotypeGVCFs - ------------------------------------------------------------
+13:13:21.484 INFO  GenotypeGVCFs - HTSJDK Version: 2.24.1
+13:13:21.484 INFO  GenotypeGVCFs - Picard Version: 2.25.4
+13:13:21.484 INFO  GenotypeGVCFs - Built for Spark Version: 2.4.5
+13:13:21.484 INFO  GenotypeGVCFs - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+13:13:21.484 INFO  GenotypeGVCFs - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+13:13:21.485 INFO  GenotypeGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+13:13:21.485 INFO  GenotypeGVCFs - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+13:13:21.485 INFO  GenotypeGVCFs - Deflater: IntelDeflater
+13:13:21.485 INFO  GenotypeGVCFs - Inflater: IntelInflater
+13:13:21.485 INFO  GenotypeGVCFs - GCS max retries/reopens: 20
+13:13:21.485 INFO  GenotypeGVCFs - Requester pays: disabled
+13:13:21.485 INFO  GenotypeGVCFs - Initializing engine
+13:13:21.555 INFO  FeatureManager - Using codec VCFCodec to read file file:///home/fish/Snakemake_for_SNPs/workflow/calls/all_g_KS4.vcf
+13:13:21.602 INFO  GenotypeGVCFs - Done initializing engine
+13:13:21.625 INFO  ProgressMeter - Starting traversal
+13:13:21.625 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+13:13:21.693 WARN  InbreedingCoeff - InbreedingCoeff will not be calculated at position NC_031967.2:3948 and possibly subsequent; at least 10 samples must have called genotypes
+13:13:31.630 INFO  ProgressMeter - NC_031967.2:19799040              0.2                854000        5121439.3
+13:13:41.639 INFO  ProgressMeter - NC_031967.2:51279453              0.3               1878000        5630059.0
+13:13:50.762 INFO  ProgressMeter - NC_031967.2:87532097              0.5               2804573        5775281.6
+13:13:50.763 INFO  ProgressMeter - Traversal complete. Processed 2804573 total variants in 0.5 minutes.
+13:13:50.818 INFO  GenotypeGVCFs - Shutting down engine
+[15 January 2023 at 13:13:50 IST] org.broadinstitute.hellbender.tools.walkers.GenotypeGVCFs done. Elapsed time: 0.49 minutes.
+Runtime.totalMemory()=6190792704
 Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
 Running:
-    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms2G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=3 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar GenotypeGVCFs -V calls/all_g_KS4.vcf -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -O calls/all_KS4.vcf
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms4G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=4 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar GenotypeGVCFs -V calls/all_g_KS4.vcf -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -O calls/all_KS4.vcf

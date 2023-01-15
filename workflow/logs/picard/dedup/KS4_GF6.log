@@ -1,5 +1,5 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-INFO	2022-12-20 11:31:03	MarkDuplicates	
+INFO	2023-01-15 12:32:51	MarkDuplicates	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -12,29 +12,78 @@ INFO	2022-12-20 11:31:03	MarkDuplicates
 **********
 
 
-11:31:03.947 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Tue Dec 20 11:31:03 IST 2022] MarkDuplicates INPUT=[fixed-rg/KS4_GF6.bam] OUTPUT=marked_dedup/KS4_GF6.bam METRICS_FILE=marked_dedup/KS4_GF6.metrics.txt REMOVE_DUPLICATES=true    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true DUPLEX_UMI=false ADD_PG_TAG_TO_READS=true ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Tue Dec 20 11:31:03 IST 2022] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
-INFO	2022-12-20 11:31:04	MarkDuplicates	Start of doWork freeMemory: 26833434608; totalMemory: 26843545600; maxMemory: 32178700288
-INFO	2022-12-20 11:31:04	MarkDuplicates	Reading input file and constructing read end information.
-INFO	2022-12-20 11:31:04	MarkDuplicates	Will retain up to 116589493 data points before spilling to disk.
+12:32:51.856 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Sun Jan 15 12:32:51 IST 2023] MarkDuplicates INPUT=[fixed-rg/KS4_GF6.bam] OUTPUT=marked_dedup/KS4_GF6.bam METRICS_FILE=marked_dedup/KS4_GF6.metrics.txt REMOVE_DUPLICATES=true    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true DUPLEX_UMI=false ADD_PG_TAG_TO_READS=true ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Sun Jan 15 12:32:51 IST 2023] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
+INFO	2023-01-15 12:32:51	MarkDuplicates	Start of doWork freeMemory: 4284857864; totalMemory: 4294967296; maxMemory: 32178700288
+INFO	2023-01-15 12:32:51	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2023-01-15 12:32:51	MarkDuplicates	Will retain up to 116589493 data points before spilling to disk.
 WARNING: BAM index file /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_GF6.bai is older than BAM /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_GF6.bam
-INFO	2022-12-20 11:31:04	MarkDuplicates	Read 72272 records. 0 pairs never matched.
-INFO	2022-12-20 11:31:04	MarkDuplicates	After buildSortedReadEndLists freeMemory: 25892044856; totalMemory: 26843545600; maxMemory: 32178700288
-INFO	2022-12-20 11:31:04	MarkDuplicates	Will retain up to 1005584384 duplicate indices before spilling to disk.
-INFO	2022-12-20 11:31:06	MarkDuplicates	Traversing read pair information and detecting duplicates.
-INFO	2022-12-20 11:31:06	MarkDuplicates	Traversing fragment information and detecting duplicates.
-INFO	2022-12-20 11:31:06	MarkDuplicates	Sorting list of duplicate records.
-INFO	2022-12-20 11:31:06	MarkDuplicates	After generateDuplicateIndexes freeMemory: 18779953576; totalMemory: 26843545600; maxMemory: 32178700288
-INFO	2022-12-20 11:31:06	MarkDuplicates	Marking 4602 records as duplicates.
-INFO	2022-12-20 11:31:06	MarkDuplicates	Found 0 optical duplicate clusters.
+INFO	2023-01-15 12:32:54	MarkDuplicates	Read     1,000,000 records.  Elapsed time: 00:00:01s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:3,690,777
+INFO	2023-01-15 12:32:54	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:32:55	MarkDuplicates	Read     2,000,000 records.  Elapsed time: 00:00:03s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:6,676,487
+INFO	2023-01-15 12:32:55	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:32:56	MarkDuplicates	Read     3,000,000 records.  Elapsed time: 00:00:04s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:10,089,475
+INFO	2023-01-15 12:32:56	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:32:58	MarkDuplicates	Read     4,000,000 records.  Elapsed time: 00:00:06s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:12,690,626
+INFO	2023-01-15 12:32:58	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:00	MarkDuplicates	Read     5,000,000 records.  Elapsed time: 00:00:07s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:15,429,292
+INFO	2023-01-15 12:33:00	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:01	MarkDuplicates	Read     6,000,000 records.  Elapsed time: 00:00:09s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:18,110,922
+INFO	2023-01-15 12:33:01	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:03	MarkDuplicates	Read     7,000,000 records.  Elapsed time: 00:00:10s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:21,331,373
+INFO	2023-01-15 12:33:03	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:04	MarkDuplicates	Read     8,000,000 records.  Elapsed time: 00:00:12s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:24,749,360
+INFO	2023-01-15 12:33:04	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:06	MarkDuplicates	Read     9,000,000 records.  Elapsed time: 00:00:14s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:28,684,963
+INFO	2023-01-15 12:33:06	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:07	MarkDuplicates	Read    10,000,000 records.  Elapsed time: 00:00:15s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:32,138,536
+INFO	2023-01-15 12:33:07	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:08	MarkDuplicates	Read    11,000,000 records.  Elapsed time: 00:00:16s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:34,970,597
+INFO	2023-01-15 12:33:08	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:10	MarkDuplicates	Read    12,000,000 records.  Elapsed time: 00:00:18s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:37,933,958
+INFO	2023-01-15 12:33:10	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:11	MarkDuplicates	Read    13,000,000 records.  Elapsed time: 00:00:19s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:41,265,955
+INFO	2023-01-15 12:33:11	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:13	MarkDuplicates	Read    14,000,000 records.  Elapsed time: 00:00:21s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:45,254,736
+INFO	2023-01-15 12:33:13	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:14	MarkDuplicates	Read    15,000,000 records.  Elapsed time: 00:00:22s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:49,278,457
+INFO	2023-01-15 12:33:14	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:15	MarkDuplicates	Read    16,000,000 records.  Elapsed time: 00:00:23s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:52,980,566
+INFO	2023-01-15 12:33:15	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:17	MarkDuplicates	Read    17,000,000 records.  Elapsed time: 00:00:25s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:57,032,534
+INFO	2023-01-15 12:33:17	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:18	MarkDuplicates	Read    18,000,000 records.  Elapsed time: 00:00:26s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:61,616,390
+INFO	2023-01-15 12:33:18	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:20	MarkDuplicates	Read    19,000,000 records.  Elapsed time: 00:00:28s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:66,399,382
+INFO	2023-01-15 12:33:20	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:21	MarkDuplicates	Read    20,000,000 records.  Elapsed time: 00:00:29s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:70,281,793
+INFO	2023-01-15 12:33:21	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:23	MarkDuplicates	Read    21,000,000 records.  Elapsed time: 00:00:31s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:73,883,129
+INFO	2023-01-15 12:33:23	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:24	MarkDuplicates	Read    22,000,000 records.  Elapsed time: 00:00:32s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:78,322,160
+INFO	2023-01-15 12:33:24	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:25	MarkDuplicates	Read    23,000,000 records.  Elapsed time: 00:00:33s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:82,203,101
+INFO	2023-01-15 12:33:25	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:27	MarkDuplicates	Read    24,000,000 records.  Elapsed time: 00:00:35s.  Time for last 1,000,000:    1s.  Last read position: NC_031967.2:86,968,571
+INFO	2023-01-15 12:33:27	MarkDuplicates	Tracking 0 as yet unmatched pairs. 0 records in RAM.
+INFO	2023-01-15 12:33:27	MarkDuplicates	Read 24209684 records. 0 pairs never matched.
+INFO	2023-01-15 12:33:28	MarkDuplicates	After buildSortedReadEndLists freeMemory: 3503063480; totalMemory: 4982833152; maxMemory: 32178700288
+INFO	2023-01-15 12:33:28	MarkDuplicates	Will retain up to 1005584384 duplicate indices before spilling to disk.
+INFO	2023-01-15 12:33:29	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2023-01-15 12:33:29	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2023-01-15 12:33:30	MarkDuplicates	Sorting list of duplicate records.
+INFO	2023-01-15 12:33:30	MarkDuplicates	After generateDuplicateIndexes freeMemory: 5416259504; totalMemory: 13480493056; maxMemory: 32178700288
+INFO	2023-01-15 12:33:30	MarkDuplicates	Marking 5488313 records as duplicates.
+INFO	2023-01-15 12:33:30	MarkDuplicates	Found 0 optical duplicate clusters.
 WARNING: BAM index file /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_GF6.bai is older than BAM /home/fish/Snakemake_for_SNPs/workflow/fixed-rg/KS4_GF6.bam
-INFO	2022-12-20 11:31:06	MarkDuplicates	Reads are assumed to be ordered by: coordinate
-INFO	2022-12-20 11:31:07	MarkDuplicates	Writing complete. Closing input iterator.
-INFO	2022-12-20 11:31:07	MarkDuplicates	Duplicate Index cleanup.
-INFO	2022-12-20 11:31:07	MarkDuplicates	Getting Memory Stats.
-INFO	2022-12-20 11:31:07	MarkDuplicates	Before output close freeMemory: 26832675024; totalMemory: 26843545600; maxMemory: 32178700288
-INFO	2022-12-20 11:31:07	MarkDuplicates	Closed outputs. Getting more Memory Stats.
-INFO	2022-12-20 11:31:07	MarkDuplicates	After output close freeMemory: 26832944384; totalMemory: 26843545600; maxMemory: 32178700288
-[Tue Dec 20 11:31:07 IST 2022] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.06 minutes.
-Runtime.totalMemory()=26843545600
+INFO	2023-01-15 12:33:30	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2023-01-15 12:34:32	MarkDuplicates	Written    10,000,000 records.  Elapsed time: 00:01:01s.  Time for last 10,000,000:   61s.  Last read position: NC_031967.2:41,825,136
+INFO	2023-01-15 12:35:26	MarkDuplicates	Writing complete. Closing input iterator.
+INFO	2023-01-15 12:35:26	MarkDuplicates	Duplicate Index cleanup.
+INFO	2023-01-15 12:35:26	MarkDuplicates	Getting Memory Stats.
+INFO	2023-01-15 12:35:26	MarkDuplicates	Before output close freeMemory: 4283481960; totalMemory: 4294967296; maxMemory: 32178700288
+INFO	2023-01-15 12:35:26	MarkDuplicates	Closed outputs. Getting more Memory Stats.
+INFO	2023-01-15 12:35:26	MarkDuplicates	After output close freeMemory: 4283481872; totalMemory: 4294967296; maxMemory: 32178700288
+[Sun Jan 15 12:35:26 IST 2023] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 2.58 minutes.
+Runtime.totalMemory()=4294967296

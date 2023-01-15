@@ -2,14 +2,14 @@ STAR version=2.7.10a
 STAR compilation time,server,dir=2022-01-14T18:50:00-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
 STAR git: On branch master ; commit ae26add7ea1724f3281ec8abedb71bcff6a4ae73 ; diff files: CHANGES.md README.md RELEASEnotes.md doc/STARmanual.pdf extras/doc-latex/STARmanual.tex extras/doc-latex/convertParDefToLatexTable.awk extras/doc-latex/parametersDefault.tex extras/docker/Dockerfile source/VERSION 
 ##### Command Line:
-STAR --runThreadN 16 --runMode genomeGenerate --genomeDir pseudogenomes/GF6/ --genomeFastaFiles pseudogenomes/GF6/GF6_GCF_001858045.2.fa --sjdbGTFfile genome/Tilapia_GCF_001858045.2_annotation.gtf --sjdbOverhang 147
+STAR --runThreadN 16 --runMode genomeGenerate --genomeDir pseudogenomes/GF6/ --genomeFastaFiles pseudogenomes/GF6/GF6_GCF_001858045.2.fa --sjdbGTFfile genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf --sjdbOverhang 147
 ##### Initial USER parameters from Command Line:
 ###### All USER parameters from Command Line:
 runThreadN                    16     ~RE-DEFINED
 runMode                       genomeGenerate        ~RE-DEFINED
 genomeDir                     pseudogenomes/GF6/     ~RE-DEFINED
 genomeFastaFiles              pseudogenomes/GF6/GF6_GCF_001858045.2.fa        ~RE-DEFINED
-sjdbGTFfile                   genome/Tilapia_GCF_001858045.2_annotation.gtf     ~RE-DEFINED
+sjdbGTFfile                   genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf     ~RE-DEFINED
 sjdbOverhang                  147     ~RE-DEFINED
 ##### Finished reading parameters from all sources
 
@@ -18,26 +18,77 @@ runMode                           genomeGenerate
 runThreadN                        16
 genomeDir                         pseudogenomes/GF6/
 genomeFastaFiles                  pseudogenomes/GF6/GF6_GCF_001858045.2.fa   
-sjdbGTFfile                       genome/Tilapia_GCF_001858045.2_annotation.gtf
+sjdbGTFfile                       genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf
 sjdbOverhang                      147
 
 -------------------------------
 ##### Final effective command line:
-STAR   --runMode genomeGenerate      --runThreadN 16   --genomeDir pseudogenomes/GF6/   --genomeFastaFiles pseudogenomes/GF6/GF6_GCF_001858045.2.fa      --sjdbGTFfile genome/Tilapia_GCF_001858045.2_annotation.gtf   --sjdbOverhang 147
+STAR   --runMode genomeGenerate      --runThreadN 16   --genomeDir pseudogenomes/GF6/   --genomeFastaFiles pseudogenomes/GF6/GF6_GCF_001858045.2.fa      --sjdbGTFfile genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf   --sjdbOverhang 147
 ----------------------------------------
 
 Number of fastq files for each mate = 1
 ParametersSolo: --soloCellFilterType CellRanger2.2 filtering parameters:  3000 0.99 10
 Finished loading and checking parameters
 --genomeDir directory exists and will be overwritten: pseudogenomes/GF6/
-Dec 15 15:38:24 ... starting to generate Genome files
+Jan 13 13:55:40 ... starting to generate Genome files
 pseudogenomes/GF6/GF6_GCF_001858045.2.fa : chr # 0  "NC_031967.2" chrStart: 0
 Chromosome sequence lengths: 
 NC_031967.2	87567345
 Genome sequence total length = 87567345
 Genome size with padding = 87818240
-Dec 15 15:38:25 ..... processing annotations GTF
+Jan 13 13:55:41 ..... processing annotations GTF
+Processing pGe.sjdbGTFfile=genome/Tilapia_NC_031967.2_GCF_001858045.2_annotation.gtf, found:
+		6926 transcripts
+		49293 exons (non-collapsed)
+		21258 collapsed junctions
+Total junctions: 21258
+Jan 13 13:55:41 ..... finished GTF processing
 
-FATAL error, could not open file pGe.sjdbGTFfile=genome/Tilapia_GCF_001858045.2_annotation.gtf
-
-Dec 15 15:38:25 ...... FATAL ERROR, exiting
+!!!!! WARNING: --genomeSAindexNbases 14 is too large for the genome size=87567345, which may cause seg-fault at the mapping step. Re-run genome generation with recommended --genomeSAindexNbases 12
+Estimated genome size with padding and SJs: total=genome+SJ=382818240 = 87818240 + 295000000
+GstrandBit=32
+Number of SA indices: 175117090
+Jan 13 13:55:41 ... starting to sort Suffix Array. This may take a long time...
+Number of chunks: 16;   chunks size limit: 93395776 bytes
+Jan 13 13:55:41 ... sorting Suffix Array chunks and saving them to disk...
+Writing 39767400 bytes into pseudogenomes/GF6//SA_15 ; empty space on disk = 1788285681664 bytes ... done
+Writing 84770264 bytes into pseudogenomes/GF6//SA_14 ; empty space on disk = 1788206145536 bytes ... done
+Writing 91495936 bytes into pseudogenomes/GF6//SA_0 ; empty space on disk = 1788121374720 bytes ... done
+Writing 90855408 bytes into pseudogenomes/GF6//SA_1 ; empty space on disk = 1788029878272 bytes ... done
+Writing 90795240 bytes into pseudogenomes/GF6//SA_12 ; empty space on disk = 1787939020800 bytes ... done
+Writing 91848752 bytes into pseudogenomes/GF6//SA_2 ; empty space on disk = 1787848224768 bytes ...Writing 89547360 bytes into pseudogenomes/GF6//SA_13 ; empty space on disk = 1787839623168 bytes ... done
+ done
+Writing 90524328 bytes into pseudogenomes/GF6//SA_3 ; empty space on disk = 1787645140992 bytes ...Writing 86852536 bytes into pseudogenomes/GF6//SA_6 ; empty space on disk = 1787599925248 bytes ... done
+ done
+Writing 91884024 bytes into pseudogenomes/GF6//SA_9 ; empty space on disk = 1787397935104 bytes ... done
+Writing 92519592 bytes into pseudogenomes/GF6//SA_4 ; empty space on disk = 1787215523840 bytes ... done
+Writing 89976000 bytes into pseudogenomes/GF6//SA_7 ; empty space on disk = 1786720120832 bytes ... done
+Writing 92160600 bytes into pseudogenomes/GF6//SA_5 ; empty space on disk = 1786430283776 bytes ... done
+Writing 93032288 bytes into pseudogenomes/GF6//SA_10 ; empty space on disk = 1786264674304 bytes ... done
+Writing 93053056 bytes into pseudogenomes/GF6//SA_8 ; empty space on disk = 1785854201856 bytes ... done
+Writing 91853936 bytes into pseudogenomes/GF6//SA_11 ; empty space on disk = 1785761144832 bytes ... done
+Jan 13 13:55:53 ... loading chunks from disk, packing SA...
+Jan 13 13:55:55 ... finished generating suffix array
+Jan 13 13:55:55 ... generating Suffix Array index
+Jan 13 13:56:17 ... completed Suffix Array index
+WARNING: long repeat for junction # 10670 : NC_031967.2 36204271 36213976; left shift = 6; right shift = 255
+Jan 13 13:56:17   Finished preparing junctions
+Jan 13 13:56:17 ..... inserting junctions into the genome indices
+Jan 13 13:56:20   Finished SA search: number of new junctions=21250, old junctions=0
+Jan 13 13:56:23   Finished sorting SA indicesL nInd=12494658
+Genome size with junctions=94086990  87818240   6268750
+GstrandBit1=32   GstrandBit=32
+Jan 13 13:56:24   Finished inserting junction indices
+Jan 13 13:56:30   Finished SAi
+Jan 13 13:56:30 ..... finished inserting junctions into genome
+Jan 13 13:56:30 ... writing Genome to disk ...
+Writing 94086990 bytes into pseudogenomes/GF6//Genome ; empty space on disk = 1788283187200 bytes ... done
+SA size in bytes: 773898464
+Jan 13 13:56:30 ... writing Suffix Array to disk ...
+Writing 773898464 bytes into pseudogenomes/GF6//SA ; empty space on disk = 1788189097984 bytes ... done
+Jan 13 13:56:30 ... writing SAindex to disk
+Writing 8 bytes into pseudogenomes/GF6//SAindex ; empty space on disk = 1786707165184 bytes ... done
+Writing 120 bytes into pseudogenomes/GF6//SAindex ; empty space on disk = 1786707144704 bytes ... done
+Writing 1565873491 bytes into pseudogenomes/GF6//SAindex ; empty space on disk = 1786707132416 bytes ... done
+Jan 13 13:56:31 ..... finished successfully
+DONE: Genome generation, EXITING

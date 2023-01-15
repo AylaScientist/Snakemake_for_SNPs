@@ -1,6 +1,6 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-INFO	2022-12-15 17:18:39	AddOrReplaceReadGroups	
+INFO	2023-01-15 12:30:49	AddOrReplaceReadGroups	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -13,10 +13,31 @@ INFO	2022-12-15 17:18:39	AddOrReplaceReadGroups
 **********
 
 
-17:18:40.222 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Thu Dec 15 17:18:40 IST 2022] AddOrReplaceReadGroups INPUT=GS4_KS4_Aligned.sortedByCoord.out.bam OUTPUT=fixed-rg/GS4_KS4.bam SORT_ORDER=coordinate RGID=NextSeq RGLB=idp RGPL=illumina RGPU=GS4 RGSM=GS4 CREATE_INDEX=true    VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Thu Dec 15 17:18:40 IST 2022] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
-INFO	2022-12-15 17:18:40	AddOrReplaceReadGroups	Created read-group ID=NextSeq PL=illumina LB=idp SM=GS4
+12:30:49.742 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Sun Jan 15 12:30:49 IST 2023] AddOrReplaceReadGroups INPUT=GS4_KS4_Aligned.sortedByCoord.out.bam OUTPUT=fixed-rg/GS4_KS4.bam SORT_ORDER=coordinate RGID=NextSeq RGLB=idp RGPL=illumina RGPU=GS4 RGSM=GS4 CREATE_INDEX=true    VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Sun Jan 15 12:30:49 IST 2023] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.26.11
+INFO	2023-01-15 12:30:49	AddOrReplaceReadGroups	Created read-group ID=NextSeq PL=illumina LB=idp SM=GS4
 
-[Thu Dec 15 17:18:41 IST 2022] picard.sam.AddOrReplaceReadGroups done. Elapsed time: 0.02 minutes.
-Runtime.totalMemory()=26843545600
+INFO	2023-01-15 12:30:55	AddOrReplaceReadGroups	Processed     1,000,000 records.  Elapsed time: 00:00:05s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:4,040,610
+INFO	2023-01-15 12:31:01	AddOrReplaceReadGroups	Processed     2,000,000 records.  Elapsed time: 00:00:11s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:7,331,054
+INFO	2023-01-15 12:31:07	AddOrReplaceReadGroups	Processed     3,000,000 records.  Elapsed time: 00:00:17s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:10,693,494
+INFO	2023-01-15 12:31:12	AddOrReplaceReadGroups	Processed     4,000,000 records.  Elapsed time: 00:00:22s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:13,892,517
+INFO	2023-01-15 12:31:18	AddOrReplaceReadGroups	Processed     5,000,000 records.  Elapsed time: 00:00:28s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:17,537,342
+INFO	2023-01-15 12:31:24	AddOrReplaceReadGroups	Processed     6,000,000 records.  Elapsed time: 00:00:34s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:20,931,772
+INFO	2023-01-15 12:31:30	AddOrReplaceReadGroups	Processed     7,000,000 records.  Elapsed time: 00:00:40s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:24,735,990
+INFO	2023-01-15 12:31:35	AddOrReplaceReadGroups	Processed     8,000,000 records.  Elapsed time: 00:00:45s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:29,017,089
+INFO	2023-01-15 12:31:41	AddOrReplaceReadGroups	Processed     9,000,000 records.  Elapsed time: 00:00:51s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:32,820,047
+INFO	2023-01-15 12:31:47	AddOrReplaceReadGroups	Processed    10,000,000 records.  Elapsed time: 00:00:57s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:36,664,633
+INFO	2023-01-15 12:31:52	AddOrReplaceReadGroups	Processed    11,000,000 records.  Elapsed time: 00:01:03s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:40,590,570
+INFO	2023-01-15 12:31:58	AddOrReplaceReadGroups	Processed    12,000,000 records.  Elapsed time: 00:01:08s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:44,375,169
+INFO	2023-01-15 12:32:04	AddOrReplaceReadGroups	Processed    13,000,000 records.  Elapsed time: 00:01:14s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:48,912,212
+INFO	2023-01-15 12:32:09	AddOrReplaceReadGroups	Processed    14,000,000 records.  Elapsed time: 00:01:20s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:53,047,590
+INFO	2023-01-15 12:32:15	AddOrReplaceReadGroups	Processed    15,000,000 records.  Elapsed time: 00:01:25s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:57,737,315
+INFO	2023-01-15 12:32:21	AddOrReplaceReadGroups	Processed    16,000,000 records.  Elapsed time: 00:01:31s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:62,691,548
+INFO	2023-01-15 12:32:26	AddOrReplaceReadGroups	Processed    17,000,000 records.  Elapsed time: 00:01:37s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:68,121,053
+INFO	2023-01-15 12:32:32	AddOrReplaceReadGroups	Processed    18,000,000 records.  Elapsed time: 00:01:42s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:72,225,758
+INFO	2023-01-15 12:32:38	AddOrReplaceReadGroups	Processed    19,000,000 records.  Elapsed time: 00:01:48s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:77,172,709
+INFO	2023-01-15 12:32:43	AddOrReplaceReadGroups	Processed    20,000,000 records.  Elapsed time: 00:01:54s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:81,586,348
+INFO	2023-01-15 12:32:49	AddOrReplaceReadGroups	Processed    21,000,000 records.  Elapsed time: 00:01:59s.  Time for last 1,000,000:    5s.  Last read position: NC_031967.2:86,522,756
+[Sun Jan 15 12:32:50 IST 2023] picard.sam.AddOrReplaceReadGroups done. Elapsed time: 2.02 minutes.
+Runtime.totalMemory()=4294967296

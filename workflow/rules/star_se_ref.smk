@@ -6,7 +6,7 @@ rule star_se:
         params=config['ref']['SAindex'],
     output:
         # see STAR manual for additional output files
-        file=temp("{sample}_ref_Aligned.sortedByCoord.out.bam") #""star/{sample}/Aligned.sortedByCoord.out.sam""
+        file="{sample}_ref_Aligned.sortedByCoord.out.bam" #""star/{sample}/Aligned.sortedByCoord.out.sam""
     log:
         "logs/star/{sample}_ref.log",
     params:

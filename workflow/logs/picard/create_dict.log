@@ -1,6 +1,0 @@
-OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-15:24:10.225 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/picard-2.26.11-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Thu Dec 15 15:24:10 IST 2022] CreateSequenceDictionary --OUTPUT genome/Tilapia_NC_031967.2_GCF_001858045.2.dict --TMP_DIR /tmp/tmpc9vir5z_ --CREATE_INDEX true --REFERENCE genome/Tilapia_NC_031967.2_GCF_001858045.2.fa --TRUNCATE_NAMES_AT_WHITESPACE true --NUM_SEQUENCES 2147483647 --VERBOSITY INFO --QUIET false --VALIDATION_STRINGENCY STRICT --COMPRESSION_LEVEL 5 --MAX_RECORDS_IN_RAM 500000 --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
-[Thu Dec 15 15:24:10 IST 2022] Executing as fish@fish-ThinkStation-P620 on Linux 5.15.0-56-generic amd64; OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: Version:2.26.11
-[Thu Dec 15 15:24:10 IST 2022] picard.sam.CreateSequenceDictionary done. Elapsed time: 0.01 minutes.
-Runtime.totalMemory()=107374182400

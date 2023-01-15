@@ -1,6 +1,6 @@
 rule replace_rg:
     input:
-        "{sample}__ref_Aligned.sortedByCoord.out.bam"
+        "{sample}_ref_Aligned.sortedByCoord.out.bam"
     output:
         temp("fixed-rg/{sample}.bam")
     conda:

@@ -1,5 +1,0 @@
-Error: Could not find or load main class None
-Caused by: java.lang.ClassNotFoundException: None
-Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
-Running:
-    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 None -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar CombineGVCFs -V calls/GF6_GF6.g.vcf -V calls/GF6_KS4.g.vcf -V calls/KF6_GF6.g.vcf -V calls/KF6_KS4.g.vcf -V calls/GS4_GF6.g.vcf -V calls/GS4_KS4.g.vcf -V calls/KS4_GF6.g.vcf -V calls/KS4_KS4.g.vcf -R genome/Tilapia_NC_031967.2_GCF_001858045.2.fa -O calls/all_g_KS4.vcf

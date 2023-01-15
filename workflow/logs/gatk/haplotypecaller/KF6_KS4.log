@@ -1,50 +1,87 @@
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
-11:31:11.721 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
-Dec 20, 2022 11:31:11 AM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+13:05:40.552 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+Jan 15, 2023 1:05:40 PM shaded.cloud_nio.com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
 INFO: Failed to detect whether we are running on Google Compute Engine.
-11:31:11.833 INFO  HaplotypeCaller - ------------------------------------------------------------
-11:31:11.834 INFO  HaplotypeCaller - The Genome Analysis Toolkit (GATK) v4.2.5.0
-11:31:11.834 INFO  HaplotypeCaller - For support and documentation go to https://software.broadinstitute.org/gatk/
-11:31:11.834 INFO  HaplotypeCaller - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
-11:31:11.834 INFO  HaplotypeCaller - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
-11:31:11.835 INFO  HaplotypeCaller - Start Date/Time: 20 December 2022 at 11:31:11 IST
-11:31:11.835 INFO  HaplotypeCaller - ------------------------------------------------------------
-11:31:11.835 INFO  HaplotypeCaller - ------------------------------------------------------------
-11:31:11.835 INFO  HaplotypeCaller - HTSJDK Version: 2.24.1
-11:31:11.835 INFO  HaplotypeCaller - Picard Version: 2.25.4
-11:31:11.836 INFO  HaplotypeCaller - Built for Spark Version: 2.4.5
-11:31:11.836 INFO  HaplotypeCaller - HTSJDK Defaults.COMPRESSION_LEVEL : 2
-11:31:11.836 INFO  HaplotypeCaller - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
-11:31:11.836 INFO  HaplotypeCaller - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
-11:31:11.836 INFO  HaplotypeCaller - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
-11:31:11.836 INFO  HaplotypeCaller - Deflater: IntelDeflater
-11:31:11.836 INFO  HaplotypeCaller - Inflater: IntelInflater
-11:31:11.836 INFO  HaplotypeCaller - GCS max retries/reopens: 20
-11:31:11.836 INFO  HaplotypeCaller - Requester pays: disabled
-11:31:11.836 INFO  HaplotypeCaller - Initializing engine
+13:05:40.646 INFO  HaplotypeCaller - ------------------------------------------------------------
+13:05:40.646 INFO  HaplotypeCaller - The Genome Analysis Toolkit (GATK) v4.2.5.0
+13:05:40.646 INFO  HaplotypeCaller - For support and documentation go to https://software.broadinstitute.org/gatk/
+13:05:40.646 INFO  HaplotypeCaller - Executing as fish@fish-ThinkStation-P620 on Linux v5.15.0-56-generic amd64
+13:05:40.646 INFO  HaplotypeCaller - Java runtime: OpenJDK 64-Bit Server VM v11.0.13+7-b1751.21
+13:05:40.647 INFO  HaplotypeCaller - Start Date/Time: 15 January 2023 at 13:05:40 IST
+13:05:40.647 INFO  HaplotypeCaller - ------------------------------------------------------------
+13:05:40.647 INFO  HaplotypeCaller - ------------------------------------------------------------
+13:05:40.647 INFO  HaplotypeCaller - HTSJDK Version: 2.24.1
+13:05:40.647 INFO  HaplotypeCaller - Picard Version: 2.25.4
+13:05:40.647 INFO  HaplotypeCaller - Built for Spark Version: 2.4.5
+13:05:40.647 INFO  HaplotypeCaller - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+13:05:40.647 INFO  HaplotypeCaller - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+13:05:40.647 INFO  HaplotypeCaller - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+13:05:40.647 INFO  HaplotypeCaller - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+13:05:40.648 INFO  HaplotypeCaller - Deflater: IntelDeflater
+13:05:40.648 INFO  HaplotypeCaller - Inflater: IntelInflater
+13:05:40.648 INFO  HaplotypeCaller - GCS max retries/reopens: 20
+13:05:40.648 INFO  HaplotypeCaller - Requester pays: disabled
+13:05:40.648 INFO  HaplotypeCaller - Initializing engine
 WARNING: BAM index file /home/fish/Snakemake_for_SNPs/workflow/split/KF6_KS4.bai is older than BAM /home/fish/Snakemake_for_SNPs/workflow/split/KF6_KS4.bam
-11:31:11.973 INFO  HaplotypeCaller - Done initializing engine
-11:31:11.975 INFO  HaplotypeCallerEngine - Tool is in reference confidence mode and the annotation, the following changes will be made to any specified annotations: 'StrandBiasBySample' will be enabled. 'ChromosomeCounts', 'FisherStrand', 'StrandOddsRatio' and 'QualByDepth' annotations have been disabled
-11:31:11.978 INFO  HaplotypeCallerEngine - Standard Emitting and Calling confidence set to 0.0 for reference-model confidence output
-11:31:11.978 INFO  HaplotypeCallerEngine - All sites annotated with PLs forced to true for reference-model confidence output
-11:31:11.990 INFO  NativeLibraryLoader - Loading libgkl_utils.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_utils.so
-11:31:11.991 INFO  NativeLibraryLoader - Loading libgkl_pairhmm_omp.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_pairhmm_omp.so
-11:31:12.003 INFO  IntelPairHmm - Flush-to-zero (FTZ) is enabled when running PairHMM
-11:31:12.003 INFO  IntelPairHmm - Available threads: 1
-11:31:12.003 INFO  IntelPairHmm - Requested threads: 4
-11:31:12.003 WARN  IntelPairHmm - Using 1 available threads, but 4 were requested
-11:31:12.004 INFO  PairHMM - Using the OpenMP multi-threaded AVX-accelerated native PairHMM implementation
-11:31:12.028 INFO  ProgressMeter - Starting traversal
-11:31:12.028 INFO  ProgressMeter -        Current Locus  Elapsed Minutes     Regions Processed   Regions/Minute
-11:31:12.641 WARN  InbreedingCoeff - InbreedingCoeff will not be calculated at position NC_031967.2:136524 and possibly subsequent; at least 10 samples must have called genotypes
-11:31:15.726 WARN  DepthPerSampleHC - Annotation will not be calculated at position NC_031967.2:3700468 and possibly subsequent; genotype for sample KF6 is not called
-11:31:15.727 WARN  StrandBiasBySample - Annotation will not be calculated at position NC_031967.2:3700468 and possibly subsequent; genotype for sample KF6 is not called
-11:31:22.028 INFO  ProgressMeter - NC_031967.2:13113234              0.2                 44360         266160.0
-11:31:32.030 INFO  ProgressMeter - NC_031967.2:26636321              0.3                 90030         270076.5
-11:31:42.029 INFO  ProgressMeter - NC_031967.2:45251369              0.5                152800         305589.8
-11:31:52.029 INFO  ProgressMeter - NC_031967.2:64862330              0.7                218730         328086.8
-11:32:02.029 INFO  ProgressMeter - NC_031967.2:84624464              0.8                285180         342209.2
-11:32:03.508 INFO  HaplotypeCaller - 64203 read(s) filtered by: MappingQualityReadFilter 
+13:05:40.725 INFO  HaplotypeCaller - Done initializing engine
+13:05:40.726 INFO  HaplotypeCallerEngine - Tool is in reference confidence mode and the annotation, the following changes will be made to any specified annotations: 'StrandBiasBySample' will be enabled. 'ChromosomeCounts', 'FisherStrand', 'StrandOddsRatio' and 'QualByDepth' annotations have been disabled
+13:05:40.729 INFO  HaplotypeCallerEngine - Standard Emitting and Calling confidence set to 0.0 for reference-model confidence output
+13:05:40.729 INFO  HaplotypeCallerEngine - All sites annotated with PLs forced to true for reference-model confidence output
+13:05:40.736 INFO  NativeLibraryLoader - Loading libgkl_utils.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_utils.so
+13:05:40.737 INFO  NativeLibraryLoader - Loading libgkl_pairhmm_omp.so from jar:file:/home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar!/com/intel/gkl/native/libgkl_pairhmm_omp.so
+13:05:40.747 INFO  IntelPairHmm - Flush-to-zero (FTZ) is enabled when running PairHMM
+13:05:40.747 INFO  IntelPairHmm - Available threads: 1
+13:05:40.747 INFO  IntelPairHmm - Requested threads: 4
+13:05:40.748 WARN  IntelPairHmm - Using 1 available threads, but 4 were requested
+13:05:40.748 INFO  PairHMM - Using the OpenMP multi-threaded AVX-accelerated native PairHMM implementation
+13:05:40.768 INFO  ProgressMeter - Starting traversal
+13:05:40.768 INFO  ProgressMeter -        Current Locus  Elapsed Minutes     Regions Processed   Regions/Minute
+13:05:41.367 WARN  InbreedingCoeff - InbreedingCoeff will not be calculated at position NC_031967.2:38537 and possibly subsequent; at least 10 samples must have called genotypes
+13:05:43.028 WARN  DepthPerSampleHC - Annotation will not be calculated at position NC_031967.2:193739 and possibly subsequent; genotype for sample KF6 is not called
+13:05:43.028 WARN  StrandBiasBySample - Annotation will not be calculated at position NC_031967.2:193739 and possibly subsequent; genotype for sample KF6 is not called
+13:05:50.787 INFO  ProgressMeter -  NC_031967.2:1629362              0.2                  7700          46112.4
+13:06:00.787 INFO  ProgressMeter -  NC_031967.2:3294260              0.3                 16320          48913.5
+13:06:10.787 INFO  ProgressMeter -  NC_031967.2:4832808              0.5                 24650          49268.8
+13:06:20.800 INFO  ProgressMeter -  NC_031967.2:6233173              0.7                 32660          48950.8
+13:06:30.802 INFO  ProgressMeter -  NC_031967.2:8055480              0.8                 42110          50497.7
+13:06:40.809 INFO  ProgressMeter -  NC_031967.2:9869763              1.0                 51640          51604.7
+13:06:50.809 INFO  ProgressMeter - NC_031967.2:11001992              1.2                 58490          50104.9
+13:07:00.815 INFO  ProgressMeter - NC_031967.2:12331427              1.3                 66240          49650.8
+13:07:10.815 INFO  ProgressMeter - NC_031967.2:13699566              1.5                 74160          49414.2
+13:07:20.824 INFO  ProgressMeter - NC_031967.2:15465100              1.7                 83430          50030.0
+13:07:30.838 INFO  ProgressMeter - NC_031967.2:17361568              1.8                 92960          50673.2
+13:07:40.845 INFO  ProgressMeter - NC_031967.2:18803042              2.0                101150          50542.6
+13:07:50.850 INFO  ProgressMeter - NC_031967.2:20109685              2.2                108720          50146.8
+13:08:00.863 INFO  ProgressMeter - NC_031967.2:22216546              2.3                118920          50931.5
+13:08:10.872 INFO  ProgressMeter - NC_031967.2:23821940              2.5                127390          50920.7
+13:08:20.879 INFO  ProgressMeter - NC_031967.2:26421909              2.7                139340          52216.3
+13:08:30.880 INFO  ProgressMeter - NC_031967.2:28300330              2.8                148950          52536.0
+13:08:40.893 INFO  ProgressMeter - NC_031967.2:30498475              3.0                159710          53199.7
+13:08:50.906 INFO  ProgressMeter - NC_031967.2:32135837              3.2                168610          53206.6
+13:09:00.914 INFO  ProgressMeter - NC_031967.2:33949233              3.3                178060          53379.0
+13:09:10.921 INFO  ProgressMeter - NC_031967.2:35754418              3.5                187370          53495.3
+13:09:20.926 INFO  ProgressMeter - NC_031967.2:37786818              3.7                197630          53860.4
+13:09:30.937 INFO  ProgressMeter - NC_031967.2:39998940              3.8                208500          54351.4
+13:09:40.968 INFO  ProgressMeter - NC_031967.2:42028400              4.0                218640          54614.5
+13:09:50.971 INFO  ProgressMeter - NC_031967.2:44194922              4.2                229260          54977.8
+13:10:00.976 INFO  ProgressMeter - NC_031967.2:46824957              4.3                241510          55688.5
+13:10:10.977 INFO  ProgressMeter - NC_031967.2:49054116              4.5                252300          56023.5
+13:10:20.988 INFO  ProgressMeter - NC_031967.2:50771625              4.7                261080          55901.8
+13:10:30.992 INFO  ProgressMeter - NC_031967.2:52842595              4.8                271220          56071.2
+13:10:41.002 INFO  ProgressMeter - NC_031967.2:55499586              5.0                283310          56617.8
+13:10:51.141 INFO  ProgressMeter - NC_031967.2:57261989              5.2                291820          56413.4
+13:11:01.145 INFO  ProgressMeter - NC_031967.2:59852173              5.3                303630          56863.8
+13:11:11.146 INFO  ProgressMeter - NC_031967.2:62391140              5.5                315320          57265.3
+13:11:21.153 INFO  ProgressMeter - NC_031967.2:65592341              5.7                329320          58049.6
+13:11:31.157 INFO  ProgressMeter - NC_031967.2:68512949              5.8                342550          58657.7
+13:11:41.158 INFO  ProgressMeter - NC_031967.2:70680803              6.0                352780          58733.0
+13:11:51.161 INFO  ProgressMeter - NC_031967.2:72898072              6.2                363180          58831.6
+13:12:01.241 INFO  ProgressMeter - NC_031967.2:75635083              6.3                375670          59242.6
+13:12:11.250 INFO  ProgressMeter - NC_031967.2:78090583              6.5                387080          59477.3
+13:12:21.259 INFO  ProgressMeter - NC_031967.2:80511999              6.7                398450          59694.2
+13:12:31.266 INFO  ProgressMeter - NC_031967.2:83167735              6.8                410830          60048.5
+13:12:41.271 INFO  ProgressMeter - NC_031967.2:86087853              7.0                423940          60490.4
+13:12:46.200 INFO  HaplotypeCaller - 13781303 read(s) filtered by: MappingQualityReadFilter 
 0 read(s) filtered by: MappingQualityAvailableReadFilter 
 0 read(s) filtered by: MappedReadFilter 
 0 read(s) filtered by: NotSecondaryAlignmentReadFilter 
@@ -53,15 +90,15 @@ WARNING: BAM index file /home/fish/Snakemake_for_SNPs/workflow/split/KF6_KS4.bai
 0 read(s) filtered by: NonZeroReferenceLengthAlignmentReadFilter 
 0 read(s) filtered by: GoodCigarReadFilter 
 0 read(s) filtered by: WellformedReadFilter 
-64203 total reads filtered
-11:32:03.508 INFO  ProgressMeter - NC_031967.2:87565661              0.9                295065         343898.6
-11:32:03.508 INFO  ProgressMeter - Traversal complete. Processed 295065 total regions in 0.9 minutes.
-11:32:03.542 INFO  VectorLoglessPairHMM - Time spent in setup for JNI call : 0.0026254670000000003
-11:32:03.542 INFO  PairHMM - Total compute time in PairHMM computeLogLikelihoods() : 0.014216063000000001
-11:32:03.542 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 0.27 sec
-11:32:03.543 INFO  HaplotypeCaller - Shutting down engine
-[20 December 2022 at 11:32:03 IST] org.broadinstitute.hellbender.tools.walkers.haplotypecaller.HaplotypeCaller done. Elapsed time: 0.86 minutes.
-Runtime.totalMemory()=26843545600
+13781303 total reads filtered
+13:12:46.200 INFO  ProgressMeter - NC_031967.2:87565092              7.1                430569          60724.5
+13:12:46.200 INFO  ProgressMeter - Traversal complete. Processed 430569 total regions in 7.1 minutes.
+13:12:46.212 INFO  VectorLoglessPairHMM - Time spent in setup for JNI call : 0.041290643
+13:12:46.212 INFO  PairHMM - Total compute time in PairHMM computeLogLikelihoods() : 3.2855266260000002
+13:12:46.212 INFO  SmithWatermanAligner - Total compute time in java Smith-Waterman : 32.98 sec
+13:12:46.213 INFO  HaplotypeCaller - Shutting down engine
+[15 January 2023 at 13:12:46 IST] org.broadinstitute.hellbender.tools.walkers.haplotypecaller.HaplotypeCaller done. Elapsed time: 7.09 minutes.
+Runtime.totalMemory()=6190792704
 Using GATK jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar
 Running:
-    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms25G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=3 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar HaplotypeCaller -R pseudogenomes/KS4/KS4_GCF_001858045.2.fa -I split/KF6_KS4.bam -ERC GVCF -O calls/KF6_KS4.g.vcf
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -XX:MinRAMPercentage=80.0 -Xms4G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=4 -XX:+UseTLAB -jar /home/fish/anaconda3/envs/pipeline/share/gatk4-4.2.5.0-0/gatk-package-4.2.5.0-local.jar HaplotypeCaller -R pseudogenomes/KS4/KS4_GCF_001858045.2.fa -I split/KF6_KS4.bam -ERC GVCF -O calls/KF6_KS4.g.vcf

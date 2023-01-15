@@ -1,11 +1,11 @@
-	STAR --runThreadN 3 --genomeDir pseudogenomes/GF6 --readFilesIn trimmed/KS4.1.fastq --outFileNamePrefix KS4_GF6_ --outStd Log --twopassMode Basic --quantMode GeneCounts --outSAMattrIHstart 0 --alignSoftClipAtReferenceEnds No --limitBAMsortRAM 300647556788 --outBAMsortingThreadN 2 --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --outSAMattributes All --outFilterScoreMinOverLread 0 --outFilterMatchNminOverLread 0 --outFilterMatchNmin 0 --outFilterMismatchNmax 2 --outSAMtype BAM SortedByCoordinate
+	STAR --runThreadN 4 --genomeDir pseudogenomes/GF6 --readFilesIn trimmed/KS4.1.fastq --outFileNamePrefix KS4_GF6_ --outStd Log --twopassMode Basic --quantMode GeneCounts --outSAMattrIHstart 0 --alignSoftClipAtReferenceEnds No --limitBAMsortRAM 300647556788 --outBAMsortingThreadN 2 --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --outSAMattributes All --outFilterScoreMinOverLread 0 --outFilterMatchNminOverLread 0 --outFilterMatchNmin 0 --outFilterMismatchNmax 2 --outSAMtype BAM SortedByCoordinate
 	STAR version: 2.7.10a   compiled: 2022-01-14T18:50:00-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
-Dec 15 17:09:34 ..... started STAR run
-Dec 15 17:09:34 ..... loading genome
-Dec 15 17:09:35 ..... started 1st pass mapping
-Dec 15 17:09:45 ..... finished 1st pass mapping
-Dec 15 17:09:45 ..... inserting junctions into the genome indices
-Dec 15 17:09:51 ..... started mapping
-Dec 15 17:10:01 ..... finished mapping
-Dec 15 17:10:01 ..... started sorting BAM
-Dec 15 17:10:01 ..... finished successfully
+Jan 15 11:22:25 ..... started STAR run
+Jan 15 11:22:25 ..... loading genome
+Jan 15 11:22:25 ..... started 1st pass mapping
+Jan 15 11:39:21 ..... finished 1st pass mapping
+Jan 15 11:39:21 ..... inserting junctions into the genome indices
+Jan 15 11:39:28 ..... started mapping
+Jan 15 11:57:36 ..... finished mapping
+Jan 15 11:57:36 ..... started sorting BAM
+Jan 15 11:58:04 ..... finished successfully

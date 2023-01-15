@@ -1,2 +1,0 @@
-faidx: invalid option -- 'o'
-Usage: samtools faidx <file.fa|file.fa.gz> [<reg> [...]]

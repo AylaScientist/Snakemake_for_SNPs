@@ -24,20 +24,20 @@ gpu: 0
 #jobs_per_gpu: 6
 
 #Parallel_jobs: Is the total resources divided by the number of samples, 4 in this case
-java_opts_parallel: "-XX:MinRAMPercentage=80.0 -Xms2G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=3 -XX:+UseTLAB"
-threads_parallel: 3 # that refers to the number of cores. The parallel threads are defined above
-mem_mb_parallel: 3000
+java_opts_parallel: "-XX:MinRAMPercentage=80.0 -Xms4G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=4 -XX:+UseTLAB"
+threads_parallel: 4 # that refers to the number of cores. The parallel threads are defined above
+mem_mb_parallel: 4500
 
 
 #Combine: Is total resources divided by two pseudogenomes
-java_opts_combine: "-XX:MinRAMPercentage=80.0 -Xms5G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=6 -XX:+UseTLAB"
-threads_combine: 6 # that refers to the number of cores. The parallel threads are defined above
-mem_mb_combine: 6000
+java_opts_combine: "-XX:MinRAMPercentage=80.0 -Xms8G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=9 -XX:+UseTLAB"
+threads_combine: 9 # that refers to the number of cores. The parallel threads are defined above
+mem_mb_combine: 9000
 
 #Reference genome: Total resources for rules that do not have parallel works. 
-java_opts: "-XX:MinRAMPercentage=80.0 -Xms10G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=12 -XX:+UseTLAB"
-threads: 12 # that refers to the number of cores. The parallel threads are defined above
-mem_mb: 12000
+java_opts: "-XX:MinRAMPercentage=80.0 -Xms15G -XX:-UseConcMarkSweepGC -XX:ParallelGCThreads=18 -XX:+UseTLAB"
+threads: 18 # that refers to the number of cores. The parallel threads are defined above
+mem_mb: 18000
 
 # Path to workflow with relation to snakefile. Can vary depending on your HPC configuration
 path: "~/AylaScientist/Snakemake_for_SNPs/GitHub/workflow/"
@@ -48,7 +48,7 @@ pseudogenomes: # Write the pseudogenomes as they are found in the file ../config
 
 input_files: # Add the fastq files of your experiment
   r1: "fastq_merged/{sample}.fastq"
-  r2: "fastq_merged/{sample}.fastq" # Optional
+  r2: "fastq_merged/{sample}.2.fastq" # Optional
 
 results:
   o1: "results/SNPs_function.csv"
@@ -78,6 +78,7 @@ other_intermediate_files: # For bqsr recalibration, in case you have known SNPs
 
 error: "results/Error_in_SNP_calling_valid_genome.csv"
 
+# The reference genome goes here. In this example, only the first chromosome of the genome is included.
 ref:
   # ensembl species name
   species: Nile tilapia
@@ -131,7 +132,7 @@ params:
       trimmer:
         # See trimmomatic manual for adding additional options, e.g. for adapter trimming.
         - "LEADING:3 "
-        - "TRAILING:3 "
+        #- "TRAILING:3 "
         #- "SLIDINGWINDOW:4:15 "
         - "MINLEN:36 "
   annotation:

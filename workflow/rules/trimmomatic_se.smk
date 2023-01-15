@@ -12,7 +12,8 @@ rule trimmomatic_se:
         # list of trimmers (see manual)
         trimmer=config['params']['trimmomatic']['se']['trimmer'],
         extra="",
-        java_opts=config['java_opts_parallel']
+        java_opts=config['java_opts_parallel'],
+        threads = config['threads_parallel']
     threads: config['threads_parallel']
     resources:
         mem_mb=config['mem_mb_parallel']

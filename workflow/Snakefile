@@ -1,5 +1,3 @@
-#include: "rules/common.smk"
-
 configfile: '../config/config.yaml'
 
 print("Configfile: ")
@@ -28,6 +26,8 @@ print(test2)
 
 rule all:
     input:
+        ## Zero call
+        #bam=expand("calls/{sample}_ref.g.vcf", sample = samples),
         ## First call 
         #degs = expand("gene_counts/{sample}.count_ref.txt", sample = samples), # Counts matrix for the DEGs
         #psgd = expand(config['files_pseudogenomes']['PSG_dict'], pseudo = pseudos), # Dictionary of the pseudogenomes
@@ -39,6 +39,7 @@ rule all:
         o3 = config['results']['o3'],
         o4 = config['results']['o4'],
         o5 = config['results']['o5'],
+        ## Helpers for debug
         #bam=expand("{sample}_ref_Aligned.sortedByCoord.out.bam",sample = samples),
         #bam=expand("calls/{sample}_ref.g.vcf", sample = samples),
         #bam0 = expand ("{sample}_{pseudo}_Aligned.sortedByCoord.out.bam", sample = samples, pseudo = pseudos[0]),
@@ -88,13 +89,9 @@ rule all:
 ends = config['params']['star']['mode'] #Information about paired ends
 print(ends)
 
-include: "rules/trimmomatic_se.smk"#In the trimming R3 input is called 2 for the output
-include: "rules/star_gi_ref.smk"
-
-""""
 # First SNP callling on the reference genome #
 ##############################################
-
+"""
 if ends == "SE":
     include: "rules/trimmomatic_se.smk"#In the trimming R3 input is called 2 for the output
     include: "rules/star_gi_ref.smk"
@@ -107,6 +104,8 @@ else:
     # First SNP callling on the reference genome #
     ##############################################
     include: "rules/star_pe_ref.smk"        # map with STAR
+
+
 
 include: "rules/replace_rg_ref.smk"     # Replace or add read Groups
 include: "rules/mark_duplicates_ref.smk"# Mark and eliminate Duplicates

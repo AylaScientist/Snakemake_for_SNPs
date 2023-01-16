@@ -3,14 +3,14 @@ rule table_step1_PSG:
         table1="variants/AD_GT_counts_bi_{pseudo}.table"
     output:
         table1="variants/AD_GT_counts_bi_{pseudo}_step1.csv"
+    params:
+        char = "characters{pseudo}.table",
+        multi = "delete_multiallelic{pseudo}.table"
     run:
-        shell("sed 's/|/\//g' {input.table1} > characters.table ")
-        shell("awk 'seen[$1,$2]++' characters.table > delete_multiallelic.table") #Collect SNPs with same chromosome and position thus are multiallelic by duplication of CHROM and POS columns 1 and 2
-        #shell("awk '$7~/^(\d+,\d+,\d+)*$/' characters.table > delete_multiallelic.table")
-        shell("awk '{print $1 $2}' delete_multiallelic.table > coordinates_multiallelic.table")
-        shell("grep -Fvf coordinates_multiallelic.table characters.table  > {output.table1} ") #Eliminate multiallelics, will output contents in file1 not in file2 
-        #shell("rm characters.table delete_multiallelic.table")
-
+        shell("sed 's/|/\//g' {input.table1} > {params.char} ")
+        shell("awk 'seen[$1,$2]++' {params.char} > {params.multi}") #Collect SNPs with same chromosome and position thus are multiallelic by duplication of CHROM and POS columns 1 and 2
+        shell("awk -F'\t' 'NR==FNR{{a[$1,$2]++;next}} !(a[$1,$2])' {params.multi} {params.char}  > {output.table1} ") # Eliminate the rows collected as multiallelic previously
+        shell("rm {params.char} {params.multi}") # Eliminate intermediary files
 
 
 

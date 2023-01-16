@@ -222,14 +222,15 @@ def tables_1_2(df_stats, experiments):
    
     # Radar chart for all treatents :
     # subset SNP Function and Exonic SNP Function
-    categories_exo = list ( df_polymorphism )[10:20]  # It avoids the category "." that is non-informative
-    df_pol_fun = df_polymorphism[
-        ["UTR3", "exonic", "ncRNA_exonic", "intronic", "intergenic", "downstream", "UTR5", "ncRNA_intronic","upstream"]]
+    categories_exo = list ( df_polymorphism )[11:20]  # It avoids the category "." that is non-informative
+    print("Categories exo: ", categories_exo)
+    df_pol_fun = df_polymorphism[2:9]
     df_pol_exo = df_polymorphism[categories_exo]
     
 
     # Polymorphism function by treatment:
     categories = list ( df_pol_fun )[0:]  # For function of SNP 1:9. Exonic function is from 10:20
+    print(categories)
     values_list = []
     angles_list = []
 
@@ -336,6 +337,9 @@ def table5(df_stats):
     df_chrom = df_stats.drop ( index_chrom )
     intronic_chrom = df_chrom["Func.refGene_x"].value_counts ()
     exonic_chrom = df_chrom["ExonicFunc.refGene_x"].value_counts ()
+    print("Intronic chrom: ",intronic_chrom)
+    print("Exonic chrom: ", exonic_chrom)
+
 
     # Create pandas DataFrame.
     data = {

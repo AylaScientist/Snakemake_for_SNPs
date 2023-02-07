@@ -17,7 +17,7 @@ fastq_merged: fastq_merged #folder with the fastq files
 Samples_MAE: ../config/Samples_MAE.csv
 # The next file is the table including all the bialelic SNPs found in the genome
 #If this file is not present the pipeline will proceed with the elimination of all monoallelic expression in the analysis
-Genotypes: ../config/AD_GT_counts_bi_DNA.csv 
+Genotypes: 
 
 ## Resources of the system:
 # Set the java_opts according the threads and mem_mb specified

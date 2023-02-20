@@ -5,7 +5,7 @@ rule pseudogenome:
         ref=config['ref']['genome'],
         index="pseudogenomes/subset_vcf_file_wo_indels.recode.vcf.gz.tbi"
     output:
-        pseudo = "pseudogenomes/{pseudo}/{pseudo}_GCF_001858045.2.fa"
+        pseudo = "pseudogenomes/{pseudo}/{pseudo}_"+config['ref']['release']+".fa"
     params:
         extra = "{pseudo}"
     resources:

@@ -285,7 +285,7 @@ def AD10(df, samples):
             sample_r_ad = str(sample + "_R_.AD")
             sample_a_ad = str(sample + "_A_.AD")
 
-            index_sample = df[((df[sample_a_ad] + df[sample_r_ad]) < 10)|(df[sample_a_ad] <3) | (df[sample_r_ad] <3)].index
+            index_sample = df[((df[sample_a_ad] + df[sample_r_ad]) < 10)and((df[sample_a_ad] <3) | (df[sample_r_ad] <3))].index
             if i == 0:
                 indexes_ad10 = np.array(index_sample)
                 print("Number of rows to drop", len(indexes_ad10))

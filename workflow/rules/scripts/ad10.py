@@ -34,7 +34,7 @@ def AD10(df, samples):
         print("AD10 filter in sample ", sample)
         sample_r_ad = str(sample + "_R_.AD")
         sample_a_ad = str(sample + "_A_.AD")
-        index_sample = df[((df[sample_a_ad] + df[sample_r_ad]) < 10)|(df[sample_a_ad] <3) | (df[sample_r_ad] <3)].index
+        index_sample = df[((df[sample_a_ad] + df[sample_r_ad]) < 10)and((df[sample_a_ad] <3) | (df[sample_r_ad] <3))].index
         """ Uncomment this if you have a way to verify the genotypes
         if i == 0: #For the first sample
             indexes_ad10 = np.array(index_sample)

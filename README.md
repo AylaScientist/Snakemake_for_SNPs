@@ -1,4 +1,4 @@
-# Snakemake for SNPs: A pipeline for calling SNPs and quantify them in an unbiased manner
+# Snakemake for SNPs: A pipeline for calling SNPs from RNA and quantify them in an unbiased manner
 Snakemake for SNPs is a flexible and user-friendly SNPs analysis workflow.
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥7.18.2.1-brightgreen.svg)](https://snakemake.github.io)
